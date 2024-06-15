@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-image: url("https://d10gf95rxwihx0.cloudfront.net/city-pixel-art-8ptr08abde3xvuh4.webp");
+}
+
+@font-face {
+  font-family: 'Pixel NES';
+  src: url('/fonts/Pixel_NES.otf') format('truetype');
+  color: white;
+}
+
+.pixel-text {
+  font-family: 'Pixel NES', sans-serif;
+}
+
+.scrollbar-hide {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
+}
