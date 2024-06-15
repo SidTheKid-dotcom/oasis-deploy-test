@@ -9,7 +9,7 @@ import { Context } from "../layout/Context";
 import { Toaster } from "sonner";
 import { toast } from "sonner";
 
-const PostCard = React.memo(({ post, setPost, totalComments }) => {
+const PostCard = ({ post, setPost, totalComments }) => {
 
     const { token } = useAuth();
     const searchParams = useSearchParams();
@@ -181,6 +181,6 @@ const PostCard = React.memo(({ post, setPost, totalComments }) => {
             </div>
         </div>
     )
-})
+}
 
 export default PostCard;
