@@ -178,7 +178,7 @@ export default function MainProfile({ userInfo, setUserInfo, loading, }) {
                     <img src='/link-solid.svg' height="15px" width="15px" className="mt-[5px]"></img>
                     Links
                 </button>
-                <button onClick={() => setSocialButton(!socialButton)} className="col-span-1 border border-blue-500 rounded-md p-1  md:hidden lg:hidden">
+                <button onClick={() => setSocialButton(!socialButton)} className="col-span-1 border border-blue-500 rounded-md p-1  lg:hidden">
                     Social
                 </button>
             </section>

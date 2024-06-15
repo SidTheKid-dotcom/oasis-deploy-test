@@ -91,7 +91,7 @@ export default function CreatePost({ displayType, placeholders }) {
   }, [])
 
   return (
-    <div className="m-4 p-4 bg-black pixel-text w-[60%] rounded-[5px] text-white flex flex-col gap-4">
+    <div className="m-4 p-4 bg-black pixel-text w-[94.5%] lg:w-[60%] rounded-[5px] text-white flex flex-col gap-4">
       <section>
         <h1>CREATE {displayType}</h1>
       </section>

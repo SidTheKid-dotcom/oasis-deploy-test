@@ -9,7 +9,7 @@ export default function FollowersCard({ username, followers, following }) {
   console.log(following);
 
   return (
-    <div className="absolute bg-slate-900 pixel-text text-white rounded-[30px] mx-5 ">
+    <div className=" bg-slate-900 pixel-text text-white rounded-[30px] mx-5 ">
       <div className="py-2">
         <section className="m-2 p-2 flex flex-row justify-around">
           <h1 className="font-bold text-xl">{username}</h1>

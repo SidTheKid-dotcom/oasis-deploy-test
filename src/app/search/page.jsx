@@ -84,7 +84,7 @@ function SearchPage() {
     );
 
     return (
-        <div className="grid grid-cols-12 pixel-text">
+        <div className="flex flex-col-reverse lg:grid grid-cols-12 pixel-text">
             <div className="col-span-8 px-20">
                 {
                     displayPosts && searchData.posts.length > 0 ? (
@@ -132,11 +132,11 @@ function SearchPage() {
                         displayCommunities && <NoResults message="No communities found." />
                     )}
             </div>
-            <div className="col-span-4 h-[250px] bg-black text-white rounded-[30px] p-5 pixel-text mx-5 my-10">
-                <div className="mb-5">
+            <div className="lg:block lg:col-span-4 lg:h-[250px] bg-black text-white rounded-[30px] p-5 pixel-text mx-5 my-10">
+                <div className="hidden lg:block mb-5">
                     <h1 className="text-2xl font-bold">Search: {search}</h1>
                 </div>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-row lg:flex-col gap-3">
                     <label className="flex items-center">
                         <input
                             type="radio"

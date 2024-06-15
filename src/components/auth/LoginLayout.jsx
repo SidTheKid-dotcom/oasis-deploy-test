@@ -3,8 +3,8 @@ import Form from './form';
 
 export default function LoginLayout() {
   return (
-    <div className="min-h-screen flex items-center justify-center pixel-text">
-      <div className="glassmorphism p-8 flex flex-col md:flex-row w-full h-auto md:h-[700px]">
+    <div className="min-h-screen flex items-center justify-center pixel-text my-0">
+      <div className="glassmorphism md:p-8 flex flex-col md:flex-row w-full h-auto md:h-[700px]">
         <div className="flex flex-col justify-center items-center md:items-start  w-full md:w-1/2">
           <figure className="m-4 flex flex-row justify-center w-full mx-[-0.3rem]">
             <img src='/logo.png' width="75px" height="75px" alt="Logo" />
