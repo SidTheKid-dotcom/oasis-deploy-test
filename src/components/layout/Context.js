@@ -1,7 +1,7 @@
 'use'
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
-const BASE_URL = 'http://3.110.161.150:4000'
+const BASE_URL = 'https://oasis-api.xyz';
 export const Context = createContext();
 
 export const AppContextProvider = ({ children }) => {
