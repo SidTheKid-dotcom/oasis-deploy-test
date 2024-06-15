@@ -5,7 +5,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/authContext";
 
-const BASE_URL = 'http://3.110.161.150:4000';
+const BASE_URL = 'https://oasis-api.xyz';
 
 export default function Form() {
   const [mode, setMode] = useState("Sign In");
