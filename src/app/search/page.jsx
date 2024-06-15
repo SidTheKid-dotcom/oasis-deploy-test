@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import axios from "axios";
 import Posts from "@/components/global-feed/Post";
 
-export default function SearchPage() {
+function SearchPage() {
 
     const searchParams = useSearchParams();
     const search = searchParams.get('filter');
