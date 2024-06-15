@@ -22,7 +22,7 @@ export default function UpdateEventPage() {
 
             try {
 
-                const response = await axios.get(`http://3.110.161.150:4000/api/event/fetchEvent?id=${eventId}`, {
+                const response = await axios.get(`https://oasis-api.xyz/api/event/fetchEvent?id=${eventId}`, {
                     headers: {
                         'Authorization': token,
                         'Content-Type': 'application/json'

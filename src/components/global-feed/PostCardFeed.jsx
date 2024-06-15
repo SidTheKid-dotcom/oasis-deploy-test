@@ -65,7 +65,7 @@ export default function PostCardFeed({
 
     const toggleFollowUser = async () => {
         try {
-            await axios.post('http://3.110.161.150:4000/api/user/follow',
+            await axios.post('https://oasis-api.xyz/api/user/follow',
                 { userId: post.user.id },
                 {
                     headers: {
@@ -88,7 +88,7 @@ export default function PostCardFeed({
         try {
             if (!likedState) {
                 await axios.post(
-                    'http://3.110.161.150:4000/api/post/like',
+                    'https://oasis-api.xyz/api/post/like',
                     { postId: post.id },
                     {
                         headers: {
@@ -105,7 +105,7 @@ export default function PostCardFeed({
                 setLikedState(true);
             } else {
                 await axios.delete(
-                    'http://3.110.161.150:4000/api/post/unlike',
+                    'https://oasis-api.xyz/api/post/unlike',
                     {
                         headers: {
                             'Authorization': token,

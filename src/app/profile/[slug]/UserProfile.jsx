@@ -17,7 +17,7 @@ export default function UserProfile({ params }) {
     const fetchUserInfo = async () => {
       if (token) {
         try {
-          const response = await axios.get(`http://3.110.161.150:4000/api/user/profile?userId=${params.slug}`, {
+          const response = await axios.get(`https://oasis-api.xyz/api/user/profile?userId=${params.slug}`, {
             headers: {
               'Authorization': token,
               'Content-Type': 'application/json',

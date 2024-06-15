@@ -23,7 +23,7 @@ export default function ReplyCommentBox({ parent_id, comments, setComments }) {
     const handlePostComment = async () => {
 
         try {
-            const response = await axios.post('http://3.110.161.150:4000/api/post/childComment', {
+            const response = await axios.post('https://oasis-api.xyz/api/post/childComment', {
                 parent_id: parent_id,
                 comment: comment,
                 gifURL: gifURL

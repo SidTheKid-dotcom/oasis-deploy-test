@@ -19,7 +19,7 @@ export default function Posts({ post, muted, setMuted, onClick }) {
 
     const fetchPostState = async () => {
         try {
-            const response = await axios.get(`http://3.110.161.150:4000/post/state?id=${post.id}`, {
+            const response = await axios.get(`https://oasis-api.xyz/post/state?id=${post.id}`, {
                 headers: {
                     Authorization: token,
                     'Content-Type': 'application/json',

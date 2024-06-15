@@ -20,7 +20,7 @@ export default function CommentBox({ postId, setComments }) {
         try {
 
             const response = await axios.post(
-                'http://3.110.161.150:4000/api/post/comment',
+                'https://oasis-api.xyz/api/post/comment',
                 {
                     postId: parseInt(postId),
                     comment: comment,

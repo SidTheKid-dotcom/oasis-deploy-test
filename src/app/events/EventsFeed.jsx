@@ -16,7 +16,7 @@ export default function EventsFeed() {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await axios.get('http://3.110.161.150:4000/api/event/checkoutevents', {
+                const response = await axios.get('https://oasis-api.xyz/api/event/checkoutevents', {
                     headers: {
                         'Authorization': token,
                         'Content-Type': 'application/json'

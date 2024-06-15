@@ -11,7 +11,7 @@ export default function GlobalFeed() {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await axios.get('http://3.110.161.150:4000/feed/global');
+                const response = await axios.get('https://oasis-api.xyz/feed/global');
                 setPosts(response.data);
             } catch (error) {
                 console.warn('Error occurred in fetching posts: ', error);

@@ -56,7 +56,7 @@ export default function MainProfile({ userInfo, setUserInfo, loading, }) {
     const toggleFollowUser = async () => {
         try {
             if (!userInfo.amfollowing) {
-                const response = await axios.post('http://3.110.161.150:4000/api/user/follow',
+                const response = await axios.post('https://oasis-api.xyz/api/user/follow',
                     { userId: userInfo.id },
                     {
                         headers: {
@@ -76,7 +76,7 @@ export default function MainProfile({ userInfo, setUserInfo, loading, }) {
                 })
             }
             else {
-                await axios.delete('http://3.110.161.150:4000/api/user/unfollow',
+                await axios.delete('https://oasis-api.xyz/api/user/unfollow',
                     {
                         headers: {
                             'Authorization': token,

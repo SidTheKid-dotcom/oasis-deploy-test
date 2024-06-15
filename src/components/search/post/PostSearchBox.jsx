@@ -22,7 +22,7 @@ export default function PostSearchBox({ setPosts, originalPosts }) {
                 console.log(search);
 
                 try {
-                    const response = await axios.post(`http://3.110.161.150:4000/search/post`, {
+                    const response = await axios.post(`https://oasis-api.xyz/search/post`, {
                         query: search
                     });
                     setPosts(response.data);

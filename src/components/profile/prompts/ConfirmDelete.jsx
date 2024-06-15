@@ -12,7 +12,7 @@ export default function ConfirmDelete({ confirmDelete, setConfirmDelete }) {
         try {
             const postId = parseInt(confirmDelete.postId);
     
-            const response = await axios.delete('http://3.110.161.150:4000/post/delete', {
+            const response = await axios.delete('https://oasis-api.xyz/post/delete', {
                 headers: {
                     'Authorization': token,
                     'Content-Type': 'application/json'

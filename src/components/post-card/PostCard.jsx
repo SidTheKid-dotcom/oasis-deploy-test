@@ -18,7 +18,7 @@ const PostCard = ({ post, setPost, totalComments }) => {
 
     const toggleFollowUser = async () => {
         try {
-            await axios.post('http://3.110.161.150:4000/api/user/follow',
+            await axios.post('https://oasis-api.xyz/api/user/follow',
                 { userId: post.user.id },
                 {
                     headers: {
@@ -46,7 +46,7 @@ const PostCard = ({ post, setPost, totalComments }) => {
         try {
             if (!post.isLiked) {
                 await axios.post(
-                    'http://3.110.161.150:4000/api/post/like',
+                    'https://oasis-api.xyz/api/post/like',
                     { postId: parseInt(postId) },
                     {
                         headers: {
@@ -66,7 +66,7 @@ const PostCard = ({ post, setPost, totalComments }) => {
                 });
             } else {
                 await axios.delete(
-                    'http://3.110.161.150:4000/api/post/unlike',
+                    'https://oasis-api.xyz/api/post/unlike',
                     {
                         headers: {
                             'Authorization': token,

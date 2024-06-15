@@ -22,7 +22,7 @@ export default function ViewPost() {
     const fetchPost = async () => {
       try {
         const { data } = await axios.get(
-          `http://3.110.161.150:4000/post/v2?id=${postId}`,
+          `https://oasis-api.xyz/post/v2?id=${postId}`,
           {
             headers: {
               Authorization: token,

@@ -17,7 +17,7 @@ const PeopleYouMightKnow = () => {
     const fetchSuggestions = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://3.110.161.150:4000/userRecommendations', {
+        const response = await axios.get('https://oasis-api.xyz/userRecommendations', {
           headers: {
             'Authorization': token,
             'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ const PeopleYouMightKnow = () => {
 
   const handleFollowUser = async (userId) => {
 
-    await axios.post('http://3.110.161.150:4000/api/user/follow',
+    await axios.post('https://oasis-api.xyz/api/user/follow',
       { userId: userId },
       {
         headers: {

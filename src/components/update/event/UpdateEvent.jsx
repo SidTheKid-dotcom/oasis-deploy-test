@@ -50,7 +50,7 @@ export default function UpdateEvent({ displayType, values }) {
 
     try {
       const response = await axios.put(
-        'http://3.110.161.150:4000/api/event/updateevent', formData,
+        'https://oasis-api.xyz/api/event/updateevent', formData,
         {
           headers: {
             'Authorization': token,

@@ -45,7 +45,7 @@ export default function CreatePost({ displayType, placeholders }) {
     //Send post request for creating the post
 
     try {
-      const response = await axios.post('http://3.110.161.150:4000/api/post/create', formData, {
+      const response = await axios.post('https://oasis-api.xyz/api/post/create', formData, {
         headers: {
           'Authorization': token,
           'Content-Type': 'multipart/form-data'
@@ -73,7 +73,7 @@ export default function CreatePost({ displayType, placeholders }) {
         //Extract the user token from the cookie
         const token = localStorage.getItem('token');
 
-        const response = await axios.get('http://3.110.161.150:4000/api/community/all', {
+        const response = await axios.get('https://oasis-api.xyz/api/community/all', {
           headers: {
             'Authorization': token,
             'Content-Type': 'application/json'

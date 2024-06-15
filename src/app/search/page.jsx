@@ -28,7 +28,7 @@ function SearchPage() {
         if (search) {
             const getPosts = async () => {
                 try {
-                    const response = await axios.post(`http://3.110.161.150:4000/search/post`, {
+                    const response = await axios.post(`https://oasis-api.xyz/search/post`, {
                         query: search
                     });
                     setSearchData(prevSearchData => ({ ...prevSearchData, posts: response.data }));
@@ -39,7 +39,7 @@ function SearchPage() {
 
             const getUsers = async () => {
                 try {
-                    const response = await axios.post(`http://3.110.161.150:4000/search/user`, {
+                    const response = await axios.post(`https://oasis-api.xyz/search/user`, {
                         query: search
                     });
                     setSearchData(prevSearchData => ({ ...prevSearchData, users: response.data }));
@@ -50,7 +50,7 @@ function SearchPage() {
 
             const getCommunities = async () => {
                 try {
-                    const response = await axios.post(`http://3.110.161.150:4000/search/community`, {
+                    const response = await axios.post(`https://oasis-api.xyz/search/community`, {
                         query: search
                     });
                     setSearchData(prevSearchData => ({ ...prevSearchData, communities: response.data }));
