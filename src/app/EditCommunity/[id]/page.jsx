@@ -7,7 +7,7 @@ import EditBannerPic from "@/components/community/EditBannerPic";
 import EditProfilePic from "@/components/community/EditProfilePic";
 import axios from "axios";
 import { useAuth } from "@/context/authContext";
-export default function page({ params }) {
+export default function EditCommunity({ params }) {
   const [BannerImage, setBannerImage] = useState(null);
 
   const [ProfileImage, setProfileImage] = useState(null);

@@ -7,7 +7,7 @@ import { BiSolidSend } from "react-icons/bi";
 import { Toaster, toast } from "sonner";
 import axios from "axios";
 import { useAuth } from "@/context/authContext";
-export default function page() {
+export default function CreateCommunity() {
   const [BannerImage, setBannerImage] = useState(null);
 
   const [ProfileImage, setProfileImage] = useState(null);
