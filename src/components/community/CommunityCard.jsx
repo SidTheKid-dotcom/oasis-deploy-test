@@ -71,30 +71,32 @@ export default function ComunityCard({
                 {/* <div className="flex w-full sm:justify-between"> */}
                 <div className=" ">
                   <div className="  md:grid grid-cols-12  gap-2 ">
-                    <div className=" my-auto overflow-hidden flex  col-span-5">
-                      <div>
-                        <Link href={`/community/${id}`}>
-                          {icon === "" ? (
-                            <img
-                              src="/profile2.png"
-                              alt=""
-                              className="  h-24  w-24 rounded-full "
-                            />
-                          ) : (
-                            <img
-                              src={icon}
-                              alt=""
-                              className="  h-24  w-24 rounded-full "
-                            />
-                          )}
-                        </Link>
-                      </div>
-                      <div className=" my-auto">
-                        <Link href={`/community/${id}`}>
-                          <p className=" pixel-text text-[#00B2FF] text-xs md:text-[1rem] font-bold text-md   my-auto  ml-5 sm:ml-3  ">
-                            {name}
-                          </p>
-                        </Link>
+                    <div className=" my-auto overflow-hidden   col-span-5">
+                      <div className=" grid grid-cols-12">
+                        <div className=" col-span-4">
+                          <Link href={`/community/${id}`}>
+                            {icon === "" ? (
+                              <img
+                                src="/profile2.png"
+                                alt=""
+                                className="  h-24  w-24 rounded-full "
+                              />
+                            ) : (
+                              <img
+                                src={icon}
+                                alt=""
+                                className="  h-24  w-24 rounded-full "
+                              />
+                            )}
+                          </Link>
+                        </div>
+                        <div className=" my-auto col-span-8">
+                          <Link href={`/community/${id}`}>
+                            <p className=" pixel-text text-[#00B2FF] text-xs md:text-[1rem] font-bold text-md   my-auto  ml-5 sm:ml-3  ">
+                              {name}
+                            </p>
+                          </Link>
+                        </div>
                       </div>
                     </div>
 
@@ -111,8 +113,8 @@ export default function ComunityCard({
                     </div>
 
                     <p
-                      className={`hidden md:block text-white rounded-md my-auto border-[#767676] border-[1.5px]  p-1 sm:font-semibold px-4  text-[10px]  sm:mr-4 ml-1  text-center col-span-2 cursor-pointer pixel-text ${
-                        isfollowing ? " px-0" : "bg-[#00B2FF]"
+                      className={`hidden md:block text-white rounded-md my-auto border-[#767676] border-[1.5px]  p-1 sm:font-semibold px-2  text-[10px]  sm:mr-4 ml-1  text-center col-span-2 cursor-pointer pixel-text ${
+                        isfollowing ? " px-0 " : "bg-[#00B2FF]"
                       }`}
                       onClick={handleFollowToggle}
                     >
