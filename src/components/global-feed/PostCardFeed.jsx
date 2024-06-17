@@ -131,10 +131,10 @@ export default function PostCardFeed({
     return (
         <div className="lazy-post-card w-full pixel-text">
             <Toaster />
-            <div className="py-[1rem] px-[2rem] text-white flex flex-col min-h-[100px] border-y border-blue-500">
+            <div className="px-[0.2rem] md:py-[1rem] md:px-[2rem] text-white flex flex-col min-h-[100px] border-y border-blue-500">
                 <section>
                     <div className="mt-[1rem] grid grid-cols-12 items-center">
-                        <div className="col-span-2 rounded-full overflow-hidden w-[50px] h-[50px] border border-solid border-white">
+                        <div className="col-span-2 rounded-full overflow-hidden w-[40px] h-[40px] md:w-[50px] md:h-[50px] border border-solid border-white">
                             <figure className="w-full h-full">
                                 <img
                                     src={loadMedia ? post.user.profile_picture || '/github.svg' : '/github.svg'}
@@ -153,9 +153,9 @@ export default function PostCardFeed({
                                 </div>
                             </Link>
                         </div>
-                        <div className="col-span-3 flex flex-col items-center text-[1rem]">
+                        <div className="col-span-3 flex flex-col items-center text-[0.8rem] md:text-[1rem]">
                             {!followingState && post.user.id !== navBarData.id && (
-                                <button onClick={toggleFollowUser} className="m-2 p-2 px-3 min-w-[75px] bg-blue-500 rounded-[5px]">
+                                <button onClick={toggleFollowUser} className=" p-2 px-3 w-[80px] md:w-[100px] bg-blue-500 rounded-[5px]">
                                     Follow
                                 </button>
                             )}

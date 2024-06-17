@@ -37,7 +37,7 @@ export default function UserProfile({ params }) {
 
   return (
     <div className="grid grid-cols-12 mt-[2rem]">
-      <div className="col-span-12 lg:col-span-8">
+      <div className="px-[0.5rem] col-span-12 lg:col-span-8">
         {loading ? (
           <MainProfileSkeleton />
         ) : (

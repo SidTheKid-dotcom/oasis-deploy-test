@@ -130,16 +130,16 @@ export default function MainProfile({ userInfo, setUserInfo, loading, }) {
                 <div className="grid grid-cols-12 h-full">
                     <div className="col-span-2 flex flex-col justify-center items-center">
                         <div className="col-span-2 flex flex-col justify-center items-center">
-                            <figure className="relative border border-white w-[80px] h-[80px] flex place-content-center rounded-full overflow-hidden">
+                            <figure className="relative border border-white md:w-[6rem] md:h-[6rem] flex place-content-center rounded-full overflow-hidden">
                                 <img className="w-full object-cover" src={userInfo.profile_picture || '/github.svg'}></img>
                             </figure>
                         </div>
                     </div>
                     <div className="col-span-7 mt-[-10px] p-5 flex flex-col justify-center">
-                        <div className="font-bold text-3xl">
+                        <div className="font-bold text-[1rem]">
                             {userInfo.username || <Skeleton />}
                         </div>
-                        <div className="text-xl">
+                        <div className="text-[1rem]">
                             u/{userInfo.username || <Skeleton />}
                         </div>
                     </div>
@@ -170,7 +170,7 @@ export default function MainProfile({ userInfo, setUserInfo, loading, }) {
             <section>
                 <div className="mx-[1.5rem]">{userInfo.bio}</div>
             </section>
-            <section className="grid grid-cols-3 gap-5 items-center mx-[1.5rem] my-[0.5rem]">
+            <section className="grid grid-cols-3 gap-5 items-center md:mx-[1.5rem] md:my-[0.5rem]">
                 <div className="col-span-1 flex flex-row gap-2 font-extralight">
                     <img src='/calendar-days-solid.svg' width="15px"></img>
                     Date joined: Missing</div>

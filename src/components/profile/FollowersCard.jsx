@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react";
-
+import { useRouter } from "next/navigation";
 export default function FollowersCard({ username, followers, following }) {
 
   const [activeTab, setActiveTab] = useState(0);
@@ -65,8 +65,13 @@ export default function FollowersCard({ username, followers, following }) {
 
 
 const Follower = ({ account }) => {
+  const router = useRouter();
+  const navigateUserProfile = (userId) => {
+    // Handle the logic for navigating to the user profile page
+    router.push('/profile/' + userId);
+  };
   return (
-    <button className="p-2 flex flex-row gap-4">
+    <button onClick={() => navigateUserProfile(account.id)} className="p-2 flex flex-row gap-4">
       <div className="ml-2 border border-white h-[40px] w-[40px] rounded-full"><img src={account.profile_picture}></img></div>
       <div className="flex flex-col justify-center text-lg" style={{ marginTop: '4px' }}>{account.username}</div>
     </button>
@@ -74,8 +79,13 @@ const Follower = ({ account }) => {
 }
 
 const Following = ({ account }) => {
+  const router = useRouter();
+  const navigateUserProfile = (userId) => {
+    // Handle the logic for navigating to the user profile page
+    router.push('/profile/' + userId);
+  };
   return (
-    <button className="p-2 flex flex-row gap-4">
+    <button onClick={() => navigateUserProfile(account.id)} className="p-2 flex flex-row gap-4">
       <div className="ml-2 border border-white h-[40px] w-[40px] rounded-full"><img src='/image.png'></img></div>
       <div className="flex flex-col justify-center text-lg" style={{ marginTop: '4px' }}>{account.username}</div>
     </button>

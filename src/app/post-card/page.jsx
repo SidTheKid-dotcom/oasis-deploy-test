@@ -4,7 +4,7 @@ import ViewPost from "./ViewPost";
 export default function ViewPostPage() {
     return (
         <Suspense fallback={<div>Loading...</div>}>
-            <div class="px-[8rem]">
+            <div class="px-[1rem] md:px-[3rem] lg:px-[8rem]">
                 <ViewPost />
             </div>
         </Suspense>
