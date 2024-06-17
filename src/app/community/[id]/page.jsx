@@ -45,7 +45,7 @@ export default function Page({ params }) {
               Authorization: token,
             },
             data: {
-              community_id: id,
+              community_id: params.id,
             },
           }
         );
