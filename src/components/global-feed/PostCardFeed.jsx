@@ -3,7 +3,6 @@ import ReactPlayer from 'react-player';
 import Link from 'next/link';
 import axios from "axios";
 import { useAuth } from "@/context/authContext";
-import { Context } from "../layout/Context";
 import { Toaster, toast } from 'sonner';
 
 export default function PostCardFeed({
@@ -21,8 +20,7 @@ export default function PostCardFeed({
     setMuted,
     playerRef,
 }) {
-    const { token } = useAuth();
-    const { navBarData } = useContext(Context);
+    const { token, navBarData } = useAuth();
 
     const toggleMute = () => setMuted(prevMuted => !prevMuted);
 

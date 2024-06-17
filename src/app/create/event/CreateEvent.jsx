@@ -58,9 +58,7 @@ export default function CreateEvent({ displayType, placeholders }) {
           'Content-Type': 'multipart/form-data'
         }
       })
-
-      console.log(response.data);
-
+      
       // navigate back to events page is response.statsus is 201
     }
     catch (error) {

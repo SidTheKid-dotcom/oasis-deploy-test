@@ -4,17 +4,15 @@ import axios from "axios";
 
 import { useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/authContext";
-import { Context } from "../layout/Context";
 
 import { Toaster } from "sonner";
 import { toast } from "sonner";
 
 const PostCard = ({ post, setPost, totalComments }) => {
 
-    const { token } = useAuth();
+    const { token, navBarData } = useAuth();
     const searchParams = useSearchParams();
     const postId = searchParams.get('postId');
-    const { navBarData } = useContext(Context);
 
     const toggleFollowUser = async () => {
         try {

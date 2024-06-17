@@ -77,7 +77,6 @@ export default function CommentBox({ postId, setComments }) {
     };
 
     const handleGifClick = (gif) => {
-        console.log(gif.url);
         setGifURL(gif.url);
         setComment('');
     };

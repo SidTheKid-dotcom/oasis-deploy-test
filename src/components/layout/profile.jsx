@@ -1,13 +1,11 @@
 import React, { useState, useContext } from "react";
 import { useRouter } from "next/navigation";
-import { Context } from "./Context";
 import { useAuth } from "@/context/authContext";
 
 const Profile = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
-  const { navBarData } = useContext(Context);
-  console.log(navBarData);
+  const { navBarData } = useAuth();
   const profilepic = navBarData.profile_picture;
   const { logout } = useAuth();
 

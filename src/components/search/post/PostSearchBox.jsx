@@ -19,8 +19,6 @@ export default function PostSearchBox({ setPosts, originalPosts }) {
             if (search.trim() !== '') {
                 setIsRequesting(true);
 
-                console.log(search);
-
                 try {
                     const response = await axios.post(`https://oasis-api.xyz/search/post`, {
                         query: search

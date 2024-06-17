@@ -59,8 +59,6 @@ export default function UpdateEvent({ displayType, values }) {
         }
       );
 
-      console.log(response.data);
-
       // Navigate back to events page if response.status is 201
     } catch (error) {
       console.log("Error occurred in updating event: ", error);

@@ -27,7 +27,6 @@ export default function EditCommunity({ params }) {
         }
       );
       const responseData = response.data;
-      console.log(responseData);
       setData(responseData);
       setBannerImage(data.banner);
       setDescription(data.description);
@@ -57,7 +56,6 @@ export default function EditCommunity({ params }) {
           },
         }
       );
-      console.log("Data posted successfully:", response.data);
       toast("Community Edited Successfully", {
         position: "top-right",
         className:
@@ -71,14 +69,6 @@ export default function EditCommunity({ params }) {
           "bg-black text-white pixel-text border border-solid border-red-400",
       });
     }
-
-    console.log({
-      name,
-      description,
-      Visibilty,
-      bannerImage: BannerImage,
-      profileImage: ProfileImage,
-    });
   };
 
   useEffect(() => {

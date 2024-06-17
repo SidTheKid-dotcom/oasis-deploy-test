@@ -21,7 +21,6 @@ export default function Communities() {
         }
       );
       const responseData = await response.data;
-      console.log("data fetched: ", responseData);
       setData(responseData);
     } catch (error) {
       console.log("Error", error);
