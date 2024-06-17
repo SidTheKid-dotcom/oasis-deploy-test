@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext } from "react";
 import { useRouter } from "next/navigation";
 import { Context } from "./Context";
 import { useAuth } from "@/context/authContext";
@@ -22,11 +22,7 @@ const Profile = () => {
           className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-slate-100 ring-slate-100 transition hover:shadow-md hover:ring-2 overflow-hidden"
           onClick={() => setIsOpen(!isOpen)}
         >
-          <img
-            className="w-full object-cover"
-            src={profilepic}
-            alt="Profile"
-          />
+          <img className="w-full object-cover" src={profilepic} alt="Profile" />
         </button>
 
         {isOpen && (
@@ -43,7 +39,9 @@ const Profile = () => {
                 <div className="flex gap-1 text-sm font-semibold pixel-text">
                   <span>{navBarData.username}</span>
                 </div>
-                <div className="text-xs text-slate-400 pixel-text">{navBarData.email}</div>
+                <div className="text-xs text-slate-400 pixel-text">
+                  {navBarData.email}
+                </div>
               </div>
             </div>
             <div className="border-t border-slate-500/30"></div>
@@ -65,7 +63,8 @@ const Profile = () => {
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"npm
+                  viewBox="0 0 24 24"
+                  npm
                   fill="currentColor"
                   className="h-5 w-5"
                 >
@@ -96,7 +95,10 @@ const Profile = () => {
                 <span>Help Center</span>
               </a>
             </div>
-            <button className="flex justify-center gap-3 rounded-md bg-red-600 py-2 px-3 font-semibold hover:bg-red-500 focus:ring-2 focus:ring-red-400" onClick={logout}>
+            <button
+              className="flex justify-center gap-3 rounded-md bg-red-600 py-2 px-3 font-semibold hover:bg-red-500 focus:ring-2 focus:ring-red-400"
+              onClick={logout}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
