@@ -26,7 +26,6 @@ export default function Page({ params }) {
           }
         );
 
-        console.log(response);
         setIsFollowing(true);
         toast("Subscription added", {
           position: "top-right",
@@ -49,7 +48,6 @@ export default function Page({ params }) {
             },
           }
         );
-        console.log(response);
         setIsFollowing(false);
         setCommunity((prevCommunity) => ({
           ...prevCommunity,
@@ -72,7 +70,6 @@ export default function Page({ params }) {
         }
       );
       const responseData = response.data;
-      console.log(responseData);
       setCommunity(responseData);
       setIsFollowing(responseData.isSubscribed);
     } catch (error) {
@@ -130,7 +127,8 @@ export default function Page({ params }) {
             <div className="flex justify-between mt-3 text-sm">
               <div className="flex">
                 <div>
-                  <Link href="/create/post">
+
+                <Link href={{ pathname: '/create/post', query: { communityId: community.id, communityName:  community.name } }}>
                     {(community.amcreator || isFollowing) && (
                       <button className="border-[1.5px] rounded-md p-1 mr-1 md:p-2 my-auto text-white  text-[0.5rem] border-[#767676] md:text-md pixel-text">
                         Create Post +
@@ -140,9 +138,8 @@ export default function Page({ params }) {
                 </div>
 
                 <p
-                  className={`text-white rounded-md my-auto md:p-2 border-[#767676] border-[1.5px] p-1 sm:font-semibold px-2 md:px-4 text-[0.5rem] md:text-bse text-center cursor-pointer pixel-text ${
-                    isFollowing ? "" : "bg-[#00b2ff]"
-                  }`}
+                  className={`text-white rounded-md my-auto md:p-2 border-[#767676] border-[1.5px] p-1 sm:font-semibold px-2 md:px-4 text-[0.5rem] md:text-bse text-center cursor-pointer pixel-text ${isFollowing ? "" : "bg-[#00b2ff]"
+                    }`}
                   onClick={handleFollowToggle}
                 >
                   {isFollowing ? "Subscribed" : "Subscribe"}

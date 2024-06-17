@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useSearchParams } from 'next/navigation'
 import { useAuth } from "@/context/authContext";
 
 import TextFields from "../../../components/create/TextFields";
@@ -11,6 +12,8 @@ import Buttons from "../../../components/create/Buttons";
 export default function CreatePost({ displayType, placeholders }) {
 
   const { token } = useAuth();
+
+  const searchParams = useSearchParams()
 
   // State management of text input fields
   const [title, setTitle] = useState('');
@@ -22,10 +25,10 @@ export default function CreatePost({ displayType, placeholders }) {
 
   // State management of the communities of the user
   const [communities, setCommunities] = useState([]);
-  const [selectedCommunity, setSelectedCommunity] = useState({});
-
-  const [displayMessage, setDisplayMessage] = useState(false);
-
+  const [selectedCommunity, setSelectedCommunity] = useState({
+    community_id: searchParams.get('communityId'),
+    community_name: searchParams.get('communityName')
+  });
 
   // Final submit action of the user
 
@@ -45,17 +48,13 @@ export default function CreatePost({ displayType, placeholders }) {
     //Send post request for creating the post
 
     try {
-      const response = await axios.post('https://oasis-api.xyz/api/post/create', formData, {
+      await axios.post('https://oasis-api.xyz/api/post/create', formData, {
         headers: {
           'Authorization': token,
           'Content-Type': 'multipart/form-data'
         }
       })
 
-      if (response.status === 201)
-      {
-        setDisplayMessage(true);
-      };
       //navigate back to home page { useNavigate hook from react-router-dom } 
     }
     catch (error) {
@@ -79,7 +78,6 @@ export default function CreatePost({ displayType, placeholders }) {
             'Content-Type': 'application/json'
           }
         });
-
         setCommunities(response.data);
       }
       catch (error) {
@@ -97,11 +95,11 @@ export default function CreatePost({ displayType, placeholders }) {
       </section>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
 
-        <TextFields setTitle={setTitle} body={body} setBody={setBody} words={words} setWords={setWords} placeholders={placeholders}/>
+        <TextFields setTitle={setTitle} body={body} setBody={setBody} words={words} setWords={setWords} placeholders={placeholders} />
 
         <UploadImage uploadedFile={uploadedFile} setUploadedFile={setUploadedFile} />
 
-        <Buttons communities={communities} setSelectedCommunity={setSelectedCommunity} />
+        <Buttons communities={communities} selectedCommunity={selectedCommunity} setSelectedCommunity={setSelectedCommunity} />
       </form>
     </div>
   );

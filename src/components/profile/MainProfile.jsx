@@ -20,12 +20,10 @@ import { Toaster } from "sonner"
 import { toast } from "sonner"
 
 const { useAuth } = require("@/context/authContext");
-import { Context } from "../layout/Context";
 
 export default function MainProfile({ userInfo, setUserInfo, loading, }) {
 
-    const { token } = useAuth();
-    const { navBarData } = useContext(Context);
+    const { token, navBarData } = useAuth();
     const [activeIndex, setActiveIndex] = useState(0);
     const [socialButton, setSocialButton] = useState(false);
     const [showLinks, setShowLinks] = useState(false);

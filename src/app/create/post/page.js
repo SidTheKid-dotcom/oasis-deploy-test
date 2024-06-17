@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import CreatePost from "./CreatePost"
 
 export default function CreatePostPage() {
@@ -6,5 +7,9 @@ export default function CreatePostPage() {
         body: "Write a caption..."
     }
 
-    return <CreatePost displayType={"POST"} placeholders={placeholders} />
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <CreatePost displayType={"POST"} placeholders={placeholders} />
+        </Suspense>
+    )
 }

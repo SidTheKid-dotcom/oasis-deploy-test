@@ -31,8 +31,6 @@ export default function UpdateEventPage() {
 
                 setValues(response.data);
                 setLoading(false);
-
-                console.log(response.data);
             }
             catch (error) {
                 console.log('Error occured in updating event: ', error);

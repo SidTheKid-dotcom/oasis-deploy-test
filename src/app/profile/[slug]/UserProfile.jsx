@@ -5,8 +5,6 @@ import axios from "axios";
 import { useAuth } from "@/context/authContext";
 import FollowersCard from "../../../components/profile/FollowersCard";
 import MainProfile from "../../../components/profile/MainProfile";
-import FollowersCardSkeleton from "../../../components/profile/skeletons/FollowersCardSkeleton";
-import MainProfileSkeleton from "../../../components/profile/skeletons/MainProfileSkeleton";
 
 export default function UserProfile({ params }) {
   const { token } = useAuth();
@@ -39,14 +37,14 @@ export default function UserProfile({ params }) {
     <div className="grid grid-cols-12 mt-[2rem]">
       <div className="px-[0.5rem] col-span-12 lg:col-span-8">
         {loading ? (
-          <MainProfileSkeleton />
+          null
         ) : (
           <MainProfile userInfo={userInfo} setUserInfo={setUserInfo} loading={loading} />
         )}
       </div>
       <div className="hidden lg:block lg:col-span-4">
         {loading ? (
-          <FollowersCardSkeleton />
+          null
         ) : (
           <FollowersCard username={userInfo.username} followers={userInfo.followers} following={userInfo.following} loading={loading} />
         )}

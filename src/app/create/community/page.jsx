@@ -35,7 +35,6 @@ export default function CreateCommunity() {
           },
         }
       );
-      console.log("Data posted successfully:", response.data);
       toast("Community Created Successfully", {
         position: "top-right",
         className:
@@ -50,14 +49,6 @@ export default function CreateCommunity() {
           "bg-black text-white pixel-text border border-solid border-red-400",
       });
     }
-
-    console.log({
-      name,
-      description,
-      Visibilty,
-      bannerImage: BannerImage,
-      profileImage: ProfileImage,
-    });
   };
 
   return (

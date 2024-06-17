@@ -6,8 +6,6 @@ export default function FollowersCard({ username, followers, following }) {
 
   const [activeTab, setActiveTab] = useState(0);
 
-  console.log(following);
-
   return (
     <div className=" bg-slate-900 pixel-text text-white rounded-[30px] mx-5 ">
       <div className="py-2">

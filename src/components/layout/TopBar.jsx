@@ -4,8 +4,6 @@ import React, { useState } from "react";
 import UserSearchBox from "../search/user/UserSearchBox";
 import { MdOutlineSearch } from "react-icons/md";
 import Profile from "./profile";
-import { useContext } from "react"
-import { Context } from "./Context";
 
 export default function TopBar() {
     const [renderSearchBox, setRenderSearchBox] = useState(false);

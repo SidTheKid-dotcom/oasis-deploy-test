@@ -5,7 +5,6 @@ import "./globals.css";
 import Sidebar from "@/components/layout/Sidebar";
 import TopBar from "@/components/layout/TopBar";
 import MobileNav from "@/components/layout/MobileNav";
-import { AppContextProvider } from "@/components/layout/Context";
 import { AuthProvider, useAuth } from "@/context/authContext";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -13,13 +12,11 @@ const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <AppContextProvider>
-        <AuthProvider>
-          <body className={inter.className}>
-            <LayoutContent>{children}</LayoutContent>
-          </body>
-        </AuthProvider>
-      </AppContextProvider>
+      <AuthProvider>
+        <body className={inter.className}>
+          <LayoutContent>{children}</LayoutContent>
+        </body>
+      </AuthProvider>
     </html>
   );
 }

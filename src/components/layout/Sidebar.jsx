@@ -7,11 +7,11 @@ import { BsFire } from "react-icons/bs";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Context } from "./Context";
 import PopularAccounts from "../global-feed/PopularAccounts";
 import { MdModeEdit } from "react-icons/md";
+import { useAuth } from "@/context/authContext";
 export default function Sidebar() {
-  const { navBarData } = useContext(Context);
+  const { navBarData } = useAuth();
   const pathname = usePathname();
   const router = useRouter();
   return (
