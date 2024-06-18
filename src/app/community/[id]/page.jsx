@@ -127,8 +127,15 @@ export default function Page({ params }) {
             <div className="flex justify-between mt-3 text-sm">
               <div className="flex">
                 <div>
-
-                <Link href={{ pathname: '/create/post', query: { communityId: community.id, communityName:  community.name } }}>
+                  <Link
+                    href={{
+                      pathname: "/create/post",
+                      query: {
+                        communityId: community.id,
+                        communityName: community.name,
+                      },
+                    }}
+                  >
                     {(community.amcreator || isFollowing) && (
                       <button className="border-[1.5px] rounded-md p-1 mr-1 md:p-2 my-auto text-white  text-[0.5rem] border-[#767676] md:text-md pixel-text">
                         Create Post +
@@ -138,11 +145,12 @@ export default function Page({ params }) {
                 </div>
 
                 <p
-                  className={`text-white rounded-md my-auto md:p-2 border-[#767676] border-[1.5px] p-1 sm:font-semibold px-2 md:px-4 text-[0.5rem] md:text-bse text-center cursor-pointer pixel-text ${isFollowing ? "" : "bg-[#00b2ff]"
-                    }`}
+                  className={`text-white rounded-md my-auto md:p-2 border-[#767676] border-[1.5px] p-1 sm:font-semibold px-2 md:px-4 text-[0.5rem] md:text-bse text-center cursor-pointer pixel-text ${
+                    isFollowing ? "" : "bg-[#00b2ff]"
+                  }`}
                   onClick={handleFollowToggle}
                 >
-                  {isFollowing ? "Subscribed" : "Subscribe"}
+                  {isFollowing ? "Unsubscribe" : "Subscribe"}
                 </p>
 
                 {community.amcreator && (

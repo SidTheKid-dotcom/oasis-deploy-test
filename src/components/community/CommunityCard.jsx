@@ -114,11 +114,11 @@ export default function ComunityCard({
 
                     <p
                       className={`hidden md:block text-white rounded-md my-auto border-[#767676] border-[1.5px]  p-1 sm:font-semibold px-2  text-[10px]  sm:mr-4 ml-1  text-center col-span-2 cursor-pointer pixel-text ${
-                        isfollowing ? " px-0 " : "bg-[#00B2FF]"
+                        isfollowing ? " px-1 mx text-[9px]" : "bg-[#00B2FF]"
                       }`}
                       onClick={handleFollowToggle}
                     >
-                      {isfollowing ? "Subscribed" : "Subscribe"}
+                      {isfollowing ? "Unsubscribe" : "Subscribe"}
                     </p>
                   </div>
                 </div>
@@ -142,7 +142,7 @@ export default function ComunityCard({
                   }`}
                   onClick={handleFollowToggle}
                 >
-                  {isfollowing ? "Subcribed" : "Subscribe"}
+                  {isfollowing ? "Unsubscribe" : "Subscribe"}
                 </p>
               </div>
             </div>
