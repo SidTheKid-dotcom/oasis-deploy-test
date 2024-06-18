@@ -4,6 +4,7 @@ import Link from 'next/link';
 import axios from "axios";
 import { useAuth } from "@/context/authContext";
 import { Toaster, toast } from 'sonner';
+import debounce from 'lodash/debounce';
 
 export default function PostCardFeed({
     loadMedia,
@@ -21,6 +22,7 @@ export default function PostCardFeed({
     playerRef,
 }) {
     const { token, navBarData } = useAuth();
+    const [toastRendered, setToastRendered] = useState(false);
 
     const toggleMute = () => setMuted(prevMuted => !prevMuted);
 
@@ -35,7 +37,7 @@ export default function PostCardFeed({
                             {muted ? 'Unmute' : 'Mute'}
                         </button>
                     </div>
-                    <div className="relative flex justify-center items-center bg-black h-0 pb-[56.25%]">
+                    <div className="relative flex justify-center items-center bg-[#22272b] rounded-lg h-[400px] lg:h-[300px] pb-[56.25%]">
                         <ReactPlayer
                             id="post-video-player"
                             className="absolute top-0 left-0 w-full h-full"
@@ -53,7 +55,7 @@ export default function PostCardFeed({
         }
 
         return (
-            <div className="relative flex justify-center items-center bg-black h-0 pb-[56.25%]">
+            <div className="relative flex justify-center items-center bg-[#22272b] rounded-lg h-[400px] lg:h-[300px] pb-[56.25%]">
                 <figure className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
                     <img src={post.media} className="object-contain max-w-full max-h-full" alt="Post Media" />
                 </figure>
@@ -61,7 +63,18 @@ export default function PostCardFeed({
         );
     };
 
-    const toggleFollowUser = async () => {
+    const handleToast = (message, className) => {
+        if (!toastRendered) {
+            setToastRendered(true);
+            toast(message, {
+                position: 'top-right',
+                className: className,
+            });
+            setTimeout(() => setToastRendered(false), 1000);
+        }
+    };
+
+    const toggleFollowUser = debounce(async () => {
         try {
             await axios.post('https://oasis-api.xyz/api/user/follow',
                 { userId: post.user.id },
@@ -73,16 +86,13 @@ export default function PostCardFeed({
                 }
             );
             setFollowingState(prevState => !prevState);
-            toast('User Followed Successfully', {
-                position: 'top-right',
-                className: 'bg-black text-white pixel-text border border-solid border-green-400',
-            });
+            handleToast('User Followed Successfully', 'bg-black text-white pixel-text border border-solid border-green-400');
         } catch (error) {
             console.error('Error occurred while following user ', error);
         }
-    };
+    }, 300);
 
-    const togglePostLike = async () => {
+    const togglePostLike = debounce(async () => {
         try {
             if (!likedState) {
                 await axios.post(
@@ -95,10 +105,7 @@ export default function PostCardFeed({
                         },
                     }
                 );
-                toast('Post Liked Successfully', {
-                    position: 'top-right',
-                    className: 'bg-black text-white pixel-text border border-solid border-green-400',
-                });
+                handleToast('Post Liked Successfully', 'bg-black text-white pixel-text border border-solid border-green-400');
                 setLikes(prevLikes => prevLikes + 1);
                 setLikedState(true);
             } else {
@@ -114,24 +121,21 @@ export default function PostCardFeed({
                         },
                     }
                 );
-                toast('Post Unliked Successfully', {
-                    position: 'top-right',
-                    className: 'bg-black text-white pixel-text border border-solid border-red-500',
-                });
+                handleToast('Post Unliked Successfully', 'bg-black text-white pixel-text border border-solid border-red-500');
                 setLikes(prevLikes => prevLikes - 1);
                 setLikedState(false);
             }
         } catch (error) {
             console.log('Error occurred while toggling post like: ', error);
         }
-    };
+    }, 300);
 
     return (
         <div className="lazy-post-card w-full pixel-text">
             <Toaster />
-            <div className="px-[0.2rem] md:py-[1rem] md:px-[2rem] text-white flex flex-col min-h-[100px] border-y border-blue-500">
+            <div className="py-[1rem] px-[2rem] my-[0.5rem] rounded-lg bg-black text-white flex flex-col min-h-[100px] border border-solid border-slate-600">
                 <section>
-                    <div className="mt-[1rem] grid grid-cols-12 items-center">
+                    <div className="my-[0.5rem] grid grid-cols-12 items-center">
                         <div className="col-span-2 rounded-full overflow-hidden w-[40px] h-[40px] md:w-[50px] md:h-[50px] border border-solid border-white">
                             <figure className="w-full h-full">
                                 <img

@@ -72,7 +72,7 @@ export default function Posts({ post, muted, setMuted, onClick }) {
     }, [isActive]);
 
     return (
-        <div ref={postRef} className="w-full bg-black" onClick={onClick}>
+        <div ref={postRef} className="w-full" onClick={onClick}>
             <PostCardFeed
                 loadMedia={loadMedia}
                 likedState={likedState}

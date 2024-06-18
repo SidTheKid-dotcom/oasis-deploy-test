@@ -132,7 +132,7 @@ const PostCard = ({ post, setPost, totalComments }) => {
                             <div className="rounded-[10px] w-full min-h-[50px] overflow-hidden">
                                 {
                                     post.media_type === 'video' ? (
-                                        <div className="relative flex justify-center items-center bg-black h-0 pb-[56.25%]">
+                                        <div className="relative flex justify-center items-center bg-[#22272b] rounded-lg h-[400px] lg:h-[300px] pb-[56.25%]">
                                             <ReactPlayer
                                                 id="post-video-player"
                                                 className="absolute top-0 left-0 w-full h-full"
@@ -146,7 +146,7 @@ const PostCard = ({ post, setPost, totalComments }) => {
                                         </div>
                                     )
                                         : (
-                                            <div className="relative flex justify-center items-center bg-black h-0 pb-[56.25%]">
+                                            <div className="relative flex justify-center items-center bg-[#22272b] rounded-lg h-[400px] lg:h-[300px] pb-[56.25%]">
                                                 <figure className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
                                                     <img src={post.media} className="object-contain max-w-full max-h-full" alt="Post Media" />
                                                 </figure>
