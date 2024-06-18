@@ -1,7 +1,7 @@
-'use client'
-import React, { useEffect } from 'react'
-import { useRouter } from 'next/navigation';
-import LoginLayout from '../../components/auth/LoginLayout';
+"use client";
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import LoginLayout from "../../components/auth/LoginLayout";
 import { useAuth } from "@/context/authContext";
 
 function Auth() {
@@ -10,15 +10,11 @@ function Auth() {
 
   useEffect(() => {
     if (token) {
-      router.push('/');
+      router.push("/");
     }
   }, [token, router]);
 
-  return (
-    <div className='h-[100%] w-3/4'>
-      {token ? null : <LoginLayout />}
-    </div>
-  )
+  return <div className="h-[100%] w-3/4">{token ? null : <LoginLayout />}</div>;
 }
 
 export default Auth;
