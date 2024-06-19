@@ -7,7 +7,7 @@ export default function CommunityPosts({ posts }) {
 
   return (
     <>
-      <div className="w-full flex flex-col items-center overflow-hidden  mb-[70%] md:mb-0">
+      <div className="w-full flex flex-col items-center overflow-hidden">
         {posts.map((post) => (
           <Posts key={post.id} post={post} muted={muted} setMuted={setMuted} />
         ))}

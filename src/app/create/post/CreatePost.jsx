@@ -19,8 +19,8 @@ export default function CreatePost({ displayType, placeholders }) {
   const searchParams = useSearchParams();
 
   // State management of text input fields
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
   const [words, setWords] = useState(0);
   const [loading, setLoading] = useState(false);
 
@@ -30,8 +30,8 @@ export default function CreatePost({ displayType, placeholders }) {
   // State management of the communities of the user
   const [communities, setCommunities] = useState([]);
   const [selectedCommunity, setSelectedCommunity] = useState({
-    community_id: searchParams.get('communityId'),
-    community_name: searchParams.get('communityName')
+    community_id: searchParams.get("communityId"),
+    community_name: searchParams.get("communityName"),
   });
 
   // Final submit action of the user
@@ -82,7 +82,8 @@ export default function CreatePost({ displayType, placeholders }) {
             'Authorization': token,
             'Content-Type': 'application/json'
           }
-        });
+        }
+        );
         setCommunities(response.data);
       } catch (error) {
         console.log("error occured while fetching user communities: ", error);
@@ -93,22 +94,37 @@ export default function CreatePost({ displayType, placeholders }) {
   }, []);
 
   return (
-    <div className="relative m-4 p-4 bg-black pixel-text w-[94.5%] lg:w-[60%] rounded-[5px] text-white flex flex-col gap-4">
-      <Toaster />
-      <section>
-        <h1>CREATE {displayType}</h1>
-      </section>
-      {
-        loading && (
-          <div className="absolute h-full w-full flex flex-col justify-center items-center bg-black bg-opacity-50">
-            <LoadingSpinner />
-          </div>
-        )
-      }
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <TextFields setTitle={setTitle} body={body} setBody={setBody} words={words} setWords={setWords} placeholders={placeholders} />
-        <UploadImage uploadedFile={uploadedFile} setUploadedFile={setUploadedFile} />
-        <Buttons communities={communities} selectedCommunity={selectedCommunity} setSelectedCommunity={setSelectedCommunity} />
+    <div className="m-4 p-4 bg-black pixel-text w-[94.5%] lg:w-[60%] rounded-[5px] text-white flex flex-col gap-4 mb-[70%] md:mb-0">
+        <section>
+          <h1>CREATE {displayType}</h1>
+        </section>
+        {
+          loading && (
+            <div className="absolute h-full w-full flex flex-col justify-center items-center bg-black bg-opacity-50">
+              <LoadingSpinner />
+            </div>
+          )
+        }
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <TextFields
+          setTitle={setTitle}
+          body={body}
+          setBody={setBody}
+          words={words}
+          setWords={setWords}
+          placeholders={placeholders}
+        />
+
+        <UploadImage
+          uploadedFile={uploadedFile}
+          setUploadedFile={setUploadedFile}
+        />
+
+        <Buttons
+          communities={communities}
+          selectedCommunity={selectedCommunity}
+          setSelectedCommunity={setSelectedCommunity}
+        />
       </form>
     </div>
   );
