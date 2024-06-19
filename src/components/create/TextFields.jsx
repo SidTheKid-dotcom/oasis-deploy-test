@@ -32,8 +32,8 @@ export default function TextFields({ setTitle, body, setBody, words, setWords, p
   }
   return (
     <section className="flex flex-col gap-4">
-      <input placeholder={`${placeholders.title}`} className="p-2 text-black bg-slate-200 rounded-[5px]" onChange={(e) => updateTitle(e.target.value)}></input>
-      <textarea placeholder={`${placeholders.body}`} rows={5} value={body} onChange={(e) => updateWords(e.target.value)} className="text-black bg-slate-200 p-2 h-full rounded-[5px] resize-none"></textarea>
+      <input placeholder={`${placeholders.title}`} className="p-2 text-black bg-slate-200 rounded-[5px] placeholder-font-pixel-text open-sans" onChange={(e) => updateTitle(e.target.value)}></input>
+      <textarea placeholder={`${placeholders.body}`} rows={5} value={body} onChange={(e) => updateWords(e.target.value)} className="text-black bg-slate-200 p-2 h-full rounded-[5px] resize-none placeholder-font-pixel-text open-sans"></textarea>
       <div className="flex flex-row gap-4">
         <div>{wordsDisplay}</div>
         <div className={`${words === 4000 ? 'display-inline-block' : 'hidden'} text-red-500`}>

@@ -69,9 +69,7 @@ export default function Sidebar() {
                 Subscribed Communities{" "}
               </p>
             </div>
-            <div className="lg:hidden">
-              <PopularAccounts />
-            </div>
+            
             <div className="overflow-y-auto  max-h-56  scrollbar-hide">
               {navBarData.subscribed_communities &&
                 navBarData.subscribed_communities.map((menu, index) => (
@@ -101,6 +99,9 @@ export default function Sidebar() {
                 ))}
             </div>
           </div>
+            <div className="lg:hidden">
+              <PopularAccounts />
+            </div>
         </div>
       </div>
     </>

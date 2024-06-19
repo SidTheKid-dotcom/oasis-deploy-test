@@ -34,3 +34,16 @@ body {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border-radius: 2rem;
 }
+
+.open-sans {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+.placeholder-font-pixel-text::placeholder {
+  font-family: 'Pixel NES', sans-serif;
+  font-weight: 300;
+}

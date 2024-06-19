@@ -146,7 +146,7 @@ export default function ComunityCard({
                 </p>
               </div>
             </div>
-            <p className="text-white   text-xs  ml-1  mt-3 md:text-base">
+            <p className="text-white open-sans text-xs  ml-1  mt-3 md:text-base">
               {description}
             </p>
           </div>
