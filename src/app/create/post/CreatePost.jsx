@@ -95,17 +95,18 @@ export default function CreatePost({ displayType, placeholders }) {
 
   return (
     <div className="m-4 p-4 bg-black pixel-text w-[94.5%] lg:w-[60%] rounded-[5px] text-white flex flex-col gap-4 mb-[70%] md:mb-0">
-        <section>
-          <h1>CREATE {displayType}</h1>
-        </section>
-        {
-          loading && (
-            <div className="absolute h-full w-full flex flex-col justify-center items-center bg-black bg-opacity-50">
-              <LoadingSpinner />
-            </div>
-          )
-        }
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+      <Toaster />
+      <section>
+        <h1>CREATE {displayType}</h1>
+      </section>
+      {
+        loading && (
+          <div className="absolute inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50">
+            <LoadingSpinner />
+          </div>
+        )}
+
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <TextFields
           setTitle={setTitle}
           body={body}

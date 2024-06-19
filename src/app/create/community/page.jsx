@@ -41,7 +41,7 @@ export default function CreateCommunity() {
           },
         }
       );
-      toast('Post created successfully', {
+      toast('Community created successfully', {
         position: 'top-right',
         className: 'bg-black text-white pixel-text border border-solid border-green-400'
       });
@@ -50,7 +50,7 @@ export default function CreateCommunity() {
         router.push(`/profile/${navBarData.id}`);
       }, 700);
     } catch (error) {
-      console.error("Error posting data:", error);
+      console.error("Error creating community:", error);
       toast("Cant Create Community", {
         position: "top-right",
         className:
