@@ -60,7 +60,7 @@ const PeopleYouMightKnow = () => {
   };
 
   return (
-    <div className="bg-black text-white rounded-[30px] p-5 pixel-text mx-3 my-10 mt-4  ">
+    <div className="bg-black text-white rounded-[30px] p-5 pixel-text mx-3 my-10  mt-8  fixed ">
       <h2 className="text-2md font-bold mb-5">People You Might Know</h2>
       {loading ? (
         <p>Loading...</p>
