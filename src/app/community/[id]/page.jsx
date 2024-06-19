@@ -88,17 +88,34 @@ export default function Page({ params }) {
         {community && (
           <div className="relative">
             <div className="cursor-pointer">
-              <img
-                src={community.banner}
-                className="h-48 md:h-[270px] w-full"
-              />
+              {community.banner === "" ? (
+                <img
+                  src="/default_banner.jpeg"
+                  alt=""
+                  className="h-48 md:h-[270px] w-full"
+                />
+              ) : (
+                <img
+                  src={community.icon}
+                  alt=""
+                  className="h-48 md:h-[270px] w-full"
+                />
+              )}
             </div>
             <div className="flex justify-center cursor-pointer">
-              <img
-                src={community.icon}
-                alt=""
-                className="rounded-full h-20 w-20 md:h-28 md:w-28 z-20 absolute mt-[-9%] bg-black"
-              />
+              {community.icon === "" ? (
+                <img
+                  src="/profile2.png"
+                  alt=""
+                  className="rounded-full h-20 w-20 md:h-28 md:w-28 z-20 absolute mt-[-9%] bg-black"
+                />
+              ) : (
+                <img
+                  src={community.icon}
+                  alt=""
+                  className="rounded-full h-20 w-20 md:h-28 md:w-28 z-20 absolute mt-[-9%] bg-black"
+                />
+              )}
             </div>
             <div className="flex justify-between mt-14 text-lg ">
               <p className="font-bold text-[#00B2FF] pixel-text">
