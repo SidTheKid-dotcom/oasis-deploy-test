@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/authContext";
 
 import TextFields from "../../../components/create/TextFields";
@@ -10,14 +10,13 @@ import UploadImage from "../../../components/create/UploadImage";
 import Buttons from "../../../components/create/Buttons";
 
 export default function CreatePost({ displayType, placeholders }) {
-
   const { token } = useAuth();
 
-  const searchParams = useSearchParams()
+  const searchParams = useSearchParams();
 
   // State management of text input fields
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
   const [words, setWords] = useState(0);
 
   // State management of image input field
@@ -26,14 +25,13 @@ export default function CreatePost({ displayType, placeholders }) {
   // State management of the communities of the user
   const [communities, setCommunities] = useState([]);
   const [selectedCommunity, setSelectedCommunity] = useState({
-    community_id: searchParams.get('communityId'),
-    community_name: searchParams.get('communityName')
+    community_id: searchParams.get("communityId"),
+    community_name: searchParams.get("communityName"),
   });
 
   // Final submit action of the user
 
   const handleSubmit = async () => {
-
     event.preventDefault();
 
     // Sending data as form-data to encode our image over the network call
@@ -43,63 +41,75 @@ export default function CreatePost({ displayType, placeholders }) {
       body: body,
       media: uploadedFile,
       community_id: parseInt(selectedCommunity.community_id),
-      community_name: selectedCommunity.community_name
-    }
+      community_name: selectedCommunity.community_name,
+    };
     //Send post request for creating the post
 
     try {
-      await axios.post('https://oasis-api.xyz/api/post/create', formData, {
+      await axios.post("https://oasis-api.xyz/api/post/create", formData, {
         headers: {
-          'Authorization': token,
-          'Content-Type': 'multipart/form-data'
-        }
-      })
+          Authorization: token,
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
-      //navigate back to home page { useNavigate hook from react-router-dom } 
+      //navigate back to home page { useNavigate hook from react-router-dom }
+    } catch (error) {
+      console.log("Error occured in creating post: ", error);
     }
-    catch (error) {
-      console.log("Error occured in creating post: ", error)
-    }
-  }
+  };
 
   // Fetch the communities of the user on mount
 
   useEffect(() => {
-
     const fetchCommunities = async () => {
       try {
-
         //Extract the user token from the cookie
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem("token");
 
-        const response = await axios.get('https://oasis-api.xyz/api/community/all', {
-          headers: {
-            'Authorization': token,
-            'Content-Type': 'application/json'
+        const response = await axios.get(
+          "https://oasis-api.xyz/api/community/all",
+          {
+            headers: {
+              Authorization: token,
+              "Content-Type": "application/json",
+            },
           }
-        });
+        );
         setCommunities(response.data);
-      }
-      catch (error) {
+      } catch (error) {
         console.log("error occured while fetching user communities: ", error);
       }
-    }
+    };
 
     fetchCommunities();
-  }, [])
+  }, []);
 
   return (
-    <div className="m-4 p-4 bg-black pixel-text w-[94.5%] lg:w-[60%] rounded-[5px] text-white flex flex-col gap-4">
+    <div className="m-4 p-4 bg-black pixel-text w-[94.5%] lg:w-[60%] rounded-[5px] text-white flex flex-col gap-4 mb-[70%] md:mb-0">
       <section>
         <h1>CREATE {displayType}</h1>
       </section>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <TextFields
+          setTitle={setTitle}
+          body={body}
+          setBody={setBody}
+          words={words}
+          setWords={setWords}
+          placeholders={placeholders}
+        />
 
-        <TextFields setTitle={setTitle} body={body} setBody={setBody} words={words} setWords={setWords} placeholders={placeholders} />
+        <UploadImage
+          uploadedFile={uploadedFile}
+          setUploadedFile={setUploadedFile}
+        />
 
-        <UploadImage uploadedFile={uploadedFile} setUploadedFile={setUploadedFile} />
-
-        <Buttons communities={communities} selectedCommunity={selectedCommunity} setSelectedCommunity={setSelectedCommunity} />
+        <Buttons
+          communities={communities}
+          selectedCommunity={selectedCommunity}
+          setSelectedCommunity={setSelectedCommunity}
+        />
       </form>
     </div>
   );
