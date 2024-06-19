@@ -65,8 +65,8 @@ export default function Sidebar() {
           <div>
             <div className=" flex my-4">
               <BsFire className=" my-auto" size={30} />
-              <p className=" my-auto pixel-text text-xl ml-2">
-                Top Communities{" "}
+              <p className=" my-auto pixel-text text-sm ml-2">
+                Subscribed Communities{" "}
               </p>
             </div>
             <div className="lg:hidden">

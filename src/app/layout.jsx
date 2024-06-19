@@ -27,11 +27,14 @@ function LayoutContent({ children }) {
   const renderAuthenticatedLayout = () => (
     <>
       <Sidebar />
-      <div className="w-full flex flex-col ">
+      <div className="w-full flex flex-col">
         <TopBar />
         <MobileNav />
-        <div className="overflow-y-auto md:h-[530px] scrollbar-hide   h-[790px] ">
-          {children}
+        <div style={{ height: "100%" }}>
+          {/* Set explicit height on parent */}
+          <div className="overflow-y-auto scrollbar-hide  md:h-[85%] h-[790px]">
+            {children}
+          </div>
         </div>
       </div>
     </>
@@ -47,7 +50,7 @@ function LayoutContent({ children }) {
     <>
       {token && (
         <div className=" fixed md:top-0 md:left-0 md:right-0 md:bottom-0  md:my-10 md:mx-[8%]  md:bg-black    md:bg-opacity-80 z-10 md:rounded-2xl md:shadow-xl md:shadow-blue-500">
-          <div className="md:my-10 md:mb-0 md:mx-4 md:p-4 md:flex z-10 min-h-screen">
+          <div className="md:my-10 md:mb-0 md:mx-4 md:p-4 md:flex z-10 h-full">
             {token
               ? renderAuthenticatedLayout()
               : renderUnauthenticatedLayout()}
