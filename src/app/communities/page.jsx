@@ -33,7 +33,7 @@ export default function Communities() {
 
   return (
     <>
-      <div className="md:ml-16 bg-black mx-3 md:mx-0 md:mr-12  mb-48 md:mb-0">
+      <div className="md:ml-16 bg-black mx-3 md:mx-0 md:mr-12  mb-[70%] md:mb-0">
         <div className="">
           {data.map((community) => (
             <ComunityCard
