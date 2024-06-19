@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Posts from "../global-feed/Post";
 
-export default function CommunityPosts({ posts, muted, setMuted }) {
+export default function CommunityPosts({ posts }) {
+
+  const [muted, setMuted] = useState(false);
+
   return (
     <>
       <div className="w-full flex flex-col items-center overflow-hidden">

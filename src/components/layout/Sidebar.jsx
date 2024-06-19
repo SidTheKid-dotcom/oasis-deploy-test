@@ -77,7 +77,7 @@ export default function Sidebar() {
                 <li
                   key={index}
                   onClick={() => {
-                    router.push(`/communities/${menu.community.id}`);
+                    router.push(`/community/${menu.community.id}`);
                   }}
                   className={`text-sm cursor-pointer h-14 flex items-center px-3 mb-3 rounded-lg hover:bg-[#4B84FF]/[0.45] hover:bg-[#4B84FF][0.45]`}
                 >

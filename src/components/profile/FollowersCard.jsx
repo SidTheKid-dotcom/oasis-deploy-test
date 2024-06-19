@@ -7,7 +7,7 @@ export default function FollowersCard({ username, followers, following }) {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <div className=" bg-slate-900 pixel-text text-white rounded-[30px] mx-5 ">
+    <div className="bg-black pixel-text text-white rounded-[30px] mx-5 border border-solid border-slate-700 lg:border-none my-2 lg:my-0">
       <div className="py-2">
         <section className="m-2 p-2 flex flex-row justify-around">
           <h1 className="font-bold text-xl">{username}</h1>

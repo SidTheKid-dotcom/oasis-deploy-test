@@ -7,15 +7,20 @@ import EditBannerPic from "@/components/community/EditBannerPic";
 import EditProfilePic from "@/components/community/EditProfilePic";
 import axios from "axios";
 import { useAuth } from "@/context/authContext";
+import LoadingSpinner from "@/components/animations/LoadingSpinner";
+
+import { useRouter } from "next/navigation";
+
 export default function EditCommunity({ params }) {
+  const [loading, setLoading] = useState(false);
   const [BannerImage, setBannerImage] = useState(null);
-
   const [ProfileImage, setProfileImage] = useState(null);
-
   const [description, setDescription] = useState("");
   const [Visibilty, setVisibilty] = useState("");
   const [data, setData] = useState([]);
-  const { token } = useAuth();
+  const { token, navBarData } = useAuth();
+  const router = useRouter();
+
   const getCommunity = async (id) => {
     try {
       const response = await axios.get(
@@ -40,6 +45,7 @@ export default function EditCommunity({ params }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true); // Start loading
       const response = await axios.patch(
         "https://oasis-api.xyz/api/community/update",
         {
@@ -61,6 +67,11 @@ export default function EditCommunity({ params }) {
         className:
           "bg-black text-white pixel-text border border-solid border-green-400",
       });
+
+      setTimeout(() => {
+        setLoading(false);
+        router.push(`/community/${data.id}`);
+      }, 700);
     } catch (error) {
       console.error("Error posting data:", error);
       toast("Error Editing Community", {
@@ -68,15 +79,22 @@ export default function EditCommunity({ params }) {
         className:
           "bg-black text-white pixel-text border border-solid border-red-400",
       });
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     getCommunity(params.id);
   }, [params.id]);
+
   return (
     <>
       <Toaster />
+      {loading && (
+        <div className="absolute inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50">
+          <LoadingSpinner />
+        </div>
+      )}
       <div className=" bg-black bg-opacity-80 md:bg-none md:bg-opacity-0 p-3 mx-3  ">
         <p className=" text-md md:text-2xl font-semibold text-[#00B2FF] md:px-11  mt-4 md:mt-2 mb-5 md:mb-0 pixel-text ">
           Edit Community
@@ -91,14 +109,12 @@ export default function EditCommunity({ params }) {
                     setBannerImage={setBannerImage}
                     banner={data.banner}
                   />
-
                   <EditProfilePic
                     ProfileImage={ProfileImage}
                     setProfileImage={setProfileImage}
                     icon={data.icon}
                   />
                 </div>
-
                 <div>
                   <input
                     type="text"

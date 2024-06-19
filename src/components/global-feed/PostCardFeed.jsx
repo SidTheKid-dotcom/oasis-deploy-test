@@ -105,7 +105,6 @@ export default function PostCardFeed({
                         },
                     }
                 );
-                handleToast('Post Liked Successfully', 'bg-black text-white pixel-text border border-solid border-green-400');
                 setLikes(prevLikes => prevLikes + 1);
                 setLikedState(true);
             } else {
@@ -121,7 +120,6 @@ export default function PostCardFeed({
                         },
                     }
                 );
-                handleToast('Post Unliked Successfully', 'bg-black text-white pixel-text border border-solid border-red-500');
                 setLikes(prevLikes => prevLikes - 1);
                 setLikedState(false);
             }
