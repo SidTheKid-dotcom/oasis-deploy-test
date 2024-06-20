@@ -29,9 +29,8 @@ export default function FollowersCard({ username, followers, following }) {
 
         <section className="grid grid-cols-2">
           <div
-            className={`flex flex-col text-center ${
-              activeTab == 0 ? "bg-[#2a313d]" : "bg-transparent"
-            }`}
+            className={`flex flex-col text-center ${activeTab == 0 ? "bg-[#2a313d]" : "bg-transparent"
+              }`}
           >
             <button onClick={() => setActiveTab(0)}>
               <h1>followers</h1>
@@ -39,9 +38,8 @@ export default function FollowersCard({ username, followers, following }) {
             </button>
           </div>
           <div
-            className={`flex flex-col text-center ${
-              activeTab == 1 ? "bg-[#2a313d]" : "bg-transparent"
-            }`}
+            className={`flex flex-col text-center ${activeTab == 1 ? "bg-[#2a313d]" : "bg-transparent"
+              }`}
           >
             <button onClick={() => setActiveTab(1)}>
               <h1>Following</h1>
@@ -56,11 +54,11 @@ export default function FollowersCard({ username, followers, following }) {
           <div className="overflow-y-auto    scrollbar-hide">
             {activeTab == 0
               ? followers?.map((account, index) => (
-                  <Follower key={index} account={account} />
-                ))
+                <Follower key={index} account={account} />
+              ))
               : following?.map((account, index) => (
-                  <Following key={index} account={account} />
-                ))}
+                <Following key={index} account={account} />
+              ))}
           </div>
         </section>
       </div>
@@ -79,9 +77,12 @@ const Follower = ({ account }) => {
       onClick={() => navigateUserProfile(account.id)}
       className="p-2 flex flex-row gap-4"
     >
-      <div className="ml-2 border border-white h-[40px] w-[40px] rounded-full">
-        <img src={account.profile_picture}></img>
-      </div>
+      <figure className="relative border border-white md:w-[6rem] md:h-[6rem] flex place-content-center rounded-full overflow-hidden">
+        <img
+          className="w-full object-cover"
+          src={account.profile_picture}
+        ></img>
+      </figure>
       <div
         className="flex flex-col justify-center text-lg"
         style={{ marginTop: "4px" }}
@@ -103,9 +104,12 @@ const Following = ({ account }) => {
       onClick={() => navigateUserProfile(account.id)}
       className="p-2 flex flex-row gap-4"
     >
-      <div className="ml-2 border border-white h-[40px] w-[40px] rounded-full">
-        <img src="/image.png"></img>
-      </div>
+      <figure className="relative border border-white w-[40px] h-[40px] flex place-content-center rounded-full overflow-hidden">
+        <img
+          className="w-full object-cover"
+          src={account.profile_picture}
+        ></img>
+      </figure>
       <div
         className="flex flex-col justify-center text-lg"
         style={{ marginTop: "4px" }}

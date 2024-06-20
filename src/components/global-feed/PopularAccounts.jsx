@@ -91,7 +91,7 @@ const PeopleYouMightKnow = () => {
                   )}
                 </figure>
 
-                <div className="  text-xs my-auto">{user.username}</div>
+                <div className="  text-xs my-auto break-words">{user.username}</div>
               </button>
               <button
                 onClick={() => handleFollowUser(user.id)}

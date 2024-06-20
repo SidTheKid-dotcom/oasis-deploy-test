@@ -166,9 +166,17 @@ export default function PostCardFeed({
                         </div>
                     </div>
                 </section>
-                <section className="my-[10px] open-sans">
-                    <div className="text-[1rem]">{post.title}</div>
-                    <div className="text-[0.75rem]">
+                <section className="my-[10px] open-sans flex flex-col gap-2">
+                    <div className="text-[1rem] break-words">
+                        {post.title.length > 40 ? (
+                            <>
+                                {post.title.slice(0, 40)}...
+                            </>
+                        ) : (
+                            post.title
+                        )}
+                    </div>
+                    <div className="text-[0.75rem] break-words">
                         {post.body.length > 200 ? (
                             <>
                                 {post.body.slice(0, 200)}...

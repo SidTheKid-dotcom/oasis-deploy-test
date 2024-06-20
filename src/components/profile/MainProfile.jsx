@@ -25,6 +25,7 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [socialButton, setSocialButton] = useState(false);
   const [showLinks, setShowLinks] = useState(false);
+  const [showFullBio, setShowFullBio] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState({
     delete: false,
     postId: null,
@@ -135,7 +136,7 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
               <figure className="relative border border-white md:w-[6rem] md:h-[6rem] flex place-content-center rounded-full overflow-hidden">
                 <img
                   className="w-full object-cover"
-                  src={userInfo.profile_picture || "/github.svg"}
+                  src={userInfo.profile_picture}
                 ></img>
               </figure>
             </div>
@@ -183,7 +184,28 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
         <div></div>
       </section>
       <section>
-        <div className="mx-[1.5rem]">{userInfo.bio}</div>
+        <div className="mx-[1rem] break-words">
+          {userInfo.bio.length > 100 ? (
+            !showFullBio ? (
+              <>
+                {userInfo.bio.slice(0, 100)}...
+                <button onClick={() => setShowFullBio(true)} className="text-blue-500 underline">
+                  Read More
+                </button>
+              </>
+            ) : (
+              <>
+                {userInfo.bio}
+                <button onClick={() => setShowFullBio(false)} className="text-blue-500 underline">
+                  Show Less
+                </button>
+              </>
+
+            )
+          ) : (
+            userInfo.bio
+          )}
+        </div>
       </section>
       <section className="grid grid-cols-3 gap-5 items-center md:mx-[1.5rem] md:my-[0.5rem]">
         <div className="col-span-3 flex flex-row gap-2 font-extralight">

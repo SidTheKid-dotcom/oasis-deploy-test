@@ -156,7 +156,7 @@ export default function ReplyCommentBox({ parent_id, comments, setComments }) {
                 </div>
                 <div className="col-span-2 flex flex-col gap-4">
                     <button onClick={handlePostComment} className="p-2 bg-blue-500 rounded-[15px] max-h-[40px]">
-                        Post 🎯
+                        Post
                     </button>
                     {
                         gifURL && (

@@ -17,7 +17,7 @@ export default function Sidebar() {
   const router = useRouter();
   return (
     <>
-      <div className=" hidden md:block mr-10 w-[30%] h-full  sticky top-16 pixel-text">
+      <div className=" hidden md:block mr-10 w-[20%] h-full  sticky top-16 pixel-text">
         <div className=" flex">
           <img src="/logo.png" alt="" />
           <p className=" text-white border p-2 px-5  text-2xl rounded-3xl my-auto ml-2  pixel-text">

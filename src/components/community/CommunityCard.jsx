@@ -93,10 +93,23 @@ export default function ComunityCard({
                             )}
                           </Link>
                         </div>
-                        <div className=" my-auto col-span-9">
+                        <div className=" my-auto col-span-9 break-words">
                           <Link href={`/community/${id}`}>
                             <p className=" pixel-text text-[#00B2FF] text-xs  font-bold   my-auto  ml-5 sm:ml-3  ">
-                              {name}
+                              {name.length > 200 ? (
+                                <>
+                                  {name.slice(0, 200)}...
+                                  <Link href={`/community/${id}`}>
+                                    <button className="text-blue-500 underline">
+                                      Read More
+                                    </button>
+                                  </Link>
+                                </>
+                              ) : (
+                                <>
+                                  {name}
+                                </>
+                              )}
                             </p>
                           </Link>
                         </div>
@@ -140,17 +153,29 @@ export default function ComunityCard({
                   </p>
                 </div>
                 <p
-                  className={` ml-4 text-white rounded-md my-auto border-[#767676] border-[1.5px]  p-1 md:text-[8px] sm:font-semibold px-2 text-[7px]   cursor-pointer pixel-text ${
-                    isfollowing ? "" : " bg-[#00B2FF]"
-                  }`}
+                  className={` ml-4 text-white rounded-md my-auto border-[#767676] border-[1.5px]  p-1 md:text-[8px] sm:font-semibold px-2 text-[7px]   cursor-pointer pixel-text ${isfollowing ? "" : " bg-[#00B2FF]"
+                    }`}
                   onClick={handleFollowToggle}
                 >
                   {isfollowing ? "Unsubscribe" : "Subscribe"}
                 </p>
               </div>
             </div>
-            <p className="text-white open-sans text-xs  ml-1  mt-3 ">
-              {description}
+            <p className="text-white open-sans text-xs  ml-1  mt-3 break-words">
+              {description.length > 200 ? (
+                <>
+                  {description.slice(0, 200)}...
+                  <Link href={`/community/${id}`}>
+                    <button className="text-blue-500 underline">
+                      Read More
+                    </button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  {description}
+                </>
+              )}
             </p>
           </div>
         </div>

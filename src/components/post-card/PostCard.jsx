@@ -4,7 +4,7 @@ import axios from "axios";
 import Link from "next/link";
 
 import { formatDistanceToNow } from 'date-fns';
-
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/authContext";
 
@@ -15,6 +15,9 @@ const PostCard = ({ post, setPost, totalComments }) => {
   const { token, navBarData } = useAuth();
   const searchParams = useSearchParams();
   const postId = searchParams.get("postId");
+
+  const [showFullTitle, setShowFullTitle] = useState(false);
+  const [showFullBody, setShowFullBody] = useState(false);
 
   const toggleFollowUser = async () => {
     try {
@@ -138,9 +141,51 @@ const PostCard = ({ post, setPost, totalComments }) => {
             <div className="col-span-1 flex flex-row justify-end"></div>
           </div>
         </section>
-        <section className="my-[10px] open-sans">
-          <div className="text-[1rem]">{post.title}</div>
-          <div className="text-[0.75rem]">{post.body}</div>
+        <section className="my-[10px] open-sans flex flex-col gap-2">
+          <div className="text-[1rem] break-words">
+          {post.title.length > 40 ? (
+              !showFullTitle ? (
+                <>
+                  {post.title.slice(0, 40)}...
+                  <button onClick={() => setShowFullTitle(true)} className="text-blue-500 underline">
+                    Read More
+                  </button>
+                </>
+              ) : (
+                <>
+                  {post.title}
+                  <button onClick={() => setShowFullTitle(false)} className="text-blue-500 underline">
+                    Show Less
+                  </button>
+                </>
+
+              )
+            ) : (
+              post.body
+            )}
+          </div>
+          <div className="text-[0.75rem] break-words">
+            {post.body.length > 1000 ? (
+              !showFullBody ? (
+                <>
+                  {post.body.slice(0, 1000)}...
+                  <button onClick={() => setShowFullBody(true)} className="text-blue-500 underline">
+                    Read More
+                  </button>
+                </>
+              ) : (
+                <>
+                  {post.body}
+                  <button onClick={() => setShowFullBody(false)} className="text-blue-500 underline">
+                    Show Less
+                  </button>
+                </>
+
+              )
+            ) : (
+              post.body
+            )}
+          </div>
         </section>
         <section>
           {post.media_type ? (

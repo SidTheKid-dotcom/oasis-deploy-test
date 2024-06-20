@@ -133,7 +133,7 @@ function SearchPage() {
                   </figure>
                   <div>
                     <div className="font-bold">{user.username}</div>
-                    <div className="text-sm text-slate-400">
+                    <div className="text-sm text-slate-400 break-words">
                       u/{user.username}
                     </div>
                   </div>

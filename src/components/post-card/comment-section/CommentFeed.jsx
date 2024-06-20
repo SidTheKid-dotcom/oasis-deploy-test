@@ -42,7 +42,7 @@ export default function CommentFeed({ comments, setComments }) {
           </div>
           <div className="col-span-10">
             <div className="flex flex-row h-[30px] justify-start pixel-text">
-              <div>{comment.comment_by.username}</div>
+              <div className="break-words">{comment.comment_by.username}</div>
               <div className="text-gray-400 text-[0.75rem]">&nbsp;&bull;&nbsp;{formatDistanceToNow(comment.created_at, { addSuffix: true })}</div>
             </div>
             {comment.gif_url ? (
@@ -52,7 +52,7 @@ export default function CommentFeed({ comments, setComments }) {
                 </figure>
               </div>
             ) : (
-              <div className="open-sans py-2">{comment.comment}</div>
+              <div className="open-sans py-2 break-words">{comment.comment}</div>
             )}
             <div className="flex flex-row gap-4 text-[0.75rem] mt-1">
               <button onClick={() => toggleReplyBox(index)}>Reply</button>

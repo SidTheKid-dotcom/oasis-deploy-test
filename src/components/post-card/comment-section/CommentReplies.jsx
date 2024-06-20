@@ -17,7 +17,7 @@ export default function CommentReplies({ replies }) {
                     </div>
                     <div className="col-span-10">
                         <div className="flex flex-row h-[30px] justify-start pixel-text mb:[0.5rem]">
-                            <div>{reply.comment_by.username}</div>
+                            <div className='break-words'>{reply.comment_by.username}</div>
                             <div className="text-gray-400 text-[0.75rem]">&nbsp;&bull;&nbsp;{formatDistanceToNow(reply.created_at, { addSuffix: true })}</div>
                         </div>
                         {
@@ -29,7 +29,7 @@ export default function CommentReplies({ replies }) {
                                 </div>
 
                             ) : (
-                                <div className="open-sans">{reply.comment}</div>
+                                <div className="open-sans break-words">{reply.comment}</div>
                             )
                         }
                     </div>
