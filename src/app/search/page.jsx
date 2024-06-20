@@ -85,7 +85,7 @@ function SearchPage() {
 
     return (
         <div className="flex flex-col-reverse lg:grid grid-cols-12 pixel-text mb-[95%] md:mb-0 ">
-            <div className="col-span-8 px-20">
+            <div className="col-span-8 lg:px-20">
                 {
                     displayPosts && searchData.posts.length > 0 ? (
                         searchData.posts.map((post, index) => (
@@ -96,7 +96,7 @@ function SearchPage() {
                     )}
                 {
                     displayUsers && searchData.users.length > 0 ? (
-                        <div className="flex flex-col gap-4 text-sm text-white">
+                        <div className="flex flex-col gap-4 text-sm text-white bg-black">
                             {searchData.users.map((user) => (
                                 <button key={user.id} onClick={() => navigateUserProfile(user.id)} className="grid grid-cols-12 p-3 border border-slate-500 rounded-lg">
                                     <div className="col-span-9 gap-4 flex flex-row">
@@ -123,8 +123,8 @@ function SearchPage() {
                 {
                     displayCommunities && searchData.communities.length > 0 ? (
                         searchData.communities.map((community) => (
-                            <div key={community.id} className="p-3 border border-slate-500 rounded-lg mb-4">
-                                <h1 className="text-xl font-bold">{community.name}</h1>
+                            <div key={community.id} className="p-3 border border-slate-500 rounded-lg mb-4 bg-black">
+                                <h1 className="text-xl font-bold text-white">{community.name}</h1>
                                 <p className="text-sm text-slate-400">{community.description}</p>
                             </div>
                         ))
