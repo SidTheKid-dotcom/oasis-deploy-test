@@ -3,7 +3,7 @@ import axios from 'axios';
 import PostCardFeed from './PostCardFeed';
 import { useAuth } from "@/context/authContext";
 
-export default function Posts({ post, muted, setMuted, onClick }) {
+export default function Posts({ post, muted, setMuted, amOnProfile }) {
     const [likedState, setLikedState] = useState(null);
     const [followingState, setFollowingState] = useState(null);
     const [likes, setLikes] = useState(0);
@@ -72,7 +72,7 @@ export default function Posts({ post, muted, setMuted, onClick }) {
     }, [isActive]);
 
     return (
-        <div ref={postRef} className="w-full" onClick={onClick}>
+        <div ref={postRef} className="w-full">
             <PostCardFeed
                 loadMedia={loadMedia}
                 likedState={likedState}
@@ -87,6 +87,7 @@ export default function Posts({ post, muted, setMuted, onClick }) {
                 muted={muted}
                 setMuted={setMuted}
                 playerRef={playerRef}
+                amOnProfile={amOnProfile}
             />
         </div>
     );
