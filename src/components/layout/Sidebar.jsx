@@ -84,9 +84,8 @@ export default function Sidebar() {
             <div className="overflow-y-auto  max-h-56  scrollbar-hide">
               {navBarData.subscribed_communities &&
                 navBarData.subscribed_communities.map((menu, index) => (
-                  <Link href={`/community/${menu.community.id}`}>
+                  <Link href={`/community/${menu.community.id}`} key={index}>
                     <li
-                      key={index}
                       onClick={() => {
                         router.push(`/community/${menu.community.id}`);
                       }}

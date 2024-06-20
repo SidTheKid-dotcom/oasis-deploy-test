@@ -32,11 +32,8 @@ export default function Top() {
           <h2 className="text-2md  mb-5 text-center">Top Communities</h2>
           <div className="  lg:overflow-y-auto scrollbar-hide  lg:h-[400px]">
             {suggestions.map((user) => (
-              <Link href={`/community/${user.id}`}>
-                <div
-                  key={user.id}
-                  className="grid grid-cols-12 p-3  gap-4 border border-slate-500 rounded-lg mb-3"
-                >
+              <Link href={`/community/${user.id}`} key={user.id}>
+                <div className="grid grid-cols-12 p-3  gap-4 border border-slate-500 rounded-lg mb-3">
                   <figure className="w-[40px] h-[40px] my-auto col-span-2 overflow-hidden rounded-full border ">
                     {user.icon === "" ? (
                       <img
