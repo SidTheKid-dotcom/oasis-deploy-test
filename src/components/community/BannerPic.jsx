@@ -35,7 +35,7 @@ export default function BannerPic({ BannerImage, setBannerImage }) {
           <div className="cursor-pointer">
             <img
               src="/banner_upload.png"
-              className=" h-48 md:h-[250px] bg-black w-full border border-gray-400"
+              className=" h-48 md:h-[250px] bg-black w-full border  object-cover border-gray-400"
             />
           </div>
         )}

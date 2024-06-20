@@ -107,7 +107,7 @@ export default function Page({ params }) {
                 <img
                   src="/default_community_profile.png"
                   alt=""
-                  className="rounded-full h-20 w-20 md:h-28 md:w-28 z-20 absolute mt-[-9%] bg-black"
+                  className="rounded-full h-20 w-20 md:h-28 md:w-28 z-20 absolute mt-[-9%]    bg-black"
                 />
               ) : (
                 <img
