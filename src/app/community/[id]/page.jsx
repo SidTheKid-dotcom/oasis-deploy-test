@@ -136,7 +136,7 @@ export default function Page({ params }) {
                 alt=""
                 className="  mr-2 my-auto rounded-full h-10 w-10"
               />
-              <p className=" text-white my-auto">
+              <p className=" text-white my-auto pixel-text">
                 {community.creator.username}
               </p>
             </div>
@@ -193,7 +193,7 @@ export default function Page({ params }) {
             </div>
           </div>
         )}
-        <div className="text-white my-4 text-xs md:text-base">
+        <div className="text-white my-4 text-xs md:text-base open-sans">
           {community && <p>{community.description}</p>}
         </div>
       </div>

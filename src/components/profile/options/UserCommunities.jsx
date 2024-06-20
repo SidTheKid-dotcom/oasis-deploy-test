@@ -21,14 +21,14 @@ export default function UserCommunities({ communities, editable }) {
                         return (
                             <div key={index} className="grid grid-cols-12 gap-3 bg-black my-4 border border-solid border-slate-400 rounded-2xl py-4 px-6">
                                 <section className="col-span-3 flex flex-col justify-center">
-                                    <figure>
-                                        <img src={community.icon} width="175px" className="mt-[3px] h-auto border border-solid border-white rounded-[1rem]"></img>
-                                    </figure>
+                                    <div className=" border border-white h-[40px] w-[40px] md:h-[60px] md:w-[60px] rounded-full overflow-hidden">
+                                        <img src={community.icon} className="h-full w-full object-cover"></img>
+                                    </div>
                                 </section>
                                 <section className="col-span-9">
                                     <div className="flex flex-col gap-2">
                                         <div className="flex flex-row w-full justify-between">
-                                            <h1 className="font-bold text-4xl text-blue-500">{community.name}</h1>
+                                            <h1 className="font-bold text-l text-blue-500">{community.name}</h1>
                                             <div className="text-xl flex flex-row items-center gap-2">
                                                 <figure>
                                                     <img src='/user-solid.svg' width="15px" height="15px"></img>
@@ -43,7 +43,7 @@ export default function UserCommunities({ communities, editable }) {
                                                 </button>
                                             </div>
                                         </div>
-                                        <div className="text-justify">
+                                        <div className="text-justify open-sans">
                                             {community.description}
                                         </div>
                                     </div>
@@ -78,7 +78,7 @@ export default function UserCommunities({ communities, editable }) {
                                                 </button>
                                             </div>
                                         </div>
-                                        <div className="text-justify">
+                                        <div className="text-justify open-sans">
                                             {community.description}
                                         </div>
                                     </div>

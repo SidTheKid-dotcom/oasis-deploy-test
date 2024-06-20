@@ -33,7 +33,7 @@ export default function PostCardFeed({
             return (
                 <div>
                     <div>
-                        <button onClick={e => e.stopPropagation() || toggleMute()}>
+                        <button onClick={e => e.stopPropagation() || toggleMute()} className='pixel-text'>
                             {muted ? 'Unmute' : 'Mute'}
                         </button>
                     </div>
@@ -129,9 +129,9 @@ export default function PostCardFeed({
     }, 300);
 
     return (
-        <div className="lazy-post-card w-full pixel-text">
+        <div className="lazy-post-card w-full">
             <Toaster />
-            <div className="py-[1rem] px-[2rem] my-[0.5rem] rounded-lg bg-black text-white flex flex-col min-h-[100px] border border-solid border-slate-600">
+            <div className="py-[1rem] px-[1rem] my-[0.5rem] rounded-lg bg-black text-white flex flex-col min-h-[100px] border border-solid border-slate-600">
                 <section>
                     <div className="my-[0.5rem] grid grid-cols-12 items-center">
                         <div className="col-span-2 rounded-full overflow-hidden w-[40px] h-[40px] md:w-[50px] md:h-[50px] border border-solid border-white">
@@ -143,7 +143,7 @@ export default function PostCardFeed({
                                 />
                             </figure>
                         </div>
-                        <div className="col-span-6 text-md flex flex-col justify-center">
+                        <div className="col-span-6 text-md flex flex-col justify-center pixel-text">
                             <Link href={`/profile/${post.user.id}`}>
                                 <div className="font-bold">{post.user.username}</div>
                             </Link>
@@ -155,7 +155,7 @@ export default function PostCardFeed({
                         </div>
                         <div className="col-span-3 flex flex-col items-center text-[0.8rem] md:text-[1rem]">
                             {!followingState && post.user.id !== navBarData.id && (
-                                <button onClick={toggleFollowUser} className=" p-2 px-3 w-[80px] md:w-[100px] bg-blue-500 rounded-[5px]">
+                                <button onClick={toggleFollowUser} className=" p-2 px-3 w-[80px] md:w-[100px] bg-blue-500 rounded-[5px] pixel-text">
                                     Follow
                                 </button>
                             )}
@@ -164,8 +164,8 @@ export default function PostCardFeed({
                         </div>
                     </div>
                 </section>
-                <section className="my-[10px]">
-                    <div className="text-[0.75rem]">{post.title}</div>
+                <section className="my-[10px] open-sans">
+                    <div className="text-[1rem]">{post.title}</div>
                     <div className="text-[0.75rem]">
                         {post.body.length > 200 ? (
                             <>
@@ -182,7 +182,7 @@ export default function PostCardFeed({
                     </div>
                 </section>
                 <section>{renderMedia()}</section>
-                <section className="mt-[20px] mb-[10px] w-full">
+                <section className="mt-[20px] mb-[10px] w-full pixel-text">
                     <div className="flex flex-row gap-6">
                         <button onClick={togglePostLike} className="flex flex-col items-center">
                             <figure>

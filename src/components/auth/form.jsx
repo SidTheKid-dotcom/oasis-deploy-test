@@ -101,7 +101,7 @@ export default function Form() {
               <input
                 id="email"
                 type="email"
-                className="w-full px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500 text-white"
+                className="w-full px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500 text-white open-sans"
                 required
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -140,7 +140,7 @@ export default function Form() {
               id="username"
               required
               type="text"
-              className="w-full px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500 text-white"
+              className="open-sans w-full px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500 text-white"
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
@@ -155,7 +155,7 @@ export default function Form() {
               id="signup-email"
               required
               type="email"
-              className="w-full px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500 text-white"
+              className="open-sans w-full px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500 text-white"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
