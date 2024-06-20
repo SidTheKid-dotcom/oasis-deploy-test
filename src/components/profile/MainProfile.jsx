@@ -185,7 +185,7 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
       </section>
       <section>
         <div className="mx-[1rem] break-words">
-          {userInfo.bio.length > 100 ? (
+          {userInfo.bio?.length > 100 ? (
             !showFullBio ? (
               <>
                 {userInfo.bio.slice(0, 100)}...

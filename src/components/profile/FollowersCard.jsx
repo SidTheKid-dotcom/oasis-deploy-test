@@ -77,7 +77,7 @@ const Follower = ({ account }) => {
       onClick={() => navigateUserProfile(account.id)}
       className="p-2 flex flex-row gap-4"
     >
-      <figure className="relative border border-white md:w-[6rem] md:h-[6rem] flex place-content-center rounded-full overflow-hidden">
+      <figure className="relative border border-white w-[40px] h-[40px] flex place-content-center rounded-full overflow-hidden">
         <img
           className="w-full object-cover"
           src={account.profile_picture}
