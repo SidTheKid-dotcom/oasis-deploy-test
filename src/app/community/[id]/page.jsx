@@ -155,15 +155,15 @@ export default function Page({ params }) {
                   >
                     {(community.amcreator || isFollowing) && (
                       <button className="border-[1.5px] rounded-md p-1 mr-1 md:p-2 my-auto text-white  text-[0.5rem] border-[#767676] md:text-md pixel-text">
-                        Create Post +
+                        Create Post
                       </button>
                     )}
                   </Link>
                 </div>
 
                 <p
-                  className={`text-white rounded-md my-auto md:p-2 border-[#767676] border-[1.5px] p-1 sm:font-semibold px-2 md:px-4 text-[0.5rem] md:text-bse text-center cursor-pointer pixel-text ${
-                    isFollowing ? "" : "bg-[#00b2ff]"
+                  className={`text-white rounded-md my-auto md:p-2 border-[#767676] border-[1.5px] p-1 sm:font-semibold px-1 md:px-2 text-[0.5rem] md:text-[10px] text-center cursor-pointer pixel-text ${
+                    isFollowing ? "" : " bg-[#00B2FF]"
                   }`}
                   onClick={handleFollowToggle}
                 >

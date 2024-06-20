@@ -41,9 +41,10 @@ export default function CreateCommunity() {
           },
         }
       );
-      toast('Community created successfully', {
-        position: 'top-right',
-        className: 'bg-black text-white pixel-text border border-solid border-green-400'
+      toast("Community created successfully", {
+        position: "top-right",
+        className:
+          "bg-black text-white pixel-text border border-solid border-green-400",
       });
       setTimeout(() => {
         setLoading(false);
@@ -64,7 +65,7 @@ export default function CreateCommunity() {
     <>
       <Toaster />
       <div className="relative bg-black bg-opacity-80 md:bg-none md:bg-opacity-0 p-3 mx-3">
-        <p className="text-center text-md md:text-2xl font-semibold text-[#00B2FF] md:px-11 mt-4 md:mt-2 mb-5 md:mb-0 pixel-text">
+        <p className=" ml-[17%] text-md md:text-2xl font-semibold text-[#00B2FF] md:px-11 mt-4 md:mt-2 mb-5 md:mb-0 pixel-text">
           Create Community
         </p>
         {loading && (
@@ -76,7 +77,7 @@ export default function CreateCommunity() {
         <div className="mt-3 md:w-[58%] md:mx-auto">
           <form onSubmit={handleSubmit}>
             <div>
-              <div className="relative mb-10">
+              <div className="relative  mb-14">
                 <BannerPic
                   BannerImage={BannerImage}
                   setBannerImage={setBannerImage}
@@ -86,24 +87,24 @@ export default function CreateCommunity() {
                   setProfileImage={setProfileImage}
                 />
               </div>
-              <div>
+              <div className=" ">
                 <input
                   type="text"
                   placeholder="Name"
                   required
-                  className="bg-black p-2 rounded-md my-4 md:my-2 mt-7 w-full text-white placeholder-white placeholder-font-pixel-text open-sans"
+                  className="text-black bg-slate-200 p-2 rounded-md my-4 md:my-2 mt-7 w-full placeholder-font-pixel-text open-sans"
                   onChange={(e) => SetName(e.target.value)}
                 />
                 <textarea
                   placeholder="Description..."
                   required
-                  className="bg-black p-2 rounded-md my-2 w-full h-32 md:h-16 text-white placeholder-white placeholder-font-pixel-text open-sans"
+                  className="text-black bg-slate-200 p-2 rounded-md my-2 w-full h-32 md:h-16 placeholder-font-pixel-text open-sans"
                   onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
                 <div className="flex mb-16">
                   <select
                     required
-                    className="bg-black p-2 rounded-md my-4 md:my-2 w text-white pixel-text"
+                    className="bg-[#323741] rounded-[5px] p-2 rounded-md my-4 md:my-2  text-white pixel-text"
                     onChange={(e) => setVisibilty(e.target.value)}
                   >
                     <option value="" disabled selected hidden>

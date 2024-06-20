@@ -63,36 +63,39 @@ export default function ComunityCard({
   return (
     <>
       <Toaster />
-      <div className="my-4 " key={key}>
-        <div className=" md:m-0 bg-black p-3  opacity-95 rounded-3xl  md:mr-16">
+      <div
+        className="my-4  rounded-lg border border-solid border-slate-600"
+        key={key}
+      >
+        <div className="  bg-black  p-3  opacity-95 rounded-3xl  ">
           <div className=" my-4">
             <div className="mb-3">
               <div className="">
                 {/* <div className="flex w-full sm:justify-between"> */}
                 <div className=" ">
-                  <div className="  md:grid grid-cols-12  gap-2 ">
+                  <div className="  ">
                     <div className=" my-auto overflow-hidden   col-span-5">
                       <div className=" grid grid-cols-12">
-                        <div className=" col-span-4">
+                        <div className=" col-span-3">
                           <Link href={`/community/${id}`}>
                             {icon === "" ? (
                               <img
                                 src="/profile2.png"
                                 alt=""
-                                className="  h-24  w-24 rounded-full "
+                                className="  w-16 h-16 sm:h-22  sm:w-22 md:h-24  md:w-24 rounded-full "
                               />
                             ) : (
                               <img
                                 src={icon}
                                 alt=""
-                                className="  h-24  w-24 rounded-full "
+                                className=" md:h-24  md:w-24 h-16 w-16 sm:h-22 sm:w-22  rounded-full "
                               />
                             )}
                           </Link>
                         </div>
-                        <div className=" my-auto col-span-8">
+                        <div className=" my-auto col-span-9">
                           <Link href={`/community/${id}`}>
-                            <p className=" pixel-text text-[#00B2FF] text-xs md:text-[1rem] font-bold text-md   my-auto  ml-5 sm:ml-3  ">
+                            <p className=" pixel-text text-[#00B2FF] text-xs  font-bold   my-auto  ml-5 sm:ml-3  ">
                               {name}
                             </p>
                           </Link>
@@ -100,31 +103,31 @@ export default function ComunityCard({
                       </div>
                     </div>
 
-                    <p className="text-[#828282] text-sm md:text-md my-auto col-span-2 pixel-text hidden md:block">
+                    {/* <p className="text-[#828282] text-sm  my-auto col-span-2 pixel-text hidden md:block">
                       {type}
-                    </p>
-                    <div className="flex my-auto ml-3 col-span-3 pixel-text hidden md:block">
+                    </p> */}
+                    {/* <div className="flex my-auto ml-3 col-span-3 pixel-text hidden md:block">
                       <div className="my-auto flex">
                         <HiUsers color="white" fill="white" fontSize="18px" />
                         <p className="text-white text-sm font-medium ml-1">
                           {followers}
                         </p>
                       </div>
-                    </div>
+                    </div> */}
 
-                    <p
+                    {/* <p
                       className={`hidden md:block text-white rounded-md my-auto border-[#767676] border-[1.5px]  p-1 sm:font-semibold px-2  text-[10px]  sm:mr-4 ml-1  text-center col-span-2 cursor-pointer pixel-text ${
                         isfollowing ? " px-1 mx text-[9px]" : "bg-[#00B2FF]"
                       }`}
                       onClick={handleFollowToggle}
                     >
                       {isfollowing ? "Unsubscribe" : "Subscribe"}
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>
 
-              <div className="flex mt-3 md:hidden justify-between">
+              <div className="flex mt-3 justify-between">
                 <div className="flex my-auto">
                   <p className="text-[#828282] pixel-text  text-xs my-auto">
                     {type}
@@ -137,8 +140,8 @@ export default function ComunityCard({
                   </p>
                 </div>
                 <p
-                  className={` ml-4 text-white rounded-md my-auto border-[#767676] border-[1.5px]  p-1 sm:font-semibold px-2 text-[7px] md:text-[10px]   cursor-pointer pixel-text ${
-                    isfollowing ? "" : "bg-[#00B2FF]"
+                  className={` ml-4 text-white rounded-md my-auto border-[#767676] border-[1.5px]  p-1 md:text-[8px] sm:font-semibold px-2 text-[7px]   cursor-pointer pixel-text ${
+                    isfollowing ? "" : " bg-[#00B2FF]"
                   }`}
                   onClick={handleFollowToggle}
                 >
@@ -146,13 +149,13 @@ export default function ComunityCard({
                 </p>
               </div>
             </div>
-            <p className="text-white open-sans text-xs  ml-1  mt-3 md:text-base">
+            <p className="text-white open-sans text-xs  ml-1  mt-3 ">
               {description}
             </p>
           </div>
         </div>
       </div>
-      <hr className="border border-blue-500   mx-3 " />
+      {/* <hr className="border border-blue-500   mx-3 " /> */}
     </>
   );
 }

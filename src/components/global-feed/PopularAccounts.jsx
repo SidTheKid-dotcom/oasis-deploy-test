@@ -65,7 +65,7 @@ const PeopleYouMightKnow = () => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="flex flex-col gap-4 text-sm lg:overflow-y-auto scrollbar-hide  lg:h-[400px]">
+        <div className="flex flex-col gap-4 text-sm lg:overflow-y-auto scrollbar-hide  lg:[h-fit]">
           {suggestions.map((user) => (
             <div
               key={user.id}
@@ -73,25 +73,29 @@ const PeopleYouMightKnow = () => {
             >
               <button
                 onClick={() => navigateUserProfile(user.id)}
-                className="col-span-9 gap-4 flex flex-row"
+                className="col-span-9  flex"
               >
-                <figure className="w-[30px] h-[30px] overflow-hidden rounded-full border border-white">
-                  <img
-                    src={user.profile_picture || "/default-profile.png"}
-                    alt={user.username}
-                    className="w-full h-full object-cover"
-                  />
+                <figure className="w-[40px] h-[40px] overflow-hidden rounded-full border border-white mr-2 my-auto">
+                  {user.profile_picture === null ? (
+                    <img
+                      src={"/default_profile.jpg"}
+                      alt={user.username}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <img
+                      src={user.profile_picture}
+                      alt={user.username}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                 </figure>
-                <div>
-                  <div className="font-bold">{user.username}</div>
-                  <div className="text-sm text-slate-400">
-                    u/{user.username}
-                  </div>
-                </div>
+
+                <div className="  text-xs my-auto">{user.username}</div>
               </button>
               <button
                 onClick={() => handleFollowUser(user.id)}
-                className="text-sm col-span-3 border border-solid border-slate-100 rounded-xl bg-[#323741] hover:bg-blue-500 transition-colors"
+                className=" text-sm col-span-3 border border-solid border-slate-100 rounded-md  hover:bg-blue-500 transition-colors"
               >
                 Add
               </button>
