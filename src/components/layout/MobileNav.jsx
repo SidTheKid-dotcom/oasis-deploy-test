@@ -144,7 +144,10 @@ export default function MobileNav() {
                     </p>
                   </div>
 
-                  <div className="overflow-y-auto  max-h-56  scrollbar-hide">
+                  <div
+                    className="overflow-y-auto  max-h-56  scrollbar-hide "
+                    onClick={handleClick}
+                  >
                     {navBarData.subscribed_communities &&
                       navBarData.subscribed_communities.map((menu, index) => (
                         <Link
