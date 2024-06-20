@@ -80,7 +80,7 @@ export default function ComunityCard({
                           <Link href={`/community/${id}`}>
                             {icon === "" ? (
                               <img
-                                src="/profile2.png"
+                                src="/default_community_profile.png"
                                 alt=""
                                 className="  w-16 h-16 sm:h-22  sm:w-22 md:h-24  md:w-24 rounded-full "
                               />

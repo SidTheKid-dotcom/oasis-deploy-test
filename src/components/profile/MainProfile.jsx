@@ -6,9 +6,8 @@ import UserEvents from "./options/UserEvents";
 import UserSaved from "./options/UserSaved";
 import FollowersCard from "./FollowersCard";
 
-import Links from "./prompts/Links";
-
 import ConfirmDelete from "./prompts/ConfirmDelete";
+import Link from "next/link";
 
 import { useState, useContext } from "react";
 import axios from "axios";
@@ -101,22 +100,22 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
     }
   };
 
-  const handleShowLinks = () => {
+  /* const handleShowLinks = () => {
     setShowLinks(true);
-  };
+  }; */
 
   return (
     <div className="px-5 flex flex-col min-h-[100vh] h-full text-white bg-black pixel-text">
       <Toaster />
       {/* Overlay to disable other components when Links is active */}
-      {showLinks && (
+      {/* {showLinks && (
         <div
           className="fixed top-0 left-0 z-50 w-full h-full overflow-hidden"
           style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
         >
           <Links links={userInfo.social_links} setShowLinks={setShowLinks} />
         </div>
-      )}
+      )} */}
       {userInfo.editable && confirmDelete.delete && (
         <div
           className="fixed top-0 left-0 z-50 w-full h-full overflow-hidden"
@@ -151,9 +150,15 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
           </div>
           {userInfo.editable ? (
             <div className="col-span-3 flex flex-col justify-center items-center">
-              <button className="m-2 px-4 py-2 border border-solid border-slate-100 rounded-xl bg-[#323741]">
-                Edit Profile
-              </button>
+              <Link href={{
+                pathname: `/profile/edit`, query: {
+                  userId: userInfo.id,
+                }
+              }} >
+                <button className="m-2 px-4 py-2 border border-solid border-slate-100 rounded-xl bg-[#323741]">
+                  Edit Profile
+                </button>
+              </Link>
             </div>
           ) : userInfo.amfollowing ? (
             <div className="col-span-3 flex flex-col justify-center items-center text-[1rem]">
@@ -181,11 +186,11 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
         <div className="mx-[1.5rem]">{userInfo.bio}</div>
       </section>
       <section className="grid grid-cols-3 gap-5 items-center md:mx-[1.5rem] md:my-[0.5rem]">
-        <div className="col-span-1 flex flex-row gap-2 font-extralight">
+        <div className="col-span-3 flex flex-row gap-2 font-extralight">
           <img src="/calendar-days-solid.svg" width="15px"></img>
-          Date joined: Missing
+          Date joined: {userInfo.created_at.split('T')[0]}
         </div>
-        <button
+        {/* <button
           onClick={handleShowLinks}
           className="col-span-1 p-2 w-[30%] flex flex-row gap-2 text-center self-center font-bold rounded-full"
         >
@@ -196,7 +201,7 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
             className="mt-[5px]"
           ></img>
           Links
-        </button>
+        </button> */}
         <button
           onClick={() => setSocialButton(!socialButton)}
           className="col-span-1 border border-blue-500 rounded-md p-1  lg:hidden"
@@ -258,9 +263,8 @@ const ProfileButton = ({ tag, index, activeIndex, setActiveIndex }) => {
   return (
     <button
       onClick={() => focusButton(index)}
-      className={`px-4 py-2 flex justify-center border rounded-full ${
-        activeIndex == index ? "bg-blue-500" : "border-slate-500"
-      }`}
+      className={`px-4 py-2 flex justify-center border rounded-full ${activeIndex == index ? "bg-blue-500" : "border-slate-500"
+        }`}
     >
       {tag}
     </button>

@@ -155,7 +155,7 @@ export default function MobileNav() {
                           >
                             {menu.community.icon === "" ? (
                               <img
-                                src={"/default_profile.jpg"}
+                                src={"/default_community_profile.png"}
                                 className="w-11 h-11 rounded-full bg-black "
                                 alt="Profile"
                                 size={25}

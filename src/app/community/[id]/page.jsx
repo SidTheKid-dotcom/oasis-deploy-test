@@ -90,9 +90,9 @@ export default function Page({ params }) {
             <div className="cursor-pointer">
               {community.banner === "" ? (
                 <img
-                  src="/default_banner.jpeg"
+                  src="/default_community_banner.png"
                   alt=""
-                  className="h-48 md:h-[270px] w-full"
+                  className="h-48 md:h-[270px] w-full bg-black"
                 />
               ) : (
                 <img
@@ -105,7 +105,7 @@ export default function Page({ params }) {
             <div className="flex justify-center cursor-pointer">
               {community.icon === "" ? (
                 <img
-                  src="/profile2.png"
+                  src="/default_community_profile.png"
                   alt=""
                   className="rounded-full h-20 w-20 md:h-28 md:w-28 z-20 absolute mt-[-9%] bg-black"
                 />
