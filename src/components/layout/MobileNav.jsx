@@ -87,6 +87,7 @@ export default function MobileNav() {
                       className={`my-auto pixel-text ml-2 ${
                         pathname === "/" ? "text-blue-500" : ""
                       }`}
+                      onClick={handleClick}
                     >
                       Home
                     </p>
@@ -125,6 +126,7 @@ export default function MobileNav() {
                       className={`my-auto pixel-text ml-2 ${
                         pathname === "/create/community" ? "text-blue-500" : ""
                       }`}
+                      onClick={handleClick}
                     >
                       new Commmnuity
                     </p>
