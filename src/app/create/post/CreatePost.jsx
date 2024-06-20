@@ -62,7 +62,7 @@ export default function CreatePost({ displayType, placeholders }) {
       })
       setTimeout(() => {
         setLoading(false);
-        router.push(`/profile/${navBarData.id}`);
+        router.back();
       }, 700)
       //navigate back to home page { useNavigate hook from react-router-dom } 
     } catch (error) {
@@ -76,7 +76,6 @@ export default function CreatePost({ displayType, placeholders }) {
     const fetchCommunities = async () => {
       try {
         //Extract the user token from the cookie
-        const token = localStorage.getItem('token');
         const response = await axios.get('https://oasis-api.xyz/api/community/all', {
           headers: {
             'Authorization': token,

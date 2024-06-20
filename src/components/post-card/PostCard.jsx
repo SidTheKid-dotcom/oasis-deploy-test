@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import ReactPlayer from "react-player";
 import axios from "axios";
+import Link from "next/link";
+
+import { formatDistanceToNow } from 'date-fns';
 
 import { useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/authContext";
@@ -112,10 +115,15 @@ const PostCard = ({ post, setPost, totalComments }) => {
               </figure>
             </div>
             <div className="col-span-6 text-md flex flex-col justify-center">
-              <div className="font-bold">{post.user.username}</div>
-              <div className="text-sm">
-                <i>@{post.community.name}</i>
-              </div>
+              <Link href={`/profile/${post.user.id}`}>
+                <div className="font-bold">{post.user.username}</div>
+              </Link>
+              <Link href={`/community/${post.community.id}`}>
+                <div className="text-[0.65rem]">
+                  <i>@{post.community.name}</i>
+                </div>
+              </Link>
+              <i className='text-gray-400 text-[0.65rem]'>&bull; {formatDistanceToNow(post.created_at, { addSuffix: true })}</i>
             </div>
             <div className="col-span-3 flex flex-col items-center text-[1rem]">
               {!post.isFollowing && post.user.id !== navBarData.id && (
@@ -131,8 +139,8 @@ const PostCard = ({ post, setPost, totalComments }) => {
           </div>
         </section>
         <section className="my-[10px] open-sans">
-          <div className="text-[1rem] open-sans">{post.title}</div>
-          <div className="text-[0.75rem] open-sans">{post.body}</div>
+          <div className="text-[1rem]">{post.title}</div>
+          <div className="text-[0.75rem]">{post.body}</div>
         </section>
         <section>
           {post.media_type ? (

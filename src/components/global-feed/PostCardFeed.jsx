@@ -5,6 +5,7 @@ import axios from "axios";
 import { useAuth } from "@/context/authContext";
 import { Toaster, toast } from 'sonner';
 import debounce from 'lodash/debounce';
+import { formatDistanceToNow } from 'date-fns';
 
 export default function PostCardFeed({
     loadMedia,
@@ -143,17 +144,18 @@ export default function PostCardFeed({
                                 />
                             </figure>
                         </div>
-                        <div className="col-span-6 text-md flex flex-col justify-center pixel-text">
+                        <div className="col-span-8 text-md flex flex-col justify-center pixel-text">
                             <Link href={`/profile/${post.user.id}`}>
                                 <div className="font-bold">{post.user.username}</div>
                             </Link>
                             <Link href={`/community/${post.community.id}`}>
-                                <div className="text-sm">
+                                <div className="text-[0.65rem]">
                                     <i>@{post.community.name}</i>
                                 </div>
                             </Link>
+                            <i className='text-gray-400 text-[0.65rem]'>&bull; {formatDistanceToNow(post.created_at, { addSuffix: true })}</i>
                         </div>
-                        <div className="col-span-3 flex flex-col items-center text-[0.8rem] md:text-[1rem]">
+                        <div className="col-span-1 flex flex-col items-center text-[0.8rem] md:text-[1rem]">
                             {!followingState && post.user.id !== navBarData.id && (
                                 <button onClick={toggleFollowUser} className=" p-2 px-3 w-[80px] md:w-[100px] bg-blue-500 rounded-[5px] pixel-text">
                                     Follow
