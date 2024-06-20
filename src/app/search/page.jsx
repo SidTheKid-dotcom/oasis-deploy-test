@@ -84,7 +84,7 @@ function SearchPage() {
     );
 
     return (
-        <div className="flex flex-col-reverse lg:grid grid-cols-12 pixel-text">
+        <div className="flex flex-col-reverse lg:grid grid-cols-12 pixel-text mb-[95%] md:mb-0 ">
             <div className="col-span-8 px-20">
                 {
                     displayPosts && searchData.posts.length > 0 ? (
