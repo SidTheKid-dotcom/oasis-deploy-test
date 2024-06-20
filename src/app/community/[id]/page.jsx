@@ -12,6 +12,12 @@ export default function Page({ params }) {
   const [community, setCommunity] = useState(null);
   const [isFollowing, setIsFollowing] = useState(false);
   const { token } = useAuth();
+
+  const [showFullDescription, setShowFullDescription] = useState(false);
+
+  const toggleDescription = () => {
+    setShowFullDescription(!showFullDescription);
+  };
   const handleFollowToggle = async () => {
     try {
       if (!isFollowing) {
@@ -206,12 +212,55 @@ export default function Page({ params }) {
             </div>
           </div>
         )}
-        <div className="text-white my-4 text-xs md:text-base open-sans">
+
+        {community && community.description.length > 200 ? (
+          <>
+            {showFullDescription ? (
+              <>
+                <p className=" text-white   mt-4 text-xs md:text-base open-sans">
+                  {community.description}
+                </p>
+
+                <button
+                  onClick={toggleDescription}
+                  className={`text-blue-500 underline ${
+                    community.posts.length > 0 ? "mb-0" : " mb-80"
+                  }`}
+                >
+                  Read Less
+                </button>
+              </>
+            ) : (
+              <>
+                <p className="text-white  mt-4 text-xs md:text-base open-sans">
+                  {community.description.slice(0, 200)}...
+                </p>
+
+                <button
+                  onClick={toggleDescription}
+                  className="text-blue-500 underline"
+                >
+                  Read More
+                </button>
+              </>
+            )}
+          </>
+        ) : (
+          <>
+            <p className=" text-white  mt-4 text-xs md:text-base open-sans">
+              {community && community.description}
+            </p>
+          </>
+        )}
+
+        {/* <div className="text-white my-4 text-xs md:text-base open-sans">
           {community && <p>{community.description}</p>}
-        </div>
+        </div> */}
       </div>
       {community && community.posts.length > 0 && (
-        <CommunityPosts posts={community.posts} />
+        <div className=" mt-4">
+          <CommunityPosts posts={community.posts} />
+        </div>
       )}
     </div>
   );
