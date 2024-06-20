@@ -4,6 +4,7 @@ import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import axios from "axios";
 import Posts from "@/components/global-feed/Post";
+import ComunityCard from "@/components/community/CommunityCard";
 
 function SearchPage() {
   const searchParams = useSearchParams();
@@ -105,15 +106,15 @@ function SearchPage() {
       <div className="col-span-8 lg:px-20">
         {displayPosts && searchData.posts.length > 0
           ? searchData.posts.map((post, index) => (
-              <Posts
-                key={index}
-                post={post}
-                isActive={false}
-                setActiveVideoId={setActiveVideoId}
-                muted={muted}
-                setMuted={setMuted}
-              />
-            ))
+            <Posts
+              key={index}
+              post={post}
+              isActive={false}
+              setActiveVideoId={setActiveVideoId}
+              muted={muted}
+              setMuted={setMuted}
+            />
+          ))
           : displayPosts && <NoResults message="No posts found." />}
         {displayUsers && searchData.users.length > 0 ? (
           <div className="flex flex-col gap-4 text-sm text-white bg-black">
@@ -152,18 +153,17 @@ function SearchPage() {
         )}
         {displayCommunities && searchData.communities.length > 0
           ? searchData.communities.map((community) => (
-              <div
-                key={community.id}
-                className="p-3 border border-slate-500 rounded-lg mb-4 bg-black"
-              >
-                <h1 className="text-xl font-bold text-white">
-                  {community.name}
-                </h1>
-                <p className="text-sm text-slate-400">
-                  {community.description}
-                </p>
-              </div>
-            ))
+            <ComunityCard
+              key={community.key}
+              icon={community.icon}
+              name={community.name}
+              description={community.description}
+              followers={community.no_of_subscribers}
+              type={community.type}
+              id={community.id}
+              following={community.isSubscribed}
+            />
+          ))
           : displayCommunities && <NoResults message="No communities found." />}
       </div>
       <div className="lg:block lg:col-span-4 lg:h-[250px] lg:mx-5 bg-black text-white lg:rounded-[30px] lg:p-5 px-3 py-2 pixel-text  my-10 ">
