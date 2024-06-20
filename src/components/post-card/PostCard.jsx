@@ -130,9 +130,9 @@ const PostCard = ({ post, setPost, totalComments }) => {
             <div className="col-span-1 flex flex-row justify-end"></div>
           </div>
         </section>
-        <section className="my-[10px]">
-          <div className="text-[0.75rem]">{post.title}</div>
-          <div className="text-[0.75rem]">{post.body}</div>
+        <section className="my-[10px] open-sans">
+          <div className="text-[1rem] open-sans">{post.title}</div>
+          <div className="text-[0.75rem] open-sans">{post.body}</div>
         </section>
         <section>
           {post.media_type ? (

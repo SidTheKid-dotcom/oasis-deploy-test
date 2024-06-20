@@ -51,7 +51,7 @@ export default function CommentFeed({ comments, setComments }) {
                 </figure>
               </div>
             ) : (
-              <div>{comment.comment}</div>
+              <div className="open-sans">{comment.comment}</div>
             )}
             <div className="flex flex-row gap-4">
               <button onClick={() => toggleReplyBox(index)}>Reply</button>

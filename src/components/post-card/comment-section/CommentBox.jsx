@@ -134,7 +134,7 @@ export default function CommentBox({ postId, setComments }) {
                                 placeholder="Add a comment"
                                 value={comment}
                                 onChange={(e) => handleChange(e)}
-                                className="bg-white w-full overflow-auto outline-none p-2 rounded-[10px] max-h-[200px]"
+                                className="bg-white w-full overflow-auto outline-none p-2 rounded-[10px] max-h-[200px] placeholder-font-pixel-text open-sans"
                                 rows="50"
                                 style={{ height: `${comment.split('\n').length * 20 + 20}px` }}
                             />

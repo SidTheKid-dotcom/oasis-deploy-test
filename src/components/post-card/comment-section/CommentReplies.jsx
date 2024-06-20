@@ -23,7 +23,7 @@ export default function CommentReplies({ replies }) {
                                 </div>
 
                             ) : (
-                                <div>{reply.comment}</div>
+                                <div className="open-sans">{reply.comment}</div>
                             )
                         }
                     </div>
