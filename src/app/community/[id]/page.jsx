@@ -98,7 +98,7 @@ export default function Page({ params }) {
                 <img
                   src={community.banner}
                   alt=""
-                  className="h-48 md:h-[270px] w-full"
+                  className="h-48 md:h-[270px] w-full object-cover"
                 />
               )}
             </div>
