@@ -67,7 +67,7 @@ export default function ComunityCard({
         className="my-4  rounded-lg border border-solid border-slate-600"
         key={key}
       >
-        <div className="  bg-black  p-3  opacity-95 rounded-3xl  ">
+        <div className="  bg-black  p-3  rounded-lg opacity-95 rounded-3xl  ">
           <div className=" my-4">
             <div className="mb-3">
               <div className="">
@@ -88,7 +88,7 @@ export default function ComunityCard({
                               <img
                                 src={icon}
                                 alt=""
-                                className=" md:h-24  md:w-24 h-16 w-16 sm:h-22 sm:w-22  rounded-full "
+                                className=" md:h-24  md:w-24 h-16 w-16 sm:h-22 sm:w-22  object-cover rounded-full "
                               />
                             )}
                           </Link>
@@ -106,9 +106,7 @@ export default function ComunityCard({
                                   </Link>
                                 </>
                               ) : (
-                                <>
-                                  {name}
-                                </>
+                                <>{name}</>
                               )}
                             </p>
                           </Link>
@@ -153,8 +151,9 @@ export default function ComunityCard({
                   </p>
                 </div>
                 <p
-                  className={` ml-4 text-white rounded-md my-auto border-[#767676] border-[1.5px]  p-1 md:text-[8px] sm:font-semibold px-2 text-[7px]   cursor-pointer pixel-text ${isfollowing ? "" : " bg-[#00B2FF]"
-                    }`}
+                  className={` ml-4 text-white rounded-md my-auto border-[#767676] border-[1.5px]  p-1 md:text-[8px] sm:font-semibold px-2 text-[7px]   cursor-pointer pixel-text ${
+                    isfollowing ? "" : " bg-[#00B2FF]"
+                  }`}
                   onClick={handleFollowToggle}
                 >
                   {isfollowing ? "Unsubscribe" : "Subscribe"}
@@ -172,9 +171,7 @@ export default function ComunityCard({
                   </Link>
                 </>
               ) : (
-                <>
-                  {description}
-                </>
+                <>{description}</>
               )}
             </p>
           </div>

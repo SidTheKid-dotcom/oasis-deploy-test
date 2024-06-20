@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useAuth } from "@/context/authContext";
 import CommunityPosts from "@/components/community/CommunityPosts";
 import axios from "axios";
+import { format } from "date-fns";
 export default function Page({ params }) {
   const [community, setCommunity] = useState(null);
   const [isFollowing, setIsFollowing] = useState(false);
@@ -118,7 +119,7 @@ export default function Page({ params }) {
               )}
             </div>
             <div className="flex justify-between mt-14 text-lg ">
-              <p className="font-bold text-[#00B2FF] pixel-text">
+              <p className="font-bold text-[#00B2FF]  md:text-xl pixel-text">
                 {community.name}
               </p>
               <div className="flex my-auto ml-3">
@@ -130,14 +131,26 @@ export default function Page({ params }) {
                 </p>
               </div>
             </div>
-            <div className=" flex">
-              <img
-                src={community.creator.profile_picture}
-                alt=""
-                className="  mr-2 my-auto rounded-full h-10 w-10"
-              />
-              <p className=" text-white my-auto pixel-text">
-                {community.creator.username}
+            <p className=" text-white my-auto mr-1 pixel-text text-xs  md:text-sm mt-4">
+              Created By{" "}
+            </p>
+            <div className=" flex justify-between">
+              <div>
+                <Link href={`/profile/${community.creator.id}`}>
+                  <div className=" flex my-2">
+                    <img
+                      src={community.creator.profile_picture}
+                      alt=""
+                      className="  mr-2 my-auto rounded-full h-10 w-10"
+                    />
+                    <p className=" text-white my-auto  text-base">
+                      {community.creator.username}
+                    </p>
+                  </div>
+                </Link>
+              </div>
+              <p className=" text-white my-auto  text-[10px] md:text-xs">
+                {format(new Date(community.created_at), "MMMM d, yyyy h:mm a")}
               </p>
             </div>
 
@@ -197,7 +210,9 @@ export default function Page({ params }) {
           {community && <p>{community.description}</p>}
         </div>
       </div>
-      {isFollowing && <CommunityPosts posts={community.posts} />}
+      {community && community.posts.length > 0 && (
+        <CommunityPosts posts={community.posts} />
+      )}
     </div>
   );
 }
