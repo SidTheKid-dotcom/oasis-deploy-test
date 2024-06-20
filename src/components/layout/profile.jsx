@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/authContext";
 
@@ -9,13 +9,30 @@ const Profile = () => {
   const profilepic = navBarData.profile_picture;
   const { logout } = useAuth();
 
+  const profileRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const handleProfileClick = () => {
     router.push(`/profile/${navBarData.id}`);
+    setIsOpen(false); // Close the profile dropdown when navigating to the profile
   };
 
   return (
-    <div className="my-auto w-16 mr-4 ml-4">
-      <div className="relative inline-block">
+    <div ref={profileRef} className="my-auto w-16 mr-4 ml-4 relative">
+      <div className="relative inline-block pixel-text ">
         <button
           className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-slate-100 ring-slate-100 transition hover:shadow-md hover:ring-2 overflow-hidden"
           onClick={() => setIsOpen(!isOpen)}
@@ -24,7 +41,7 @@ const Profile = () => {
         </button>
 
         {isOpen && (
-          <div className="absolute right-0 mt-3 flex w-60 flex-col gap-3 rounded-xl bg-slate-900 p-4 text-slate-100 shadow-lg pixel-text z-50">
+          <div className="absolute right-0 mt-3 flex w-60 flex-col gap-3 rounded-xl bg-slate-900 p-4 text-slate-100 shadow-lg z-50">
             <div className="flex gap-3 items-center">
               <div className="flex items-center justify-center rounded-lg h-12 w-12 overflow-hidden border-2 border-slate-600">
                 <img
@@ -45,11 +62,11 @@ const Profile = () => {
             <div className="border-t border-slate-500/30"></div>
             <div className="flex justify-around">
               <div className="flex flex-col items-center justify-center pixel-text">
-                <span className="text-3xl font-semibold">1</span>
+                <span className="text-3xl font-semibold">{navBarData.following}</span>
                 <span className="text-sm text-slate-400">Following</span>
               </div>
               <div className="flex flex-col items-center justify-center ">
-                <span className="text-3xl font-semibold">1</span>
+                <span className="text-3xl font-semibold">{navBarData.followers}</span>
                 <span className="text-sm text-slate-400">Followers</span>
               </div>
             </div>

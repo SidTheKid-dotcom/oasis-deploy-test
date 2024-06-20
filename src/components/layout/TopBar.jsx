@@ -17,7 +17,7 @@ export default function TopBar() {
     };
 
     return (
-        <div className="hidden md:flex justify-end sticky top-16">
+        <div className="hidden md:flex justify-end sticky top-16 z-50">
             {renderSearchBox ? (
                 <UserSearchBox onBlur={handleBlur} />
             ) : (
