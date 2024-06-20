@@ -29,9 +29,9 @@ export default function CommentFeed({ comments, setComments }) {
   return (
     <div className="flex flex-col gap-2  ">
       {comments.map((comment, index) => (
-        <div key={index} className="mt-[1rem] grid grid-cols-12">
+        <div key={index} className="mt-[1rem] grid grid-cols-12 gap-1">
           <div className="col-span-1 mb-[10px]">
-            <div className="cols-span-2 rounded-full h-full flex flex-col items-center justify-start">
+            <div className="rounded-full h-full flex flex-col items-center justify-start">
               <figure>
                 <img src="/github.svg" width="30px" height="30px"></img>
               </figure>
@@ -43,7 +43,7 @@ export default function CommentFeed({ comments, setComments }) {
           <div className="col-span-10">
             <div className="flex flex-row h-[30px] justify-start pixel-text">
               <div>{comment.comment_by.username}</div>
-              <div className="text-gray-400">&nbsp;&bull;&nbsp;{formatDistanceToNow(comment.created_at, { addSuffix: true })}</div>
+              <div className="text-gray-400 text-[0.75rem]">&nbsp;&bull;&nbsp;{formatDistanceToNow(comment.created_at, { addSuffix: true })}</div>
             </div>
             {comment.gif_url ? (
               <div className="max-w-[200px]">
@@ -54,7 +54,7 @@ export default function CommentFeed({ comments, setComments }) {
             ) : (
               <div className="open-sans py-2">{comment.comment}</div>
             )}
-            <div className="flex flex-row gap-4 text-[0.65rem] mt-1">
+            <div className="flex flex-row gap-4 text-[0.75rem] mt-1">
               <button onClick={() => toggleReplyBox(index)}>Reply</button>
               {comment.child_comments.length > 0 &&
                 <button

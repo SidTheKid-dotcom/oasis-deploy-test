@@ -57,7 +57,7 @@ export default function ReplyCommentBox({ parent_id, comments, setComments }) {
                 setGifURL(null);
                 toast('Comment Posted Successfully', {
                     position: 'top-right',
-                    className: 'bg-black text-white pixel-text border border-solid border-green-400',
+                    className: 'bg-black text-white pixel-text border border-solid border-green-400 placeholder-font-pixel-text open-sans',
                 })
             }
         }
@@ -136,7 +136,7 @@ export default function ReplyCommentBox({ parent_id, comments, setComments }) {
                 >
                     GIF
                 </button>
-                <div className="col-span-8 rounded-[15px] text-black">
+                <div className="col-span-8 rounded-[15px] text-black ">
                     {gifURL ? (
                         <div>
                             <img src={gifURL} className="w-full h-full" />
@@ -147,7 +147,7 @@ export default function ReplyCommentBox({ parent_id, comments, setComments }) {
                                 placeholder="Add a comment"
                                 value={comment}
                                 onChange={(e) => handleChange(e)}
-                                className="bg-white w-full overflow-auto outline-none p-2 rounded-[10px] max-h-[200px]"
+                                className="placeholder-font-pixel-text open-sans bg-white w-full overflow-auto outline-none p-2 rounded-[10px] max-h-[200px] "
                                 rows="50"
                                 style={{ height: `${comment.split('\n').length * 20 + 20}px` }}
                             />

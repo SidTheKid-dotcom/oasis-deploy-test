@@ -94,7 +94,7 @@ const PostCard = ({ post, setPost, totalComments }) => {
   return (
     <div>
       <Toaster />
-      <div className="px-[2rem] text-white flex flex-col w-full min-h-[100px] bg-black pixel-text ">
+      <div className="px-[1rem] md:px-[2rem] text-white flex flex-col w-full min-h-[100px] bg-black pixel-text ">
         <section>
           <div className="mt-[1rem] grid grid-cols-12 items-center">
             <div className="col-span-2 rounded-full overflow-hidden w-[50px] h-[50px] border border-solid border-white">

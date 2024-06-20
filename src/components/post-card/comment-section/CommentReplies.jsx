@@ -16,9 +16,9 @@ export default function CommentReplies({ replies }) {
                         </div>
                     </div>
                     <div className="col-span-10">
-                        <div className="flex flex-row h-[30px] justify-start pixel-text">
+                        <div className="flex flex-row h-[30px] justify-start pixel-text mb:[0.5rem]">
                             <div>{reply.comment_by.username}</div>
-                            <div className="text-gray-400">&nbsp;&bull;&nbsp;{formatDistanceToNow(reply.created_at, { addSuffix: true })}</div>
+                            <div className="text-gray-400 text-[0.75rem]">&nbsp;&bull;&nbsp;{formatDistanceToNow(reply.created_at, { addSuffix: true })}</div>
                         </div>
                         {
                             reply.gif_url ? (
