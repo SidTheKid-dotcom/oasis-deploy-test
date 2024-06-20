@@ -123,7 +123,7 @@ export default function MobileNav() {
                     <IoIosCreate className="my-auto" size={30} />
                     <p
                       className={`my-auto pixel-text ml-2 ${
-                        pathname === "/create/post" ? "text-blue-500" : ""
+                        pathname === "/create/community" ? "text-blue-500" : ""
                       }`}
                     >
                       new Commmnuity

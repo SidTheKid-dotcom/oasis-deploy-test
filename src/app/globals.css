@@ -10,21 +10,30 @@ body {
 }
 
 @font-face {
-  font-family: 'Pixel NES';
-  src: url('/fonts/Pixel_NES.otf') format('truetype');
+  font-family: "Pixel NES";
+  src: url("/fonts/Pixel_NES.otf") format("truetype");
   color: white;
 }
 
 .pixel-text {
-  font-family: 'Pixel NES', sans-serif;
+  font-family: "Pixel NES", sans-serif;
 }
 
-.scrollbar-hide {
+/* .scrollbar-hide {
   &::-webkit-scrollbar {
     display: none;
   }
   -ms-overflow-style: none; 
   scrollbar-width: none; 
+} */
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
 }
 
 .glassmorphism {
@@ -40,10 +49,9 @@ body {
   font-optical-sizing: auto;
   font-weight: bold;
   font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
+  font-variation-settings: "wdth" 100;
 }
 .placeholder-font-pixel-text::placeholder {
-  font-family: 'Pixel NES', sans-serif;
+  font-family: "Pixel NES", sans-serif;
   font-weight: 300;
 }
