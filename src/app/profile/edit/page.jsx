@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { BiSolidSend } from "react-icons/bi";
 import { Toaster, toast } from "sonner";
 import axios from "axios";
@@ -8,7 +8,7 @@ import { useAuth } from "@/context/authContext";
 import LoadingSpinner from "@/components/animations/LoadingSpinner";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function EditProfile({ params }) {
+function EditProfile() {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState({
         bio: "",
@@ -188,4 +188,12 @@ export default function EditProfile({ params }) {
             </div>
         </>
     );
+}
+
+export default function Page() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <EditProfile />
+        </Suspense>
+    )
 }
