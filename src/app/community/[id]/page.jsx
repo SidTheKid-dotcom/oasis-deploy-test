@@ -96,7 +96,7 @@ export default function Page({ params }) {
                 />
               ) : (
                 <img
-                  src={community.icon}
+                  src={community.banner}
                   alt=""
                   className="h-48 md:h-[270px] w-full"
                 />
