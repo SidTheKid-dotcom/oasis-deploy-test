@@ -31,7 +31,6 @@ function LayoutContent({ children }) {
         <TopBar />
         <MobileNav />
         <div style={{ height: "100%" }}>
-          {/* Set explicit height on parent */}
           <div className="overflow-y-auto scrollbar-hide  md:h-[85%] h-[790px]">
             {children}
           </div>

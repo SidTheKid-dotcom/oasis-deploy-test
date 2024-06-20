@@ -45,7 +45,7 @@ export default function ReplyCommentBox({ parent_id, comments, setComments }) {
                             // If found, create a new comment object with updated 'child_comments'
                             return {
                                 ...comment,
-                                child_comments: [...comment.child_comments, response.data.childComment]
+                                child_comments: [response.data.childComment, ...comment.child_comments]
                             };
                         }
                         return comment; // Return unchanged comment if not the target one

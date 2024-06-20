@@ -84,7 +84,7 @@ function SearchPage() {
     );
 
     return (
-        <div className="flex flex-col-reverse lg:grid grid-cols-12 pixel-text">
+        <div className="flex flex-col-reverse lg:grid grid-cols-12 pixel-text mb-[95%] md:mb-0 ">
             <div className="col-span-8 px-20">
                 {
                     displayPosts && searchData.posts.length > 0 ? (
@@ -132,7 +132,7 @@ function SearchPage() {
                         displayCommunities && <NoResults message="No communities found." />
                     )}
             </div>
-            <div className="lg:block lg:col-span-4 lg:h-[250px] bg-black text-white rounded-[30px] p-5 pixel-text mx-5 my-10">
+            <div className="lg:block lg:col-span-4 lg:h-[250px] lg:mx-5 bg-black text-white lg:rounded-[30px] lg:p-5 px-3 py-2 pixel-text  my-10 ">
                 <div className="hidden lg:block mb-5">
                     <h1 className="text-2xl font-bold">Search: {search}</h1>
                 </div>
@@ -146,7 +146,7 @@ function SearchPage() {
                             onChange={handleSearchTypeChange}
                             className="form-radio text-blue-500 h-4 w-4 mr-2"
                         />
-                        <span className="text-lg">Posts</span>
+                        <span className="text-md">Posts</span>
                     </label>
                     <label className="flex items-center">
                         <input
@@ -157,7 +157,7 @@ function SearchPage() {
                             onChange={handleSearchTypeChange}
                             className="form-radio text-blue-500 h-4 w-4 mr-2"
                         />
-                        <span className="text-lg">Users</span>
+                        <span className="text-md">Users</span>
                     </label>
                     <label className="flex items-center">
                         <input
@@ -168,7 +168,7 @@ function SearchPage() {
                             onChange={handleSearchTypeChange}
                             className="form-radio text-blue-500 h-4 w-4 mr-2"
                         />
-                        <span className="text-lg">Communities</span>
+                        <span className="text-md">Communities</span>
                     </label>
                 </div>
             </div>

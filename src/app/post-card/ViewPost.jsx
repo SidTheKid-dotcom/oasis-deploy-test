@@ -31,7 +31,7 @@ export default function ViewPost() {
           }
         );
         setPost(data);
-        setComments(data.comments);
+        setComments(data.comments.reverse());
 
       } catch (error) {
         console.error("Error occurred while fetching post state:", error);

@@ -35,7 +35,7 @@ export default function CommentBox({ postId, setComments }) {
             );
 
             if (response.status === 200) {
-                setComments(prev => [...prev, response.data._comment]);
+                setComments(prev => [response.data._comment, ...prev]);
                 setComment('');
                 setGifURL(null);
                 toast('Comment Posted Successfully', {

@@ -1,7 +1,12 @@
+import { formatDistanceToNow } from 'date-fns';
+
 export default function CommentReplies({ replies }) {
+
+    const reversedReplies = [...replies].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
     return (
         <div className="flex flex-col">
-            {replies.map((reply, index) => (
+            {reversedReplies.map((reply, index) => (
                 <div key={index} className="mt-[1rem] grid grid-cols-12 gap-1.5">
                     <div className="col-span-1 mb-[10px]">
                         <div className="cols-span-2 rounded-full h-full flex flex-col items-center justify-start">
@@ -11,8 +16,9 @@ export default function CommentReplies({ replies }) {
                         </div>
                     </div>
                     <div className="col-span-10">
-                        <div className="flex flex-col h-[30px] justify-center">
+                        <div className="flex flex-row h-[30px] justify-start pixel-text">
                             <div>{reply.comment_by.username}</div>
+                            <div className="text-gray-400">&nbsp;&bull;&nbsp;{formatDistanceToNow(reply.created_at, { addSuffix: true })}</div>
                         </div>
                         {
                             reply.gif_url ? (
@@ -23,7 +29,7 @@ export default function CommentReplies({ replies }) {
                                 </div>
 
                             ) : (
-                                <div>{reply.comment}</div>
+                                <div className="open-sans">{reply.comment}</div>
                             )
                         }
                     </div>

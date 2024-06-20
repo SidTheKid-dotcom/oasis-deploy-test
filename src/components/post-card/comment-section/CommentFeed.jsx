@@ -1,5 +1,5 @@
-import CommentBox from "./CommentBox";
 import CommentReplies from "./CommentReplies";
+import { formatDistanceToNow } from 'date-fns';
 
 import { useState } from "react";
 import ReplyCommentBox from "./ReplyCommentBox";
@@ -41,8 +41,9 @@ export default function CommentFeed({ comments, setComments }) {
             </div>
           </div>
           <div className="col-span-10">
-            <div className="flex flex-col h-[30px] justify-center">
+            <div className="flex flex-row h-[30px] justify-start pixel-text">
               <div>{comment.comment_by.username}</div>
+              <div className="text-gray-400">&nbsp;&bull;&nbsp;{formatDistanceToNow(comment.created_at, { addSuffix: true })}</div>
             </div>
             {comment.gif_url ? (
               <div className="max-w-[200px]">
@@ -51,16 +52,18 @@ export default function CommentFeed({ comments, setComments }) {
                 </figure>
               </div>
             ) : (
-              <div>{comment.comment}</div>
+              <div className="open-sans py-2">{comment.comment}</div>
             )}
-            <div className="flex flex-row gap-4">
+            <div className="flex flex-row gap-4 text-[0.65rem] mt-1">
               <button onClick={() => toggleReplyBox(index)}>Reply</button>
-              <button
-                onClick={() => toggleViewReplies(index)}
-                className="text-slate-400"
-              >
-                View Replies
-              </button>
+              {comment.child_comments.length > 0 &&
+                <button
+                  onClick={() => toggleViewReplies(index)}
+                  className="text-slate-400"
+                >
+                  View Replies
+                </button>
+              }
             </div>
             {openReplyBox[index] && (
               <div className="mt-[10px]">

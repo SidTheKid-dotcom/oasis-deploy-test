@@ -62,7 +62,7 @@ export default function CreatePost({ displayType, placeholders }) {
       })
       setTimeout(() => {
         setLoading(false);
-        router.push(`/profile/${navBarData.id}`);
+        router.back();
       }, 700)
       //navigate back to home page { useNavigate hook from react-router-dom } 
     } catch (error) {

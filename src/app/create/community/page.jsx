@@ -64,7 +64,7 @@ export default function CreateCommunity() {
     <>
       <Toaster />
       <div className="relative bg-black bg-opacity-80 md:bg-none md:bg-opacity-0 p-3 mx-3">
-        <p className="text-md md:text-2xl font-semibold text-[#00B2FF] md:px-11 mt-4 md:mt-2 mb-5 md:mb-0 pixel-text">
+        <p className="text-center text-md md:text-2xl font-semibold text-[#00B2FF] md:px-11 mt-4 md:mt-2 mb-5 md:mb-0 pixel-text">
           Create Community
         </p>
         {loading && (
@@ -91,19 +91,19 @@ export default function CreateCommunity() {
                   type="text"
                   placeholder="Name"
                   required
-                  className="bg-black p-2 rounded-md my-4 md:my-2 mt-7 w-full text-white placeholder-white"
+                  className="bg-black p-2 rounded-md my-4 md:my-2 mt-7 w-full text-white placeholder-white placeholder-font-pixel-text open-sans"
                   onChange={(e) => SetName(e.target.value)}
                 />
                 <textarea
                   placeholder="Description..."
                   required
-                  className="bg-black p-2 rounded-md my-2 w-full h-32 md:h-16 text-white placeholder-white"
+                  className="bg-black p-2 rounded-md my-2 w-full h-32 md:h-16 text-white placeholder-white placeholder-font-pixel-text open-sans"
                   onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
                 <div className="flex mb-16">
                   <select
                     required
-                    className="bg-black p-2 rounded-md my-4 md:my-2 w text-white"
+                    className="bg-black p-2 rounded-md my-4 md:my-2 w text-white pixel-text"
                     onChange={(e) => setVisibilty(e.target.value)}
                   >
                     <option value="" disabled selected hidden>
@@ -116,7 +116,7 @@ export default function CreateCommunity() {
                     className="flex text-white border-[1px] border-[#767676] p-1 my-auto rounded-md px-2 ml-9 hover:bg-[#00B2FF]"
                     type="submit"
                   >
-                    <p className="my-auto">Create </p>
+                    <p className="my-auto pixel-text">Create </p>
                     <BiSolidSend className="ml-2 my-auto" size={25} />
                   </button>
                 </div>

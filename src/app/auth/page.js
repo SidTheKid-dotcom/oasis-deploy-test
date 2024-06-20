@@ -14,7 +14,7 @@ function Auth() {
     }
   }, [token, router]);
 
-  return <div className="h-[100%] w-3/4">{token ? null : <LoginLayout />}</div>;
+  return <div className="h-[100%] sm:w-[95%] px-3 md:w-3/4">{token ? null : <LoginLayout />}</div>;
 }
 
 export default Auth;

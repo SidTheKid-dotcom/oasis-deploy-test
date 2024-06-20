@@ -96,7 +96,7 @@ export default function EditCommunity({ params }) {
         </div>
       )}
       <div className=" bg-black bg-opacity-80 md:bg-none md:bg-opacity-0 p-3 mx-3  ">
-        <p className=" text-md md:text-2xl font-semibold text-[#00B2FF] md:px-11  mt-4 md:mt-2 mb-5 md:mb-0 pixel-text ">
+        <p className=" text-center text-md md:text-2xl font-semibold text-[#00B2FF] md:px-11  mt-4 md:mt-2 mb-5 md:mb-0 pixel-text  ">
           Edit Community
         </p>
         <div className="  mt-3  md:w-[58%] md:mx-auto ">
@@ -121,21 +121,21 @@ export default function EditCommunity({ params }) {
                     placeholder="Name"
                     value={data.name}
                     required
-                    className=" bg-black p-2 rounded-md  my-4 md:my-2 mt-7 w-full text-white placeholder-white  "
+                    className=" bg-black p-2 rounded-md  my-4 md:my-2 mt-7 w-full text-white placeholder-white open-sans "
                     readOnly
                   />
                   <textarea
                     placeholder="Description..."
                     defaultValue={data.description}
                     required
-                    className="bg-black p-2 rounded-md my-2 w-full  text-xs h-32 md:h-16 text-white   placeholder-white "
+                    className="bg-black p-2 rounded-md my-2 w-full  text-xs h-32 md:h-16 text-white   placeholder-white open-sans"
                     onChange={(e) => setDescription(e.target.value)}
                   ></textarea>
                   <div className=" flex   mb-16 ">
                     <select
                       required
                       value={data.type}
-                      className="bg-black p-2 rounded-md my-4 md:my-2 w text-white"
+                      className="bg-black p-2 rounded-md my-4 md:my-2 w text-white pixel-text"
                       readOnly
                     >
                       <option value="" disabled hidden>
@@ -148,7 +148,7 @@ export default function EditCommunity({ params }) {
                       className=" flex  text-white border-[1px] border-[#767676] p-1  my-auto rounded-md px-2     ml-9 hover:bg-[#00B2FF]"
                       type="submit"
                     >
-                      <p className="   my-auto">Edit </p>
+                      <p className="   my-auto pixel-text">Edit </p>
                       <BiSolidSend className=" ml-2 my-auto" size={25} />
                     </button>
                   </div>
