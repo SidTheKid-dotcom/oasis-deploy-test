@@ -34,10 +34,11 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (!token) {
+    const storedToken = localStorage.getItem('token');
+    if (!storedToken) {
       router.push('/auth');
     }
-  }, [token, router]);
+  }, [localStorage.getItem('token')]);
 
   const fetchNavBarData = async () => {
     try {
