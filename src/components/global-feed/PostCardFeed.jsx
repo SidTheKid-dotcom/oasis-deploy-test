@@ -115,7 +115,7 @@ export default function PostCardFeed({
     }
   };
 
-  const toggleFollowUser = debounce(async () => {
+  /* const toggleFollowUser = debounce(async () => {
     try {
       await axios.post(
         "https://oasis-api.xyz/api/user/follow",
@@ -135,7 +135,7 @@ export default function PostCardFeed({
     } catch (error) {
       console.error("Error occurred while following user ", error);
     }
-  }, 300);
+  }, 300); */
 
   const togglePostLike = debounce(async () => {
     try {
@@ -219,14 +219,14 @@ export default function PostCardFeed({
               </i>
             </div>
             <div className="col-span-1 flex flex-col items-center  text-[8px] md:text-xs">
-              {!followingState && post.user.id !== navBarData.id && (
+              {/* {!followingState && post.user.id !== navBarData.id && (
                 <button
                   onClick={toggleFollowUser}
                   className=" p-2 md:py-2   md:px-3   bg-blue-500 rounded-[5px] pixel-text"
                 >
                   Follow
                 </button>
-              )}
+              )} */}
             </div>
             <div className="col-span-1 flex flex-col justify-center items-end text-[0.8rem] md:text-[1rem]">
               {amOnProfile && (
