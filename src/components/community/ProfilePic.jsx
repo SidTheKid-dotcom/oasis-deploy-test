@@ -16,11 +16,10 @@ export default function ProfilePic({ ProfileImage, setProfileImage }) {
         reader.onload = () => {
           setdisplayProfile(reader.result);
         };
+        reader.readAsDataURL(file);
       } else {
         alert("Unsupported file format");
       }
-
-      reader.readAsDataURL(file);
     },
     [ProfileImage]
   );

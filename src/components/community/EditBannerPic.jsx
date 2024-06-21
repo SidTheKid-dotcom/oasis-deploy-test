@@ -17,13 +17,12 @@ export default function EditBannerPic({ BannerImage, setBannerImage, banner }) {
         reader.onload = () => {
           setDisplayBanner(reader.result);
         };
+        reader.readAsDataURL(file);
       } else {
         alert("Unsupported file format");
       }
 
       // The reader is used to display the selected image on the DOM
-
-      reader.readAsDataURL(file);
     },
     [BannerImage]
   );

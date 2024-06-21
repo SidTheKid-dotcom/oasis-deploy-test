@@ -16,6 +16,7 @@ export default function BannerPic({ BannerImage, setBannerImage }) {
         reader.onload = () => {
           setDisplayBanner(reader.result);
         };
+        reader.readAsDataURL(file);
       } else {
         alert("Unsupported file format");
       }
