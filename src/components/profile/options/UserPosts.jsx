@@ -50,7 +50,9 @@ export default function UserPosts({ posts, setConfirmDelete, editable }) {
     <div>
       {editable && (
         <Link href={{ pathname: "/create/post" }}>
-          {/* <button className="p-2 border border-solid border-slate-400 bg-[#2a313d] font-[2rem] rounded-full">&nbsp;+ Create Post &nbsp;</button> */}
+          {/* <button className="p-2 border border-solid border-slate-400 bg-[#2a313d] font-[2rem] rounded-full">
+            &nbsp;+ Create Post &nbsp;
+          </button> */}
         </Link>
       )}
       <div className="mt-[1rem] w-full flex flex-col items-center overflow-hidden">

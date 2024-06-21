@@ -96,7 +96,8 @@ const Profile = () => {
                 <span>Profile</span>
               </div>
               <a
-                href="#"
+                href="https://docs.oasissocial.in/contactus"
+                target="_blank"
                 className="flex items-center gap-3 rounded-md py-2 px-3 hover:bg-slate-800"
               >
                 <svg
@@ -116,6 +117,37 @@ const Profile = () => {
                     Help Center
                   </a>
                 </span>
+              </a>
+              <a
+                href="https://docs.oasissocial.in/privacy"
+                target="_blank"
+                className="flex items-center gap-3 rounded-md py-2 px-3 hover:bg-slate-800"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-5 w-5"
+                >
+                  <path d="M12 2C7.58 2 4 4.87 4 8.5V11c0 3.62 2.64 6.99 7.42 10.57.34.27.8.27 1.14 0C17.36 17.99 20 14.62 20 11V8.5C20 4.87 16.42 2 12 2zm0 16c-4.19-3.13-6-5.96-6-7.5V8.5c0-2.25 2.69-4.5 6-4.5s6 2.25 6 4.5V10.5c0 1.54-1.81 4.37-6 7.5z" />
+                  <circle cx="12" cy="14" r="1.5" />
+                </svg>
+                <span>Privacy</span>
+              </a>
+              <a
+                href="https://docs.oasissocial.in/intro"
+                target="_blank"
+                className="flex items-center gap-3 rounded-md py-2 px-3 hover:bg-slate-800"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-5 w-5"
+                >
+                  <path d="M14.59 2.59c-.37-.37-.88-.59-1.41-.59H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8.82c0-.53-.21-1.04-.59-1.41L14.59 2.59zM13 9c0 .55-.45 1-1 1H8v2h4c.55 0 1 .45 1 1s-.45 1-1 1H8v2h4c.55 0 1 .45 1 1s-.45 1-1 1H8v2h8V8h-3V5h-2v4z" />
+                </svg>
+                <span>Docs</span>
               </a>
             </div>
             <button

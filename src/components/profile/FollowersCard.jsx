@@ -10,7 +10,7 @@ export default function FollowersCard({ username, followers, following }) {
       <div className="py-2">
         <section className="m-2 p-2 flex flex-row justify-around">
           <h1 className="font-bold text-xl">{username}</h1>
-          <div className="flex flex-row py-1 px-3 border border-solid border-white rounded-[30px]">
+          {/* <div className="flex flex-row py-1 px-3 border border-solid border-white rounded-[30px]">
             <button className="flex flex-row gap-2">
               <h1>Share</h1>
               <figure className="cursor-pointer mt-[5px]">
@@ -22,7 +22,7 @@ export default function FollowersCard({ username, followers, following }) {
                 ></img>
               </figure>
             </button>
-          </div>
+          </div> */}
         </section>
 
         <div className="h-[20px]"></div>

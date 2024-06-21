@@ -1,8 +1,9 @@
 import { useRouter } from "next/navigation";
 
-export default function DisplayUsers({ user }) {
+export default function DisplayUsers({ user, onBlur }) {
     const router = useRouter();
     const handleShowUserProfile = () => {
+        onBlur();
         router.push('/profile/' + user.id);
     }
 
