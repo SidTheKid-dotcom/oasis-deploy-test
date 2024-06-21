@@ -91,7 +91,7 @@ export default function UserSearchBox({ onBlur }) {
                     ) : users.length > 0 ? (
                         users.map((user) => (
                             <div key={user.id} className="border-b border-gray-700 py-2 px-4">
-                                <DisplayUsers user={user} />
+                                <DisplayUsers user={user} onBlur={onBlur} />
                             </div>
                         ))
                     ) : (

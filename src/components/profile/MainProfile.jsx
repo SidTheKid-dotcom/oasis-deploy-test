@@ -133,7 +133,7 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
         <div className="grid grid-cols-12 h-full">
           <div className="col-span-2 flex flex-col justify-center items-center">
             <div className="col-span-2 flex flex-col justify-center items-center">
-              <figure className="relative border border-white md:w-[6rem] md:h-[6rem] flex place-content-center rounded-full overflow-hidden">
+              <figure className="relative border border-white md:w-[6rem] md:h-[6rem] w-[5rem] h-[5rem] flex place-content-center rounded-full overflow-hidden">
                 <img
                   className="w-full object-cover"
                   src={userInfo.profile_picture}
