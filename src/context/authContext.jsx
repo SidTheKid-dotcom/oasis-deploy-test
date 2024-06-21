@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
     if (!storedToken) {
       router.push('/auth');
     }
-  }, [localStorage.getItem('token')]);
+  }, [token]);
 
   const fetchNavBarData = async () => {
     try {
