@@ -142,10 +142,10 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
             </div>
           </div>
           <div className="col-span-7 mt-[-10px] p-5 flex flex-col justify-center">
-            <div className="font-bold text-[1rem]">
+            <div className="font-bold text-[1.2rem]">
               {userInfo.username || <Skeleton />}
             </div>
-            <div className=" text-xs md:text-sm">
+            <div className=" text-xs md:text-sm font-style: italic">
               {userInfo.username || <Skeleton />}
             </div>
           </div>
@@ -186,12 +186,12 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
         </div>
         <div></div>
       </section>
-      <div className="col-span-3 flex flex-row gap-2 font-extralight text-[13px]  mb-2 md:ml-4">
+      <div className="col-span-3 flex flex-row gap-2 font-extralight text-[13px] mb-2 md:mx-4">
         <img src="/calendar-days-solid.svg" width="15px"></img>
         joined:{format(new Date(userInfo.created_at), "dd/MM/yy")}
       </div>
       <section>
-        <div className="mx-[1rem] break-words mt-2">
+        <div className="break-words my-2 md:mx-4">
           {userInfo.bio?.length > 100 ? (
             !showFullBio ? (
               <>
@@ -250,7 +250,7 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
         </div>
       )}
       <section>
-        <div className="flex flex-row gap-4 w-full mx-[1.35rem] my-[1rem]">
+        <div className="flex flex-row gap-4 w-full md:mx-[1.5rem] my-[1rem]">
           <ProfileButton
             tag={"Posts"}
             index={0}
