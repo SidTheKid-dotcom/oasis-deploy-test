@@ -145,7 +145,7 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
             <div className="font-bold text-[1rem]">
               {userInfo.username || <Skeleton />}
             </div>
-            <div className="text-[1rem]">
+            <div className=" text-xs md:text-sm">
               {userInfo.username || <Skeleton />}
             </div>
           </div>
