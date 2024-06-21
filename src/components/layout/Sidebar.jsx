@@ -29,7 +29,7 @@ export default function Sidebar() {
             <div className=" flex my-4">
               <IoMdHome className=" my-auto" size={30} />
               <p
-                className={`my-auto pixel-text ml-2 ${
+                className={`my-auto pixel-text  text-lg ml-2 ${
                   pathname === "/" ? "text-blue-500" : ""
                 }`}
               >
@@ -41,7 +41,7 @@ export default function Sidebar() {
             <div className=" flex my-4">
               <IoIosPeople className=" my-auto" size={30} />
               <p
-                className={`my-auto pixel-text ml-2 ${
+                className={`my-auto pixel-text text-lg ml-2 ${
                   pathname === "/communities" ? "text-blue-500" : ""
                 }`}
               >
@@ -53,7 +53,7 @@ export default function Sidebar() {
             <div className="flex my-4">
               <MdModeEdit className="my-auto" size={30} />
               <p
-                className={`my-auto pixel-text ml-2 ${
+                className={`my-auto pixel-text text-lg ml-2 ${
                   pathname === "/create/post" ? "text-blue-500" : ""
                 }`}
               >
@@ -65,7 +65,7 @@ export default function Sidebar() {
             <div className="flex my-4">
               <IoIosCreate className="my-auto" size={30} />
               <p
-                className={`my-auto pixel-text ml-2 ${
+                className={`my-auto   text-lg pixel-text ml-2 ${
                   pathname === "/create/community" ? "text-blue-500" : ""
                 }`}
               >
