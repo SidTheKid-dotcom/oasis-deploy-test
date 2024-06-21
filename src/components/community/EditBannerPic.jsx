@@ -33,7 +33,10 @@ export default function EditBannerPic({ BannerImage, setBannerImage, banner }) {
           />
         ) : (
           <div className="cursor-pointer">
-            <img src={banner} className=" h-48 md:h-[250px] w-full" />
+            <img
+              src={banner}
+              className=" h-48 object-cover md:h-[250px] w-full"
+            />
           </div>
         )}
       </section>
