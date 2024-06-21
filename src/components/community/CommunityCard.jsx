@@ -59,6 +59,11 @@ export default function ComunityCard({
         );
 
         setIsFollowing(false);
+        toast("Unsubscribed Community", {
+          position: "top-right",
+          className:
+            "bg-black text-white pixel-text border border-solid border-red-400",
+        });
       }
     } catch (error) {
       console.error("Error during follow toggle:", error);
@@ -156,8 +161,9 @@ export default function ComunityCard({
                   </p>
                 </div>
                 <p
-                  className={` ml-4 text-white rounded-md my-auto border-[#767676] border-[1.5px]  p-1 md:text-[8px] sm:font-semibold px-2 text-[7px]   cursor-pointer pixel-text ${isfollowing ? "" : " bg-[#00B2FF]"
-                    }`}
+                  className={` ml-4 text-white rounded-md my-auto border-[#767676] border-[1.5px]  p-1 md:text-[8px] sm:font-semibold px-2 text-[7px]   cursor-pointer pixel-text ${
+                    isfollowing ? "" : " bg-[#00B2FF]"
+                  }`}
                   onClick={handleFollowToggle}
                 >
                   {isfollowing ? "Unsubscribe" : "Subscribe"}
