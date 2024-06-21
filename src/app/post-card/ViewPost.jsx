@@ -45,7 +45,7 @@ export default function ViewPost() {
 
   return (
     <div>
-      {post ? <PostCard post={post} setPost={setPost} totalComments={comments.length}/> : <div>Loading...</div>}
+      {post ? <PostCard post={post} setPost={setPost} totalComments={comments.length} className=""/> : <div>Loading...</div>}
       <div className="my-[1rem] h-[0.25rem] bg-blue-500"></div>
       {post ? (
         <CommentSection postId={postId} comments={comments} setComments={setComments} />

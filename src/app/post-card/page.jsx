@@ -6,7 +6,7 @@ export default function ViewPostPage() {
     <Suspense fallback={<div>Loading...</div>}>
       <div
         class="px-[1rem] md:px-[3rem] lg:px-[8rem] mb-48
-             md:mb-0"
+             md:mb-0 overflow-hidden"
       >
         <ViewPost />
       </div>

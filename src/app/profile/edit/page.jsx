@@ -127,7 +127,7 @@ function EditProfile() {
                     <LoadingSpinner />
                 </div>
             )}
-            <div className="bg-black bg-opacity-80 md:bg-none md:bg-opacity-0 p-3 mx-3">
+            <div className="w-full bg-black bg-opacity-80 md:bg-none md:bg-opacity-0 p-3 mx-3">
                 <p className="text-center text-md md:text-2xl font-semibold text-[#00B2FF] md:px-11 mt-4 md:mt-2 mb-5 md:mb-0 pixel-text">
                     Edit Profile
                 </p>
@@ -170,7 +170,7 @@ function EditProfile() {
                                 name="bio"
                                 value={data.bio}
                                 required
-                                className="bg-black p-2 rounded-md my-2 w-full text-xs h-32 md:h-16 text-white placeholder-white open-sans"
+                                className="bg-black p-2 rounded-md my-2 w-full text-xs h-32 md:h-16 text-white placeholder-white open-sans placeholder-font-pixel-text open-sans"
                                 onChange={handleChange}
                             ></textarea>
                             <div className="flex mb-16">
