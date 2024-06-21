@@ -4,6 +4,7 @@ import { BeatLoader } from "react-spinners";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/authContext";
+import Link from "next/link";
 
 const BASE_URL = "https://oasis-api.xyz";
 
@@ -200,6 +201,15 @@ export default function Form() {
           <div className="mt-4 text-center">{message}</div>
         </div>
       )}
+      <Link href="https://docs.oasissocial.in/intro">
+      <div className="pixel-text text-[0.7rem] text-gray-400 text-center">Read about OASIS!!</div>
+      </Link>
+      <Link href="hhttps://docs.oasissocial.in/privacy">
+      <div className="mt-[10px] mb-[5px] text-center pixel-text text-[0.5rem] text-gray-400">Privacy</div>
+      </Link>
+      <Link href="https://docs.oasissocial.in/terms">
+      <div className="pixel-text text-center text-[0.5rem] text-gray-400">terms and conditions</div>
+      </Link>
     </div>
   );
 }
