@@ -10,15 +10,22 @@ export default function EditProfilePic({
   const onDrop = useCallback(
     async (acceptedFiles) => {
       const file = acceptedFiles[0];
-      setProfileImage(file);
+      const fileType = file.type;
 
-      const reader = new FileReader();
+      const isImage = fileType.startsWith("image/");
+      if (isImage) {
+        setProfileImage(file);
 
-      reader.onload = () => {
-        setdisplayProfile(reader.result);
-      };
+        const reader = new FileReader();
+        reader.onload = () => {
+          setdisplayProfile(reader.result);
+        };
 
-      reader.readAsDataURL(file);
+        reader.readAsDataURL(file);
+      } else {
+        setProfileImage(null);
+        alert("Unsupported file format");
+      }
     },
     [ProfileImage]
   );
@@ -35,11 +42,11 @@ export default function EditProfilePic({
               src={displayProfile.toString()}
               alt=""
               className="  rounded-full  w-20 h-20 md:w-28
-            md:h-28   z-20 absolute md:mt-[-13%]  mt-[-10%]     "
+            md:h-28   z-20 absolute md:mt-[-13%]  object-cover mt-[-10%]     "
             />
           </div>
         ) : (
-          <div className=" flex justify-center cursor-pointer">
+          <div className=" flex justify-center object-cover cursor-pointer">
             <img
               src={icon}
               alt=""

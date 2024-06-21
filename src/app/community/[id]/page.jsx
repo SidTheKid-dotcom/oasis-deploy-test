@@ -129,7 +129,7 @@ export default function Page({ params }) {
                 />
               )}
             </div>
-            <div className="flex justify-between mt-14 text-lg ">
+            <div className="flex justify-between mt-16 text-lg ">
               <p className="font-bold text-[#00B2FF]  md:text-xl pixel-text">
                 {community.name}
               </p>
