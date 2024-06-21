@@ -31,7 +31,7 @@ export default function ProfilePic({ ProfileImage, setProfileImage }) {
               src={displayProfile.toString()}
               alt=""
               className="  rounded-full  w-20 h-20 md:w-28
-            md:h-28   z-20 absolute md:mt-[-13%]  mt-[-10%]     "
+            md:h-28   z-20 absolute md:mt-[-13%]  object-cover mt-[-10%]     "
             />
           </div>
         ) : (
@@ -40,7 +40,7 @@ export default function ProfilePic({ ProfileImage, setProfileImage }) {
               src="/profile_upload.png"
               alt=""
               className=" rounded-full  bg-black border border-gray-400  w-20 h-20 md:w-28
-                md:h-28   z-20 absolute md:mt-[-13%]  mt-[-10%]    "
+                md:h-28   z-20 absolute md:mt-[-13%]  object-cover mt-[-10%]    "
             />
           </div>
         )}
