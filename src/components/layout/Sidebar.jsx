@@ -81,7 +81,7 @@ export default function Sidebar() {
               <p className=" my-auto pixel-text text-md ml-2">Subscriptions </p>
             </div>
 
-            <div className="overflow-y-auto  max-h-56  scrollbar-hide">
+            <div className="overflow-y-auto  max-h-44  scrollbar-hide">
               {navBarData.subscribed_communities &&
                 navBarData.subscribed_communities.map((menu, index) => (
                   <Link href={`/community/${menu.community.id}`} key={index}>
