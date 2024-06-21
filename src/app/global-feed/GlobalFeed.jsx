@@ -22,7 +22,7 @@ export default function GlobalFeed() {
   }, []);
 
   return (
-    <div className="w-full flex flex-col items-center overflow-hidden mb-[100%] md:mb-0 ">
+    <div className="bg-black bg-opacity-80 rounded-lg w-full flex flex-col items-center overflow-hidden mb-[100%] md:mb-0 ">
       {posts.map((post) => (
         <Posts key={post.id} post={post} muted={muted} setMuted={setMuted} amOnProfile={false} />
       ))}

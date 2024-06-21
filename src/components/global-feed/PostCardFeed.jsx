@@ -203,7 +203,7 @@ export default function PostCardFeed({
                             post.title
                         )}
                     </div>
-                    <div className="text-[0.75rem] break-words">
+                    <div className="text-[0.75rem] break-words post-card">
                         {post.body.length > 200 ? (
                             <>
                                 {post.body.slice(0, 200)}...

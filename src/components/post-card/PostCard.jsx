@@ -142,7 +142,7 @@ const PostCard = ({ post, setPost, totalComments }) => {
           </div>
         </section>
         <section className="my-[10px] open-sans flex flex-col gap-2">
-          <div className="text-[1rem] break-words">
+          <div className="text-[1rem] post-card break-word">
           {post.title.length > 40 ? (
               !showFullTitle ? (
                 <>
@@ -164,7 +164,7 @@ const PostCard = ({ post, setPost, totalComments }) => {
               post.body
             )}
           </div>
-          <div className="text-[0.75rem] break-words">
+          <div className="text-[0.75rem] post-card break-word">
             {post.body.length > 1000 ? (
               !showFullBody ? (
                 <>

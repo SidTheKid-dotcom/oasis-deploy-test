@@ -55,3 +55,10 @@ body {
   font-family: "Pixel NES", sans-serif;
   font-weight: 300;
 }
+
+.post-card,
+.comment-section {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}

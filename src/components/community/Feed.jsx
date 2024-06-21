@@ -33,7 +33,7 @@ export default function Feed() {
 
   return (
     <>
-      <div className="  mx-3 md:mx-0  mb-[70%] md:mb-0">
+      <div className="  mx-3 md:mx-0  mb-[70%] md:mb-0 bg-black bg-opacity-80">
         <div className="">
           {data.map((community) => (
             <ComunityCard
