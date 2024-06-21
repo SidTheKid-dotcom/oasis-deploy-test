@@ -161,7 +161,7 @@ const PostCard = ({ post, setPost, totalComments }) => {
 
               )
             ) : (
-              post.body
+              post.title
             )}
           </div>
           <div className="text-[0.75rem] post-card break-word">

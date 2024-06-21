@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-
 import EmojiPicker from 'emoji-picker-react';
 import GifPicker from "gif-picker-react";
 import { toast } from "sonner";
@@ -18,7 +17,10 @@ export default function CommentBox({ postId, setComments }) {
 
     const handlePostComment = async () => {
         try {
-
+            if (comment.length === 0 && gifURL === null) {
+                alert('Comment cannot be empty');
+                return;
+            }
             const response = await axios.post(
                 'https://oasis-api.xyz/api/post/comment',
                 {
@@ -88,7 +90,7 @@ export default function CommentBox({ postId, setComments }) {
     return (
         <div>
             {displayEmojiPicker && (
-                <div ref={emojiPickerRef} className="fixed top-[30%] left-[25%] z-index-99999999">
+                <div ref={emojiPickerRef} className={`fixed z-50 ${window.innerWidth < 640 ? 'bottom-[-40px] left-1/2 transform -translate-x-1/2' : 'top-1/3 left-1/4'}`}>
                     <EmojiPicker
                         onEmojiClick={handleEmojiClick}
                         emojiStyle="native"
@@ -99,14 +101,11 @@ export default function CommentBox({ postId, setComments }) {
                 </div>
             )}
             {displayGifPicker && (
-                <div ref={gifPickerRef} className="fixed top-[30%] left-[22%] z-index-99999999">
+                <div ref={gifPickerRef} className={`fixed z-50 ${window.innerWidth < 640 ? 'bottom-[-100px] left-1/2 transform -translate-x-1/2' : 'top-1/3 left-1/4'}`}>
                     <GifPicker
                         tenorApiKey={"AIzaSyB8irh6rYLNBmiOzVOiBkd8OPOpgdXVd_s"}
                         onGifClick={handleGifClick}
-                        onBlur={() => {
-                            setDisplayGifPicker(false);
-                            gifPickerRef.current.blur();
-                        }}
+                        onBlur={() => setDisplayGifPicker(false)}
                     />
                 </div>
             )}
@@ -128,28 +127,24 @@ export default function CommentBox({ postId, setComments }) {
                         <div>
                             <img src={gifURL} className="w-full h-full" />
                         </div>
-                    )
-                        : (
-                            <textarea
-                                placeholder="Add a comment"
-                                value={comment}
-                                onChange={(e) => handleChange(e)}
-                                className="bg-white w-full overflow-auto outline-none p-2 rounded-[10px] max-h-[200px] placeholder-font-pixel-text open-sans"
-                                rows="50"
-                                style={{ height: `${comment.split('\n').length * 20 + 20}px` }}
-                            />
-                        )
-                    }
+                    ) : (
+                        <textarea
+                            placeholder="Add a comment"
+                            value={comment}
+                            onChange={handleChange}
+                            className="bg-white w-full overflow-auto outline-none p-2 rounded-[10px] max-h-[200px] placeholder-font-pixel-text open-sans"
+                            rows="50"
+                            style={{ height: `${comment.split('\n').length * 20 + 20}px` }}
+                        />
+                    )}
                 </div>
                 <div className="col-span-2 flex flex-col gap-4">
-                    <button onClick={handlePostComment} className="p-2 bg-blue-500 rounded-[15px] max-h-[40px]">
-                        Post
+                    <button onClick={handlePostComment} className="p-2 bg-blue-500 rounded-[15px] max-h-[40px] flex flex-col items-center justify-center">
+                        <img src='/paper-plane-solid.svg' width='15px'></img>
                     </button>
-                    {
-                        gifURL && (
-                            <button onClick={handleRemoveGif} className="bg-red-400 p-2 rounded-[15px] max-h-[40px]">Discard GIF</button>
-                        )
-                    }
+                    {gifURL && (
+                        <button onClick={handleRemoveGif} className="bg-red-400 p-2 rounded-[15px] max-h-[40px] flex flex-col justify-center items-center"><img src='/trash-solid.svg' width='15px'></img></button>
+                    )}
                 </div>
             </div>
         </div>
