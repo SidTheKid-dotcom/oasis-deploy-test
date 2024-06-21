@@ -92,13 +92,13 @@ export default function ComunityCard({
                               <img
                                 src="/default_community_profile.png"
                                 alt=""
-                                className="  w-16 h-16 sm:h-22  sm:w-22 md:h-24  md:w-24 rounded-full "
+                                className="  w-16 h-16 sm:h-22 border border-white sm:w-22 md:h-24  md:w-24 rounded-full "
                               />
                             ) : (
                               <img
                                 src={icon}
                                 alt=""
-                                className=" md:h-24  md:w-24 h-16 w-16 sm:h-22 sm:w-22  object-cover rounded-full "
+                                className=" md:h-24  md:w-24 h-16 w-16 border border-white sm:h-22 sm:w-22  object-cover rounded-full "
                               />
                             )}
                           </Link>

@@ -186,7 +186,7 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
         </div>
         <div></div>
       </section>
-      <div className="col-span-3 flex flex-row gap-2 font-extralight text-[13px] mb-2 md:mx-4">
+      <div className="col-span-3 flex flex-row gap-2 font-extralight text-[13px] mb-2 md:mx-4 ">
         <img src="/calendar-days-solid.svg" width="15px"></img>
         joined:{format(new Date(userInfo.created_at), "dd/MM/yy")}
       </div>
@@ -269,7 +269,7 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
                     */}
         </div>
       </section>
-      <section className="mx-[1.32rem] mb-44 md:mb-0">
+      <section className="md:mx-[1.32rem] mb-44 md:mb-0">
         {ConditionalComponent && (
           <ConditionalComponent
             posts={userInfo.posts}

@@ -131,7 +131,7 @@ function EditProfile() {
                 <p className="text-center text-md md:text-2xl font-semibold text-[#00B2FF] md:px-11 mt-4 md:mt-2 mb-5 md:mb-0 pixel-text">
                     Edit Profile
                 </p>
-                <div className="mt-3 md:w-[58%] md:mx-auto">
+                <div className="mt-3 w-[90%] md:mx-auto">
                     <form onSubmit={handleSubmit}>
                         <div className="relative mb-10">
                             <div className="flex flex-col items-center">
@@ -197,3 +197,4 @@ export default function Page() {
         </Suspense>
     )
 }
+
