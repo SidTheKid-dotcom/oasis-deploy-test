@@ -56,15 +56,26 @@ export default function UserPosts({ posts, setConfirmDelete, editable }) {
         </Link>
       )}
       <div className="mt-[1rem] w-full flex flex-col items-center overflow-hidden">
-        {posts?.map((post) => (
-          <Posts
-            key={post.id}
-            post={post}
-            muted={muted}
-            setMuted={setMuted}
-            amOnProfile={editable}
-          />
-        ))}
+        {posts.length > 0 ? (
+          <>
+            {posts?.map((post) => (
+              <Posts
+                key={post.id}
+                post={post}
+                muted={muted}
+                setMuted={setMuted}
+                amOnProfile={editable}
+              />
+            ))}
+          </>
+        ) : (
+          <>
+            <div className="  flex justify-center flex-col items-center">
+              <img src="/no_content.png" alt="" className=" w-1/3" />
+              <p>No posts yet</p>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

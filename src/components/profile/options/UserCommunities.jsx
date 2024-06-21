@@ -33,35 +33,55 @@ export default function UserCommunities({ communities, editable }) {
           &nbsp;Joined&nbsp;
         </button>
       </div>
-      {activeIndex === 0
-        ? communities.created.map((community) => {
-            return (
-              <ComunityCard
-                key={community.key}
-                icon={community.icon}
-                name={community.name}
-                description={community.description}
-                followers={community.no_of_subscribers}
-                type={community.type}
-                id={community.id}
-                following={community.isSubscribed}
-              />
-            );
-          })
-        : communities.joined.map((community, index) => {
-            return (
-              <ComunityCard
-                key={community.key}
-                icon={community.icon}
-                name={community.name}
-                description={community.description}
-                followers={community.no_of_subscribers}
-                type={community.type}
-                id={community.id}
-                following={true}
-              />
-            );
-          })}
+      {activeIndex === 0 ? (
+        <div>
+          {communities.created.length > 0 ? (
+            communities.created.map((community) => {
+              return (
+                <ComunityCard
+                  key={community.key}
+                  icon={community.icon}
+                  name={community.name}
+                  description={community.description}
+                  followers={community.no_of_subscribers}
+                  type={community.type}
+                  id={community.id}
+                  following={true}
+                />
+              );
+            })
+          ) : (
+            <div className="flex justify-center mt-4 flex-col items-center pixel-text">
+              <img src="/no_content.png" alt="No content" className="w-1/3" />
+              <p>No Communities Created</p>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div>
+          {communities.joined.length > 0 ? (
+            communities.joined.map((community) => {
+              return (
+                <ComunityCard
+                  key={community.key}
+                  icon={community.icon}
+                  name={community.name}
+                  description={community.description}
+                  followers={community.no_of_subscribers}
+                  type={community.type}
+                  id={community.id}
+                  following={true}
+                />
+              );
+            })
+          ) : (
+            <div className="flex justify-center mt-4 flex-col items-center pixel-text">
+              <img src="/no_content.png" alt="No content" className="w-1/3" />
+              <p>No Communities Subscribed</p>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
