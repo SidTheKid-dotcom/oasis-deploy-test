@@ -14,7 +14,6 @@ export default function Top() {
         const response = await axios.get(
           "https://oasis-api.xyz/api/community/top"
         );
-        console.log(response.data);
         setSuggestions(response.data);
       } catch (error) {
         console.error("Error fetching suggestions:", error);

@@ -26,7 +26,6 @@ const PeopleYouMightKnow = () => {
             },
           }
         );
-        console.log(response.data);
         setSuggestions(response.data);
         setLoading(false);
       } catch (error) {
