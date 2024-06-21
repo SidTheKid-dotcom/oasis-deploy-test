@@ -20,6 +20,7 @@ export default function Posts({
     const playerRef = useRef(null);
     const [loadMedia, setLoadMedia] = useState(false);
     const [isActive, setIsActive] = useState(false);
+    const knownStates = useRef([]);
 
 
     const { token } = useAuth();
@@ -36,6 +37,7 @@ export default function Posts({
             setComments(response.data.comments);
             setLikedState(response.data.isLiked);
             setFollowingState(response.data.isFollowing);
+            knownStates.current.push(post.id);
         } catch (error) {
             console.log('Error occurred while fetching post state: ', error);
         }
@@ -47,7 +49,9 @@ export default function Posts({
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         setLoadMedia(true);
-                        fetchPostState();
+                        if (!knownStates.current.includes(post.id)) {
+                            fetchPostState();
+                        }
                         setIsActive(true);
                     } else {
                         setIsActive(false);
