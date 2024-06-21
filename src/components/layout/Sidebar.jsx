@@ -100,7 +100,7 @@ export default function Sidebar() {
                       {menu.community.icon === "" ? (
                         <img
                           src={"/default_community_profile.png"}
-                          className="w-11 h-11 rounded-full object-cover bg-black "
+                          className="w-11 h-11 rounded-full object-cover bg-black  overflow-hidden"
                           alt="Profile"
                           size={25}
                           round={true}

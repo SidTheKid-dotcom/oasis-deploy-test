@@ -37,19 +37,15 @@ const Profile = () => {
           className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-slate-100 ring-slate-100 transition hover:shadow-md hover:ring-2 overflow-hidden"
           onClick={() => setIsOpen(!isOpen)}
         >
-          <img
-            className=" object-cover  w-10 h-10 rounded-full bg-black"
-            src={profilepic}
-            alt="Profile"
-          />
+          <img className="w-full object-cover" src={profilepic} alt="Profile" />
         </button>
 
         {isOpen && (
           <div className="absolute right-0 mt-3 flex w-60 flex-col gap-3 rounded-xl bg-slate-900 p-4 text-slate-100 shadow-lg z-50">
             <div className="flex  items-center">
-              <div className="flex items-center justify-center overflow-hidden border-2 border-slate-600 w-10 h-10 rounded-full mr-3">
+              <div className=" mr-3">
                 <img
-                  className=" w-10 h-10 rounded-full object-cover"
+                  className=" rounded-full object-cover my-auto"
                   src={profilepic}
                   alt="Profile"
                 />
