@@ -44,7 +44,7 @@ export default function UserCommunities({ communities, editable }) {
                                 followers={community.no_of_subscribers}
                                 type={community.type}
                                 id={community.id}
-                                following={community.isSubscribed}
+                                following={true}
                             />
                         )
                     })

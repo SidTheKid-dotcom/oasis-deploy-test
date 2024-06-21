@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import ReactPlayer from 'react-player';
 import Link from 'next/link';
 import axios from "axios";
@@ -6,6 +6,8 @@ import { useAuth } from "@/context/authContext";
 import { Toaster, toast } from 'sonner';
 import debounce from 'lodash/debounce';
 import { formatDistanceToNow } from 'date-fns';
+
+import ConfirmDelete from '../profile/prompts/ConfirmDelete';
 
 export default function PostCardFeed({
     loadMedia,
@@ -21,9 +23,11 @@ export default function PostCardFeed({
     muted,
     setMuted,
     playerRef,
+    amOnProfile,
 }) {
     const { token, navBarData } = useAuth();
     const [toastRendered, setToastRendered] = useState(false);
+    const [confirmDelete, setConfirmDelete] = useState({ delete: false, postId: 0 });
 
     const toggleMute = () => setMuted(prevMuted => !prevMuted);
 
@@ -129,9 +133,26 @@ export default function PostCardFeed({
         }
     }, 300);
 
+    const handleDeletePost = async () => {
+        setConfirmDelete({
+            delete: true,
+            postId: post.id
+        })
+    };
+
     return (
         <div className="lazy-post-card w-full">
             <Toaster />
+            {
+                confirmDelete.delete && (
+                    <div className="absolute inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50">
+                        <ConfirmDelete
+                            postId={confirmDelete.postId}
+                            setConfirmDelete={setConfirmDelete}
+                        />
+                    </div>
+                )
+            }
             <div className="py-[1rem] px-[1rem] my-[0.5rem] rounded-lg bg-black text-white flex flex-col min-h-[100px] border border-solid border-slate-600">
                 <section>
                     <div className="my-[0.5rem] grid grid-cols-12 items-center">
@@ -162,13 +183,27 @@ export default function PostCardFeed({
                                 </button>
                             )}
                         </div>
-                        <div className="col-span-1 flex flex-row justify-end">
+                        <div className="col-span-1 flex flex-col justify-center items-end text-[0.8rem] md:text-[1rem]">
+                            {
+                                amOnProfile && (<button onClick={handleDeletePost} className=" p-2 px-3 w-[50px] bg-red-400 rounded-[5px] pixel-text flex flex-col justify-center items-center">
+                                    <img src='/trash-solid.svg' width='15px'></img>
+                                </button>
+                                )
+                            }
                         </div>
                     </div>
                 </section>
-                <section className="my-[10px] open-sans">
-                    <div className="text-[1rem]">{post.title}</div>
-                    <div className="text-[0.75rem]">
+                <section className="my-[10px] open-sans flex flex-col gap-2">
+                    <div className="text-[1rem] break-words">
+                        {post.title.length > 40 ? (
+                            <>
+                                {post.title.slice(0, 40)}...
+                            </>
+                        ) : (
+                            post.title
+                        )}
+                    </div>
+                    <div className="text-[0.75rem] break-words">
                         {post.body.length > 200 ? (
                             <>
                                 {post.body.slice(0, 200)}...

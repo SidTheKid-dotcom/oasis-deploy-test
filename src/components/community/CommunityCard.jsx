@@ -67,7 +67,7 @@ export default function ComunityCard({
         className="my-4  rounded-lg border border-solid border-slate-600"
         key={key}
       >
-        <div className="  bg-black  p-3  opacity-95 rounded-3xl  ">
+        <div className="  bg-black  p-3  rounded-lg opacity-95 rounded-3xl  ">
           <div className=" my-4">
             <div className="mb-3">
               <div className="">
@@ -88,15 +88,26 @@ export default function ComunityCard({
                               <img
                                 src={icon}
                                 alt=""
-                                className=" md:h-24  md:w-24 h-16 w-16 sm:h-22 sm:w-22  rounded-full "
+                                className=" md:h-24  md:w-24 h-16 w-16 sm:h-22 sm:w-22  object-cover rounded-full "
                               />
                             )}
                           </Link>
                         </div>
-                        <div className=" my-auto col-span-9">
+                        <div className=" my-auto col-span-9 break-words">
                           <Link href={`/community/${id}`}>
                             <p className=" pixel-text text-[#00B2FF] text-xs  font-bold   my-auto  ml-5 sm:ml-3  ">
-                              {name}
+                              {name.length > 200 ? (
+                                <>
+                                  {name.slice(0, 200)}...
+                                  <Link href={`/community/${id}`}>
+                                    <button className="text-blue-500 underline">
+                                      Read More
+                                    </button>
+                                  </Link>
+                                </>
+                              ) : (
+                                <>{name}</>
+                              )}
                             </p>
                           </Link>
                         </div>
@@ -149,8 +160,19 @@ export default function ComunityCard({
                 </p>
               </div>
             </div>
-            <p className="text-white open-sans text-xs  ml-1  mt-3 ">
-              {description}
+            <p className="text-white open-sans text-xs  ml-1  mt-3 break-words">
+              {description.length > 200 ? (
+                <>
+                  {description.slice(0, 200)}...
+                  <Link href={`/community/${id}`}>
+                    <button className="text-blue-500 underline">
+                      Read More
+                    </button>
+                  </Link>
+                </>
+              ) : (
+                <>{description}</>
+              )}
             </p>
           </div>
         </div>

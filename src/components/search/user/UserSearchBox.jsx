@@ -40,11 +40,15 @@ export default function UserSearchBox({ onBlur }) {
     }, [search]);
 
     const handleSearchRequest = () => {
-        if (searchBoxRef.current) {
-            searchBoxRef.current.blur();
-            searchBoxRef.current.value = "";
-        }
+        onBlur();
         router.push('/search?filter=' + search);
+    }
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            onBlur();
+            handleSearchRequest();
+        }
     }
 
     const handleChange = (value) => {
@@ -72,6 +76,7 @@ export default function UserSearchBox({ onBlur }) {
                     placeholder="Search"
                     className="w-full p-2 rounded-[5px] bg-slate-900"
                     onChange={(e) => handleChange(e.target.value)}
+                    onKeyDown={handleKeyDown}
                     value={search}
                     onFocus={() => console.log("Input focused")}
                 />

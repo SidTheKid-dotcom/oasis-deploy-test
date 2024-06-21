@@ -60,6 +60,7 @@ export default function UserPosts({ posts, setConfirmDelete, editable }) {
                         post={post}
                         muted={muted}
                         setMuted={setMuted}
+                        amOnProfile={editable}
                     />
                 ))}
             </div>
