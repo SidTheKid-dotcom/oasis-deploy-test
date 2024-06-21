@@ -107,7 +107,7 @@ export default function Sidebar() {
                         />
                       ) : (
                         <img
-                          className="w-11 h-11 rounded-full bg-black "
+                          className="w-11 h-11  object-cover rounded-full bg-black "
                           src={menu.community.icon}
                           alt="Profile"
                           size={25}
