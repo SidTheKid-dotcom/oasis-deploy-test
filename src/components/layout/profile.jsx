@@ -1,7 +1,7 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/authContext";
-
+import { format } from "date-fns";
 const Profile = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
@@ -42,19 +42,19 @@ const Profile = () => {
 
         {isOpen && (
           <div className="absolute right-0 mt-3 flex w-60 flex-col gap-3 rounded-xl bg-slate-900 p-4 text-slate-100 shadow-lg z-50">
-            <div className="flex gap-3 items-center">
-              <div className="flex items-center justify-center rounded-lg h-12 w-12 overflow-hidden border-2 border-slate-600">
+            <div className="flex  items-center">
+              <div className="flex items-center justify-center overflow-hidden border-2 border-slate-600 w-10 h-10 rounded-full mr-3">
                 <img
-                  className="w-full object-cover"
+                  className=" w-10 h-10 rounded-full object-cover"
                   src={profilepic}
                   alt="Profile"
                 />
               </div>
               <div>
-                <div className="flex gap-1 text-sm font-semibold pixel-text">
+                <div className="flex gap-1 text-[14px] font-semibold pixel-text">
                   <span>{navBarData.username}</span>
                 </div>
-                <div className="text-xs text-slate-400 pixel-text">
+                <div className="text-[10px] text-slate-400 ">
                   {navBarData.email}
                 </div>
               </div>
@@ -62,18 +62,22 @@ const Profile = () => {
             <div className="border-t border-slate-500/30"></div>
             <div className="flex justify-around">
               <div className="flex flex-col items-center justify-center pixel-text">
-                <span className="text-3xl font-semibold">{navBarData.following}</span>
+                <span className="text-3xl font-semibold">
+                  {navBarData.following}
+                </span>
                 <span className="text-sm text-slate-400">Following</span>
               </div>
               <div className="flex flex-col items-center justify-center ">
-                <span className="text-3xl font-semibold">{navBarData.followers}</span>
+                <span className="text-3xl font-semibold">
+                  {navBarData.followers}
+                </span>
                 <span className="text-sm text-slate-400">Followers</span>
               </div>
             </div>
             <div className="border-t border-slate-500/30"></div>
             <div className="flex flex-col">
               <div
-                className="flex items-center gap-3 rounded-md py-2 px-3 hover:bg-slate-800"
+                className="flex items-center gap-3 rounded-md py-2 px-3 hover:bg-slate-800 cursor-pointer"
                 onClick={handleProfileClick}
               >
                 <svg
@@ -107,7 +111,11 @@ const Profile = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span>Help Center</span>
+                <span>
+                  <a href="https://docs.oasissocial.in/contactus">
+                    Help Center
+                  </a>
+                </span>
               </a>
             </div>
             <button

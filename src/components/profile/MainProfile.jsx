@@ -8,7 +8,7 @@ import FollowersCard from "./FollowersCard";
 
 import ConfirmDelete from "./prompts/ConfirmDelete";
 import Link from "next/link";
-
+import { format } from "date-fns";
 import { useState, useContext } from "react";
 import axios from "axios";
 
@@ -146,17 +146,20 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
               {userInfo.username || <Skeleton />}
             </div>
             <div className="text-[1rem]">
-              u/{userInfo.username || <Skeleton />}
+              {userInfo.username || <Skeleton />}
             </div>
           </div>
           {userInfo.editable ? (
             <div className="col-span-3 flex flex-col justify-center items-center">
-              <Link href={{
-                pathname: `/profile/edit`, query: {
-                  userId: userInfo.id,
-                }
-              }} >
-                <button className="m-2 px-4 py-2 border border-solid border-slate-100 rounded-xl bg-[#323741]">
+              <Link
+                href={{
+                  pathname: `/profile/edit`,
+                  query: {
+                    userId: userInfo.id,
+                  },
+                }}
+              >
+                <button className="m-2 px-3 py-2  text-sm border border-solid border-slate-100 rounded-xl  hover:bg-blue-500">
                   Edit Profile
                 </button>
               </Link>
@@ -183,24 +186,33 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
         </div>
         <div></div>
       </section>
+      <div className="col-span-3 flex flex-row gap-2 font-extralight text-[13px] my-auto mb-2 md:ml-4">
+        <img src="/calendar-days-solid.svg" width="15px"></img>
+        joined:{format(new Date(userInfo.created_at), "dd/MM/yy")}
+      </div>
       <section>
-        <div className="mx-[1rem] break-words">
+        <div className="mx-[1rem] break-words mt-2">
           {userInfo.bio?.length > 100 ? (
             !showFullBio ? (
               <>
                 {userInfo.bio.slice(0, 100)}...
-                <button onClick={() => setShowFullBio(true)} className="text-blue-500 underline">
+                <button
+                  onClick={() => setShowFullBio(true)}
+                  className="text-blue-500 underline"
+                >
                   Read More
                 </button>
               </>
             ) : (
               <>
                 {userInfo.bio}
-                <button onClick={() => setShowFullBio(false)} className="text-blue-500 underline">
+                <button
+                  onClick={() => setShowFullBio(false)}
+                  className="text-blue-500 underline"
+                >
                   Show Less
                 </button>
               </>
-
             )
           ) : (
             userInfo.bio
@@ -208,10 +220,6 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
         </div>
       </section>
       <section className="grid grid-cols-3 gap-5 items-center md:mx-[1.5rem] md:my-[0.5rem]">
-        <div className="col-span-3 flex flex-row gap-2 font-extralight">
-          <img src="/calendar-days-solid.svg" width="15px"></img>
-          Date joined: {userInfo.created_at.split('T')[0]}
-        </div>
         {/* <button
           onClick={handleShowLinks}
           className="col-span-1 p-2 w-[30%] flex flex-row gap-2 text-center self-center font-bold rounded-full"
@@ -285,8 +293,9 @@ const ProfileButton = ({ tag, index, activeIndex, setActiveIndex }) => {
   return (
     <button
       onClick={() => focusButton(index)}
-      className={`px-4 py-2 flex justify-center border rounded-full ${activeIndex == index ? "bg-blue-500" : "border-slate-500"
-        }`}
+      className={`px-3 py-2 text-sm flex justify-center border rounded-md ${
+        activeIndex == index ? "bg-blue-500" : "border-slate-500"
+      }`}
     >
       {tag}
     </button>

@@ -186,8 +186,8 @@ export default function Page({ params }) {
                 </div>
 
                 <p
-                  className={`text-white rounded-md my-auto md:p-2 border-[#767676] border-[1.5px] p-1 sm:font-semibold px-1 md:px-2 text-[0.5rem] md:text-[10px] text-center cursor-pointer pixel-text ${
-                    isFollowing ? "" : " bg-[#00B2FF]"
+                  className={`text-white rounded-md my-auto md:p-2 border-[#767676] border-[1.5px] p-1  px-1 py-2 md:px-2 text-[0.5rem] md:text-[11px] text-center cursor-pointer pixel-text ${
+                    isFollowing ? "" : " bg-blue-500"
                   }`}
                   onClick={handleFollowToggle}
                 >
