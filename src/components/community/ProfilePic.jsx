@@ -6,13 +6,19 @@ export default function ProfilePic({ ProfileImage, setProfileImage }) {
   const onDrop = useCallback(
     async (acceptedFiles) => {
       const file = acceptedFiles[0];
-      setProfileImage(file);
+      const fileType = file.type;
+      const isImage = fileType.startsWith("image/");
 
-      const reader = new FileReader();
+      if (isImage) {
+        setProfileImage(file);
+        const reader = new FileReader();
 
-      reader.onload = () => {
-        setdisplayProfile(reader.result);
-      };
+        reader.onload = () => {
+          setdisplayProfile(reader.result);
+        };
+      } else {
+        alert("Unsupported file format");
+      }
 
       reader.readAsDataURL(file);
     },

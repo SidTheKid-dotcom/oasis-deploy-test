@@ -7,13 +7,20 @@ export default function BannerPic({ BannerImage, setBannerImage }) {
   const onDrop = useCallback(
     async (acceptedFiles) => {
       const file = acceptedFiles[0];
-      setBannerImage(file);
-      // The reader is used to display the selected image on the DOM
-      const reader = new FileReader();
+      const fileType = file.type;
+      const isImage = fileType.startsWith("image/");
+      if (isImage) {
+        setBannerImage(file);
+        const reader = new FileReader();
 
-      reader.onload = () => {
-        setDisplayBanner(reader.result);
-      };
+        reader.onload = () => {
+          setDisplayBanner(reader.result);
+        };
+      } else {
+        alert("Unsupported file format");
+      }
+
+      // The reader is used to display the selected image on the DOM
 
       reader.readAsDataURL(file);
     },
