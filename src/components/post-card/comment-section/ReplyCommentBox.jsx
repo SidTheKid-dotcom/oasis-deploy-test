@@ -1,28 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-
 import EmojiPicker from 'emoji-picker-react';
 import GifPicker from "gif-picker-react";
 import { useAuth } from "@/context/authContext";
-
 import { toast } from "sonner";
 
 export default function ReplyCommentBox({ parent_id, comments, setComments }) {
-
     const [comment, setComment] = useState('');
-
     const [displayEmojiPicker, setDisplayEmojiPicker] = useState(false);
     const [displayGifPicker, setDisplayGifPicker] = useState(false);
     const [gifURL, setGifURL] = useState(null);
-
     const emojiPickerRef = useRef(null);
     const gifPickerRef = useRef(null);
-
     const { token } = useAuth();
 
     const handlePostComment = async () => {
-
         try {
+            if(comment.length === 0 && gifURL === null) {
+                alert('Comment cannot be empty');
+                return;
+            }
             const response = await axios.post('https://oasis-api.xyz/api/post/childComment', {
                 parent_id: parent_id,
                 comment: comment,
@@ -33,24 +30,20 @@ export default function ReplyCommentBox({ parent_id, comments, setComments }) {
                         'Authorization': token,
                         'Content-Type': 'application/json'
                     }
-                })
-
+                });
 
             if (response.status === 200) {
-
                 setComments(prevComments => {
-                    // Find the comment with the given parentId
                     const updatedComments = prevComments.map(comment => {
                         if (comment.id === parent_id) {
-                            // If found, create a new comment object with updated 'child_comments'
                             return {
                                 ...comment,
                                 child_comments: [response.data.childComment, ...comment.child_comments]
                             };
                         }
-                        return comment; // Return unchanged comment if not the target one
+                        return comment;
                     });
-                    return updatedComments; // Return the updated comments array
+                    return updatedComments;
                 });
 
                 setComment('');
@@ -58,24 +51,25 @@ export default function ReplyCommentBox({ parent_id, comments, setComments }) {
                 toast('Comment Posted Successfully', {
                     position: 'top-right',
                     className: 'bg-black text-white pixel-text border border-solid border-green-400 placeholder-font-pixel-text open-sans',
-                })
+                });
             }
-        }
-        catch (error) {
+        } catch (error) {
             console.log('error in posting comment: ', error);
         }
-    }
+    };
 
     useEffect(() => {
-        // Add event listener to close EmojiPicker when clicking outside
         function handleClickOutside(event) {
             if (emojiPickerRef.current && !emojiPickerRef.current.contains(event.target)) {
                 setDisplayEmojiPicker(false);
             }
+            if (gifPickerRef.current && !gifPickerRef.current.contains(event.target)) {
+                setDisplayGifPicker(false);
+                gifPickerRef.current.blur();
+            }
         }
-        // Bind the event listener
+
         document.addEventListener("mousedown", handleClickOutside);
-        // Unbind the event listener on cleanup
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
@@ -92,16 +86,16 @@ export default function ReplyCommentBox({ parent_id, comments, setComments }) {
     const handleGifClick = (gif) => {
         setGifURL(gif.url);
         setComment('');
-    }
+    };
 
     const handleRemoveGif = () => {
         setGifURL(null);
-    }
+    };
 
     return (
         <div>
             {displayEmojiPicker && (
-                <div ref={emojiPickerRef} className="fixed top-0 left-0 z-index-99999999">
+                <div ref={emojiPickerRef} className={`fixed z-50 ${window.innerWidth < 640 ? 'bottom-[-40px] left-1/2 transform -translate-x-1/2' : 'top-1/3 left-1/4'}`}>
                     <EmojiPicker
                         onEmojiClick={handleEmojiClick}
                         emojiStyle="native"
@@ -112,7 +106,7 @@ export default function ReplyCommentBox({ parent_id, comments, setComments }) {
                 </div>
             )}
             {displayGifPicker && (
-                <div ref={gifPickerRef} className="fixed top-0 left-0 z-index-99999999">
+                <div ref={gifPickerRef} className={`fixed z-50 ${window.innerWidth < 640 ? 'bottom-[-100px] left-1/2 transform -translate-x-1/2' : 'top-1/3 left-1/4'}`}>
                     <GifPicker
                         tenorApiKey={"AIzaSyB8irh6rYLNBmiOzVOiBkd8OPOpgdXVd_s"}
                         onGifClick={handleGifClick}
@@ -136,33 +130,31 @@ export default function ReplyCommentBox({ parent_id, comments, setComments }) {
                 >
                     GIF
                 </button>
-                <div className="col-span-8 rounded-[15px] text-black ">
+                <div className="col-span-8 rounded-[15px] text-black">
                     {gifURL ? (
                         <div>
                             <img src={gifURL} className="w-full h-full" />
                         </div>
-                    )
-                        : (
-                            <textarea
-                                placeholder="Add a comment"
-                                value={comment}
-                                onChange={(e) => handleChange(e)}
-                                className="placeholder-font-pixel-text open-sans bg-white w-full overflow-auto outline-none p-2 rounded-[10px] max-h-[200px] "
-                                rows="50"
-                                style={{ height: `${comment.split('\n').length * 20 + 20}px` }}
-                            />
-                        )
-                    }
+                    ) : (
+                        <textarea
+                            placeholder="Add a comment"
+                            value={comment}
+                            onChange={(e) => handleChange(e)}
+                            className="placeholder-font-pixel-text open-sans bg-white w-full overflow-auto outline-none p-2 rounded-[10px] max-h-[200px]"
+                            rows="50"
+                            style={{ height: `${comment.split('\n').length * 20 + 20}px` }}
+                        />
+                    )}
                 </div>
                 <div className="col-span-2 flex flex-col gap-4">
-                    <button onClick={handlePostComment} className="p-2 bg-blue-500 rounded-[15px] max-h-[40px]">
-                        Post
+                    <button onClick={handlePostComment} className="p-2 bg-blue-500 rounded-[15px] max-h-[40px] flex flex-col items-center justify-center">
+                        <img src='/paper-plane-solid.svg' width='15px'></img>
                     </button>
-                    {
-                        gifURL && (
-                            <button onClick={handleRemoveGif} className="bg-red-400 p-2 rounded-[15px] max-h-[40px]">Discard GIF</button>
-                        )
-                    }
+                    {gifURL && (
+                        <button onClick={handleRemoveGif} className="bg-red-400 p-2 rounded-[15px] max-h-[40px] flex flex-col items-center justify-center">
+                            <img src='/trash-solid.svg' width='15px'></img>
+                        </button>
+                    )}
                 </div>
             </div>
         </div>
