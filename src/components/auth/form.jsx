@@ -204,7 +204,7 @@ export default function Form() {
       <Link href="https://docs.oasissocial.in/intro">
       <div className="pixel-text text-[0.7rem] text-gray-400 text-center">Read about OASIS!!</div>
       </Link>
-      <Link href="hhttps://docs.oasissocial.in/privacy">
+      <Link href="https://docs.oasissocial.in/privacy">
       <div className="mt-[10px] mb-[5px] text-center pixel-text text-[0.5rem] text-gray-400">Privacy</div>
       </Link>
       <Link href="https://docs.oasissocial.in/terms">

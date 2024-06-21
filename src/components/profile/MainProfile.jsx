@@ -186,7 +186,7 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
         </div>
         <div></div>
       </section>
-      <div className="col-span-3 flex flex-row gap-2 font-extralight text-[13px] my-auto mb-2 md:ml-4">
+      <div className="col-span-3 flex flex-row gap-2 font-extralight text-[13px]  mb-2 md:ml-4">
         <img src="/calendar-days-solid.svg" width="15px"></img>
         joined:{format(new Date(userInfo.created_at), "dd/MM/yy")}
       </div>
