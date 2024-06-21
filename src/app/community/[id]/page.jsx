@@ -104,7 +104,7 @@ export default function Page({ params }) {
                 <img
                   src="/default_community_banner.png"
                   alt=""
-                  className="h-48 md:h-[270px] w-full bg-black"
+                  className="h-48 md:h-[270px] object-cover w-full bg-black"
                 />
               ) : (
                 <img
@@ -119,13 +119,13 @@ export default function Page({ params }) {
                 <img
                   src="/default_community_profile.png"
                   alt=""
-                  className="rounded-full h-20 w-20 md:h-28 md:w-28 z-20 absolute mt-[-9%]    bg-black"
+                  className="rounded-full h-20 w-20 md:h-28 md:w-28 z-20 absolute mt-[-9%]  object-cover   bg-black"
                 />
               ) : (
                 <img
                   src={community.icon}
                   alt=""
-                  className="rounded-full h-20 w-20 md:h-28 md:w-28 z-20 absolute mt-[-9%] bg-black"
+                  className="rounded-full h-20 w-20 md:h-28 md:w-28 z-20 absolute mt-[-9%] object-cover bg-black"
                 />
               )}
             </div>

@@ -43,7 +43,7 @@ export default function EditProfilePic({
             <img
               src={icon}
               alt=""
-              className=" rounded-full   w-20 h-20 md:w-28
+              className=" rounded-full   object-cover w-20 h-20 md:w-28
                 md:h-28   z-20 absolute md:mt-[-13%]  mt-[-10%]    "
             />
           </div>
