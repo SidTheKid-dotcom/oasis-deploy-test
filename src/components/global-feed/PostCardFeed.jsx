@@ -50,6 +50,7 @@ export default function PostCardFeed({
                             url={post.media}
                             muted={muted}
                             playing={isActive}
+                            loop={true}
                             width="100%"
                             height="100%"
                             ref={playerRef}

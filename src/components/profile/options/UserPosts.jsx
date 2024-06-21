@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default function UserPosts({ posts, setConfirmDelete, editable }) {
 
-    const [muted, setMuted] = useState(true);
+    const [muted, setMuted] = useState(false);
 
     /* useEffect(() => {
         const updateUserPosts = async () => {
