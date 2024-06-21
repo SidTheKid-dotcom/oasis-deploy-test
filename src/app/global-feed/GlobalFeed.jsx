@@ -7,6 +7,7 @@ import Posts from "../../components/global-feed/Post";
 export default function GlobalFeed() {
   const [posts, setPosts] = useState([]);
   const [muted, setMuted] = useState(true);
+  const [volume, setVolume] = useState(1);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -24,7 +25,14 @@ export default function GlobalFeed() {
   return (
     <div className="w-full flex flex-col items-center overflow-hidden mb-[100%] md:mb-0 ">
       {posts.map((post) => (
-        <Posts key={post.id} post={post} muted={muted} setMuted={setMuted} amOnProfile={false} />
+        <Posts
+          key={post.id}
+          post={post}
+          muted={muted}
+          setMuted={setMuted}
+          volume={volume}
+          setVolume={setVolume}
+          amOnProfile={false} />
       ))}
     </div>
   );

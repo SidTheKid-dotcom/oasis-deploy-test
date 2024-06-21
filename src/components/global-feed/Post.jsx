@@ -3,18 +3,25 @@ import axios from 'axios';
 import PostCardFeed from './PostCardFeed';
 import { useAuth } from "@/context/authContext";
 
-export default function Posts({ post, muted, setMuted, amOnProfile }) {
+export default function Posts({
+    post,
+    muted,
+    setMuted,
+    volume,
+    setVolume,
+    amOnProfile
+}) {
     const [likedState, setLikedState] = useState(null);
     const [followingState, setFollowingState] = useState(null);
     const [likes, setLikes] = useState(0);
     const [comments, setComments] = useState(0);
-    
+
     const postRef = useRef(null);
     const playerRef = useRef(null);
     const [loadMedia, setLoadMedia] = useState(false);
     const [isActive, setIsActive] = useState(false);
 
-    
+
     const { token } = useAuth();
 
     const fetchPostState = async () => {
@@ -86,6 +93,8 @@ export default function Posts({ post, muted, setMuted, amOnProfile }) {
                 isActive={isActive}
                 muted={muted}
                 setMuted={setMuted}
+                volume={volume}
+                setVolume={setVolume}
                 playerRef={playerRef}
                 amOnProfile={amOnProfile}
             />

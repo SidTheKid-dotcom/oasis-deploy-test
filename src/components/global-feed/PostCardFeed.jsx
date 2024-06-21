@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import Link from 'next/link';
 import axios from "axios";
@@ -22,6 +22,8 @@ export default function PostCardFeed({
     isActive,
     muted,
     setMuted,
+    volume,
+    setVolume,
     playerRef,
     amOnProfile,
 }) {
@@ -29,7 +31,34 @@ export default function PostCardFeed({
     const [toastRendered, setToastRendered] = useState(false);
     const [confirmDelete, setConfirmDelete] = useState({ delete: false, postId: 0 });
 
-    const toggleMute = () => setMuted(prevMuted => !prevMuted);
+    //const toggleMute = () => setMuted(prevMuted => !prevMuted);
+
+    useEffect(() => {
+        const volumeInitializer = () => {
+            const player = playerRef.current?.getInternalPlayer();
+
+            console.log('yolo ', post.id, ' ', loadMedia, ' ', player);
+
+            const handleVolumeChange = () => {
+                if (player?.muted || player?.volume === 0) {
+                    setMuted(true);
+                } else {
+                    setMuted(false);
+                    setVolume(player?.volume);
+                }
+            };
+
+            player?.addEventListener('volumechange', handleVolumeChange);
+
+            // Cleanup the event listener on component unmount
+            return () => {
+                player?.removeEventListener('volumechange', handleVolumeChange);
+            };
+        };
+
+        setTimeout(volumeInitializer, 1000);
+
+    }, [loadMedia]);
 
     const renderMedia = () => {
         if (!loadMedia || !post.media_type) return <div className="w-full h-full bg-gray-300 animate-pulse" />;
@@ -38,9 +67,9 @@ export default function PostCardFeed({
             return (
                 <div>
                     <div>
-                        <button onClick={e => e.stopPropagation() || toggleMute()} className='pixel-text'>
+                        {/* <button onClick={e => e.stopPropagation() || toggleMute()} className='pixel-text'>
                             {muted ? 'Unmute' : 'Mute'}
-                        </button>
+                        </button> */}
                     </div>
                     <div className="relative flex justify-center items-center bg-[#22272b] rounded-lg h-[400px] lg:h-[300px] pb-[56.25%]">
                         <ReactPlayer
@@ -48,6 +77,7 @@ export default function PostCardFeed({
                             className="absolute top-0 left-0 w-full h-full"
                             controls
                             url={post.media}
+                            volume={volume}
                             muted={muted}
                             playing={isActive}
                             loop={true}
