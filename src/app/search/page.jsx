@@ -23,6 +23,7 @@ function SearchPage() {
 
   const [activeVideoId, setActiveVideoId] = useState(null);
   const [muted, setMuted] = useState(true);
+  const [volume, setVolume] = useState(1);
 
   useEffect(() => {
     if (search) {
@@ -113,6 +114,8 @@ function SearchPage() {
               setActiveVideoId={setActiveVideoId}
               muted={muted}
               setMuted={setMuted}
+              volume={volume}
+              setVolume={setVolume}
             />
           ))
           : displayPosts && <NoResults message="No posts found." />}

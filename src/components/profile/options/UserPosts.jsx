@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import Posts from "../../global-feed/Post";
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function UserPosts({ posts, setConfirmDelete, editable }) {
+  const [muted, setMuted] = useState(false);
 
-    const [muted, setMuted] = useState(false);
-
-    /* useEffect(() => {
+  /* useEffect(() => {
         const updateUserPosts = async () => {
             console.log('updating user info');
             try {
@@ -40,30 +39,33 @@ export default function UserPosts({ posts, setConfirmDelete, editable }) {
         };
     }, []); */
 
-    const handleDeletePost = (postId) => {
-        // pass in a post ID to the function
-        // also take in a useState like post ID from the MainProfile and set it to this particular post's ID
+  const handleDeletePost = (postId) => {
+    // pass in a post ID to the function
+    // also take in a useState like post ID from the MainProfile and set it to this particular post's ID
 
-        setConfirmDelete({ delete: true, postId: parseInt(postId) });
-    }
+    setConfirmDelete({ delete: true, postId: parseInt(postId) });
+  };
 
-    return (
-        <div>
-            {editable && <Link href={{ pathname: '/create/post' }}>
-                <button className="p-2 border border-solid border-slate-400 bg-[#2a313d] font-[2rem] rounded-full">&nbsp;+ Create Post &nbsp;</button>
-            </Link>
-            }
-            <div className="mt-[1rem] w-full flex flex-col items-center overflow-hidden">
-                {posts?.map(post => (
-                    <Posts
-                        key={post.id}
-                        post={post}
-                        muted={muted}
-                        setMuted={setMuted}
-                        amOnProfile={editable}
-                    />
-                ))}
-            </div>
-        </div>
-    )
+  return (
+    <div>
+      {editable && (
+        <Link href={{ pathname: "/create/post" }}>
+          {/* <button className="p-2 border border-solid border-slate-400 bg-[#2a313d] font-[2rem] rounded-full">
+            &nbsp;+ Create Post &nbsp;
+          </button> */}
+        </Link>
+      )}
+      <div className="mt-[1rem] w-full flex flex-col items-center overflow-hidden">
+        {posts?.map((post) => (
+          <Posts
+            key={post.id}
+            post={post}
+            muted={muted}
+            setMuted={setMuted}
+            amOnProfile={editable}
+          />
+        ))}
+      </div>
+    </div>
+  );
 }

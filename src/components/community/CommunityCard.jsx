@@ -161,8 +161,8 @@ export default function ComunityCard({
                   </p>
                 </div>
                 <p
-                  className={` ml-4 text-white rounded-md my-auto border-[#767676] border-[1.5px]  p-1 md:text-[11px] sm:font-semibold px-2 text-[9px]   cursor-pointer pixel-text ${
-                    isfollowing ? "" : " bg-[#00B2FF]"
+                  className={` ml-4 text-white rounded-md my-auto border-[#767676] border-[1.5px]  p-1 md:text-[10px]    md:px-2 text-[8px]  md:py-2  cursor-pointer pixel-text ${
+                    isfollowing ? "" : " bg-blue-500"
                   }`}
                   onClick={handleFollowToggle}
                 >
