@@ -17,9 +17,9 @@ export default function Sidebar() {
   const router = useRouter();
   return (
     <>
-      <div className=" hidden md:block mr-10 w-[22%] h-full  sticky top-16 pixel-text">
+      <div className=" hidden md:block mr-10 w-[27%] h-full  sticky top-16 pixel-text">
         <div className=" flex">
-          <img src="/primary-logo.png" alt="" width='70px'/>
+          <img src="/primary-logo.png" alt="" width="70px" />
           <p className=" text-white border p-2 px-5  text-2xl rounded-3xl my-auto ml-2  pixel-text">
             Oasis
           </p>
@@ -76,13 +76,19 @@ export default function Sidebar() {
 
           <hr className="border border-blue-500  mt-7" />
           <div>
-            <div className=" flex my-4">
-              <BsFire className=" my-auto" size={30} />
-              <p className=" my-auto pixel-text text-md ml-2">Subscriptions </p>
-            </div>
+            {navBarData.subscribed_communities &&
+              navBarData.subscribed_communities.length > 0 && (
+                <div className=" flex my-4">
+                  <BsFire className=" my-auto" size={30} />
+                  <p className=" my-auto pixel-text text-md ml-2">
+                    Subscriptions{" "}
+                  </p>
+                </div>
+              )}
 
             <div className="overflow-y-auto  max-h-44  scrollbar-hide">
               {navBarData.subscribed_communities &&
+                navBarData.subscribed_communities.length > 0 &&
                 navBarData.subscribed_communities.map((menu, index) => (
                   <Link href={`/community/${menu.community.id}`} key={index}>
                     <li

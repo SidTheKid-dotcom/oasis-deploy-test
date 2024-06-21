@@ -124,7 +124,7 @@ export default function MobileNav() {
           <div className="fixed left-0 top-0 w-[90%] h-full ease-in-out duration-1000 bg-black overflow-y-auto opacity-90">
             <div className="p-2">
               <div className="flex justify-between sticky top-0 bg-black">
-                <img src="/primary-logo.png" alt="Logo" width='80px' />
+                <img src="/primary-logo.png" alt="Logo" width="80px" />
                 <FaArrowLeftLong
                   size={35}
                   color="white"
@@ -249,12 +249,16 @@ export default function MobileNav() {
                   </div>
                 </div>
                 <div className="pixel-text">
-                  <div className=" flex my-4">
-                    <BsFire className=" my-auto" size={30} />
-                    <p className=" my-auto pixel-text text-sm ml-2">
-                      Subscriptions{" "}
-                    </p>
-                  </div>
+                  {navBarData.subscribed_communities &&
+                    navBarData.subscribed_communities.length > 0 && (
+                      <div className=" flex my-4">
+                        <BsFire className=" my-auto" size={30} />
+
+                        <p className=" my-auto pixel-text text-sm ml-2">
+                          Subscriptions{" "}
+                        </p>
+                      </div>
+                    )}
 
                   <div
                     className="overflow-y-auto  max-h-56  scrollbar-hide "
