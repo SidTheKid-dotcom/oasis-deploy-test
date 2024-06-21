@@ -8,8 +8,8 @@ import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/authContext";
 
-import { Toaster } from "sonner";
-import { toast } from "sonner";
+import { Toaster, toast } from "sonner";
+import debounce from "lodash/debounce";
 
 const PostCard = ({ post, setPost, totalComments }) => {
   const { token, navBarData } = useAuth();
@@ -19,7 +19,7 @@ const PostCard = ({ post, setPost, totalComments }) => {
   const [showFullTitle, setShowFullTitle] = useState(false);
   const [showFullBody, setShowFullBody] = useState(false);
 
-  const toggleFollowUser = async () => {
+  const toggleFollowUser = debounce(async () => {
     try {
       await axios.post(
         "https://oasis-api.xyz/api/user/follow",
@@ -43,9 +43,9 @@ const PostCard = ({ post, setPost, totalComments }) => {
     } catch (error) {
       console.error("Error occired while following user ", error);
     }
-  };
+  }, 300);
 
-  const togglePostLike = async () => {
+  const togglePostLike = debounce(async () => {
     try {
       if (!post.isLiked) {
         await axios.post(
@@ -92,7 +92,7 @@ const PostCard = ({ post, setPost, totalComments }) => {
     } catch (error) {
       console.log("Error occurred while toggling post like: ", error);
     }
-  };
+  }, 300);
 
   return (
     <div>
@@ -143,7 +143,7 @@ const PostCard = ({ post, setPost, totalComments }) => {
         </section>
         <section className="my-[10px] open-sans flex flex-col gap-2">
           <div className="text-[1rem] post-card break-word">
-          {post.title.length > 40 ? (
+            {post.title.length > 40 ? (
               !showFullTitle ? (
                 <>
                   {post.title.slice(0, 40)}...

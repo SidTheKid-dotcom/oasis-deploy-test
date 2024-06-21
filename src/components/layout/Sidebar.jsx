@@ -19,7 +19,7 @@ export default function Sidebar() {
     <>
       <div className=" hidden md:block mr-10 w-[22%] h-full  sticky top-16 pixel-text">
         <div className=" flex">
-          <img src="/logo.png" alt="" />
+          <img src="/primary-logo.png" alt="" width='70px'/>
           <p className=" text-white border p-2 px-5  text-2xl rounded-3xl my-auto ml-2  pixel-text">
             Oasis
           </p>
