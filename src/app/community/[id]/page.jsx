@@ -56,6 +56,11 @@ export default function Page({ params }) {
           }
         );
         setIsFollowing(false);
+        toast("Unsubscribed Community", {
+          position: "top-right",
+          className:
+            "bg-black text-white pixel-text border border-solid border-red-400",
+        });
         setCommunity((prevCommunity) => ({
           ...prevCommunity,
           isSubscribed: false,

@@ -3,6 +3,7 @@ import { formatDistanceToNow } from 'date-fns';
 
 import { useState } from "react";
 import ReplyCommentBox from "./ReplyCommentBox";
+import Link from "next/link";
 
 export default function CommentFeed({ comments, setComments }) {
   const [viewReplies, setViewReplies] = useState(
@@ -42,7 +43,9 @@ export default function CommentFeed({ comments, setComments }) {
           </div>
           <div className="col-span-10">
             <div className="flex flex-row h-[30px] justify-start pixel-text">
-              <div className="break-words">{comment.comment_by.username}</div>
+              <Link href={`/profile/${comment.comment_by.id}`}>
+                <div className="break-words">{comment.comment_by.username}</div>
+              </Link>
               <div className="text-gray-400 text-[0.75rem]">&nbsp;&bull;&nbsp;{formatDistanceToNow(comment.created_at, { addSuffix: true })}</div>
             </div>
             {comment.gif_url ? (

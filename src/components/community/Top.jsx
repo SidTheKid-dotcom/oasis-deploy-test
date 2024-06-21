@@ -18,7 +18,6 @@ export default function Top() {
         setSuggestions(response.data);
       } catch (error) {
         console.error("Error fetching suggestions:", error);
-        setLoading(false);
       }
     };
 

@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HiDotsVertical } from "react-icons/hi";
 import { HiUsers } from "react-icons/hi";
 import { useAuth } from "@/context/authContext";
@@ -19,6 +19,11 @@ export default function ComunityCard({
 }) {
   const [isfollowing, setIsFollowing] = useState(following);
   const { token } = useAuth();
+
+  useEffect(() => {
+    setIsFollowing(following);
+  }, [following]);
+
   const handleFollowToggle = async () => {
     try {
       if (!isfollowing) {
@@ -54,6 +59,11 @@ export default function ComunityCard({
         );
 
         setIsFollowing(false);
+        toast("Unsubscribed Community", {
+          position: "top-right",
+          className:
+            "bg-black text-white pixel-text border border-solid border-red-400",
+        });
       }
     } catch (error) {
       console.error("Error during follow toggle:", error);
@@ -67,7 +77,7 @@ export default function ComunityCard({
         className="my-4  rounded-lg border border-solid border-slate-600"
         key={key}
       >
-        <div className="  bg-black  p-3  rounded-lg opacity-95 rounded-3xl  ">
+        <div className="  bg-black  p-3  opacity-95 rounded-3xl  ">
           <div className=" my-4">
             <div className="mb-3">
               <div className="">
