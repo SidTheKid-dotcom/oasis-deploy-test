@@ -37,8 +37,6 @@ export default function PostCardFeed({
         const volumeInitializer = () => {
             const player = playerRef.current?.getInternalPlayer();
 
-            console.log('yolo ', post.id, ' ', loadMedia, ' ', player);
-
             const handleVolumeChange = () => {
                 if (player?.muted || player?.volume === 0) {
                     setMuted(true);
@@ -56,7 +54,7 @@ export default function PostCardFeed({
             };
         };
 
-        setTimeout(volumeInitializer, 1000);
+        setTimeout(volumeInitializer, 300);
 
     }, [loadMedia]);
 
