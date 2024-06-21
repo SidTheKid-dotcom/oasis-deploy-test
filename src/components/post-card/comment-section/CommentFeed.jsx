@@ -28,16 +28,21 @@ export default function CommentFeed({ comments, setComments }) {
   };
 
   return (
-    <div className="flex flex-col gap-2  ">
+    <div className="flex flex-col gap-2 ">
       {comments.map((comment, index) => (
         <div key={index} className="mt-[1rem] grid grid-cols-12 gap-1">
-          <div className="col-span-1 mb-[10px]">
-            <div className="rounded-full h-full flex flex-col items-center justify-start">
-              <figure>
-                <img src="/github.svg" width="30px" height="30px"></img>
+          <div className="col-span-1 mb-[10px] ">
+            <div className="rounded-full h-full flex flex-col items-center justify-start gap-2">
+              <figure className="relative border border-white w-[40px] h-[40px] mt-[-0.4rem]  place-content-center rounded-full overflow-hidden">
+                <img
+                  className="w-full object-cover"
+                  src={comment.comment_by.profile_picture}
+                ></img>
               </figure>
               {viewReplies[index] && (
-                <div className="mt-1 rounded-full bg-slate-400 opacity-50 w-[2px] h-full"></div>
+                <div className="relative rounded-full bg-slate-400 opacity-50 w-[2px] h-full">
+                  <div className="absolute bottom-0 h-[1.5px] rounded-full w-[20px] bg-slate-400"></div>
+                </div>
               )}
             </div>
           </div>

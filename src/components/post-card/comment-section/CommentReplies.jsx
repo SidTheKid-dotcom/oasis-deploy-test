@@ -11,8 +11,11 @@ export default function CommentReplies({ replies }) {
                 <div key={index} className="mt-[1rem] grid grid-cols-12 gap-1.5">
                     <div className="col-span-1 mb-[10px]">
                         <div className="cols-span-2 rounded-full h-full flex flex-col items-center justify-start">
-                            <figure>
-                                <img src='/github.svg' width="30px" height="30px"></img>
+                            <figure className="relative border border-white w-[40px] h-[40px] mt-[-0.4rem]  place-content-center rounded-full overflow-hidden">
+                                <img
+                                    className="w-full object-cover"
+                                    src={reply.comment_by.profile_picture}
+                                ></img>
                             </figure>
                         </div>
                     </div>
