@@ -152,7 +152,7 @@ export default function Page({ params }) {
                     <img
                       src={community.creator.profile_picture}
                       alt=""
-                      className="  mr-2 my-auto rounded-full h-10 w-10"
+                      className="  mr-2 my-auto object-cover rounded-full h-10 w-10"
                     />
                     <p className=" text-white my-auto  text-base">
                       {community.creator.username}
