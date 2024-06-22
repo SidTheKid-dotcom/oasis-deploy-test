@@ -36,13 +36,13 @@ export default function EditBannerPic({ BannerImage, setBannerImage, banner }) {
         {displayBanner ? (
           <img
             src={displayBanner.toString()}
-            className="   h-48 md:h-[250px] w-full"
+            className="h-48 md:h-[250px] w-full"
           />
         ) : (
           <div className="cursor-pointer">
             <img
-              src={banner}
-              className=" h-48 object-cover md:h-[250px] w-full"
+              src={banner === "" ? "/default_community_banner.png" : banner}
+              className="h-48 object-cover md:h-[250px] w-full bg-black"
             />
           </div>
         )}

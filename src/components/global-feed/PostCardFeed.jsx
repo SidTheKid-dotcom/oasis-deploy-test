@@ -193,15 +193,17 @@ export default function PostCardFeed({
           <div className="my-[0.5rem] grid grid-cols-12 items-center">
             <div className="col-span-2 rounded-full overflow-hidden w-[40px] h-[40px] md:w-[50px] md:h-[50px] border border-solid border-white">
               <figure className="w-full h-full">
-                <img
-                  src={
-                    loadMedia
-                      ? post.user.profile_picture || "/github.svg"
-                      : "/github.svg"
-                  }
-                  className="w-full h-full object-cover"
-                  alt="Profile Picture"
-                />
+                <Link href={`/profile/${post.user.id}`}>
+                  <img
+                    src={
+                      loadMedia
+                        ? post.user.profile_picture || "/github.svg"
+                        : "/github.svg"
+                    }
+                    className="w-full h-full object-cover"
+                    alt="Profile Picture"
+                  />
+                </Link>
               </figure>
             </div>
             <div className="col-span-8 text-md flex flex-col justify-center pixel-text">

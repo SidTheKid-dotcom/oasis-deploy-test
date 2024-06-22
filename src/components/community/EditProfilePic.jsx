@@ -37,21 +37,19 @@ export default function EditProfilePic({
       <section {...getRootProps({ className: "dropzone" })}>
         <input {...getInputProps()} />
         {displayProfile ? (
-          <div className=" flex justify-center cursor-pointer">
+          <div className="flex justify-center cursor-pointer">
             <img
               src={displayProfile.toString()}
               alt=""
-              className="  rounded-full  w-20 h-20 md:w-28
-            md:h-28   z-20 absolute md:mt-[-13%]  object-cover mt-[-10%]     "
+              className="rounded-full w-20 h-20 md:w-28 md:h-28 z-20 absolute md:mt-[-13%] mt-[-10%] object-cover"
             />
           </div>
         ) : (
-          <div className=" flex justify-center object-cover cursor-pointer">
+          <div className="flex justify-center object-cover cursor-pointer">
             <img
-              src={icon}
+              src={icon === "" ? "/default_community_profile.png" : icon}
               alt=""
-              className=" rounded-full   object-cover w-20 h-20 md:w-28
-                md:h-28   z-20 absolute md:mt-[-13%]  mt-[-10%]    "
+              className="rounded-full object-cover w-20 h-20 md:w-28 md:h-28 z-20 absolute md:mt-[-13%] mt-[-10%]"
             />
           </div>
         )}
