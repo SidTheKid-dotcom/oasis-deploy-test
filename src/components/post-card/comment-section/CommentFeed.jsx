@@ -30,14 +30,16 @@ export default function CommentFeed({ comments, setComments }) {
   return (
     <div className="flex flex-col gap-2 ">
       {comments.map((comment, index) => (
-        <div key={index} className="mt-[1rem] grid grid-cols-12 gap-1">
+        <div key={index} className="mt-[1rem] mx-[0.5rem] grid grid-cols-12 gap-1">
           <div className="col-span-1 mb-[10px] ">
             <div className="rounded-full h-full flex flex-col items-center justify-start gap-2">
               <figure className="relative border border-white w-[40px] h-[40px] mt-[-0.4rem]  place-content-center rounded-full overflow-hidden">
-                <img
-                  className="w-full object-cover"
-                  src={comment.comment_by.profile_picture}
-                ></img>
+                <Link href={`/profile/${comment.comment_by.id}`}>
+                  <img
+                    className="w-full object-cover"
+                    src={comment.comment_by.profile_picture}
+                  ></img>
+                </Link>
               </figure>
               {viewReplies[index] && (
                 <div className="relative rounded-full bg-slate-400 opacity-50 w-[2px] h-full">
@@ -46,7 +48,7 @@ export default function CommentFeed({ comments, setComments }) {
               )}
             </div>
           </div>
-          <div className="col-span-10">
+          <div className="col-span-10 pl-[0.55rem] sm:pl-[0.25rem]">
             <div className="flex flex-row h-[30px] justify-start pixel-text">
               <Link href={`/profile/${comment.comment_by.id}`}>
                 <div className="break-words">{comment.comment_by.username}</div>
@@ -91,7 +93,8 @@ export default function CommentFeed({ comments, setComments }) {
             )}
           </div>
         </div>
-      ))}
-    </div>
+      ))
+      }
+    </div >
   );
 }

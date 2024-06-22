@@ -66,7 +66,17 @@ const PeopleYouMightKnow = () => {
           <p>Loading...</p>
         ) : (
           <div className="flex flex-col gap-4 text-sm lg:overflow-y-auto scrollbar-hide lg:h-[400px] ">
-            {suggestions.map((user) => (
+            {
+              suggestions.length === 0 && (
+                <div className="mt-[-1.25rem] flex flex-col gap-2 items-center justify-center h-full w-full">
+                <figure>
+                <img src="/no_content.png" alt="No Suggestions" width='150px' />
+                </figure>
+                  <p>No suggestions found.</p>
+                </div>
+              )
+            }
+            {suggestions?.map((user) => (
               <div
                 key={user.id}
                 className="grid grid-cols-12 p-3 border border-slate-500 rounded-lg"

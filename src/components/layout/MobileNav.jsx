@@ -136,9 +136,8 @@ export default function MobileNav() {
                   <div className=" flex my-4">
                     <IoMdHome className=" my-auto" size={30} />
                     <p
-                      className={`my-auto pixel-text ml-2 ${
-                        pathname === "/" ? "text-blue-500" : ""
-                      }`}
+                      className={`my-auto pixel-text ml-2 ${pathname === "/" ? "text-blue-500" : ""
+                        }`}
                       onClick={handleClick}
                     >
                       Home
@@ -149,9 +148,8 @@ export default function MobileNav() {
                   <div className="flex my-4">
                     <IoIosPeople className="my-auto" size={30} />
                     <p
-                      className={`my-auto pixel-text ml-2 ${
-                        pathname === "/communities" ? "text-blue-500" : ""
-                      }`}
+                      className={`my-auto pixel-text ml-2 ${pathname === "/communities" ? "text-blue-500" : ""
+                        }`}
                       onClick={handleClick}
                     >
                       Communities
@@ -162,9 +160,8 @@ export default function MobileNav() {
                   <div className="flex my-4">
                     <MdModeEdit className="my-auto" size={30} />
                     <p
-                      className={`my-auto pixel-text ml-2 ${
-                        pathname === "/create/post" ? "text-blue-500" : ""
-                      }`}
+                      className={`my-auto pixel-text ml-2 ${pathname === "/create/post" ? "text-blue-500" : ""
+                        }`}
                       onClick={handleClick}
                     >
                       Post
@@ -175,9 +172,8 @@ export default function MobileNav() {
                   <div className="flex my-4">
                     <IoIosCreate className="my-auto" size={30} />
                     <p
-                      className={`my-auto pixel-text ml-2 ${
-                        pathname === "/create/community" ? "text-blue-500" : ""
-                      }`}
+                      className={`my-auto pixel-text ml-2 ${pathname === "/create/community" ? "text-blue-500" : ""
+                        }`}
                       onClick={handleClick}
                     >
                       new Commmnuity
@@ -198,7 +194,17 @@ export default function MobileNav() {
                         <p>Loading...</p>
                       ) : (
                         <div className="flex flex-col gap-4 text-sm lg:overflow-y-auto scrollbar-hide lg:h-[400px] ">
-                          {suggestions.map((user) => (
+                          {
+                            suggestions.length === 0 && (
+                              <div className="mt-[1rem] ml-[-1.5rem] flex flex-col gap-2 items-center h-full w-full">
+                                <figure>
+                                  <img src="/no_content.png" alt="No Suggestions" width='150px' />
+                                </figure>
+                                <p>No suggestions found.</p>
+                              </div>
+                            )
+                          }
+                          {suggestions?.map((user) => (
                             <div
                               key={user.id}
                               className="grid grid-cols-12 p-3 border border-slate-500 rounded-lg"

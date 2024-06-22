@@ -12,14 +12,16 @@ export default function CommentReplies({ replies }) {
                     <div className="col-span-1 mb-[10px]">
                         <div className="cols-span-2 rounded-full h-full flex flex-col items-center justify-start">
                             <figure className="relative border border-white w-[40px] h-[40px] mt-[-0.4rem]  place-content-center rounded-full overflow-hidden">
-                                <img
-                                    className="w-full object-cover"
-                                    src={reply.comment_by.profile_picture}
-                                ></img>
+                                <Link href={`/profile/${reply.comment_by.id}`}>
+                                    <img
+                                        className="w-full object-cover"
+                                        src={reply.comment_by.profile_picture}
+                                    ></img>
+                                </Link>
                             </figure>
                         </div>
                     </div>
-                    <div className="col-span-10">
+                    <div className="col-span-10 pl-[0.6rem] sm:pl-[0.25rem]">
                         <div className="flex flex-row h-[30px] justify-start pixel-text mb:[0.5rem]">
                             <Link href={`/profile/${reply.comment_by.id}`}>
                                 <div className='break-words'>{reply.comment_by.username}</div>
