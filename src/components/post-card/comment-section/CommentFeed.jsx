@@ -48,7 +48,7 @@ export default function CommentFeed({ comments, setComments }) {
               )}
             </div>
           </div>
-          <div className="col-span-10 pl-[0.55rem] sm:pl-[0.25rem]">
+          <div className="col-span-10 pl-[0.95rem] sm:pl-[0.25rem]">
             <div className="flex flex-row h-[30px] justify-start pixel-text">
               <Link href={`/profile/${comment.comment_by.id}`}>
                 <div className="break-words">{comment.comment_by.username}</div>
@@ -56,7 +56,7 @@ export default function CommentFeed({ comments, setComments }) {
               <div className="text-gray-400 text-[0.75rem]">&nbsp;&bull;&nbsp;{formatDistanceToNow(comment.created_at, { addSuffix: true })}</div>
             </div>
             {comment.gif_url ? (
-              <div className="max-w-[200px]">
+              <div className="max-w-[200px] mt-[0.5rem]">
                 <figure>
                   <img src={comment.gif_url}></img>
                 </figure>

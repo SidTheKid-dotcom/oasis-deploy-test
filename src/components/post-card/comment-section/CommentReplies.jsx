@@ -21,8 +21,8 @@ export default function CommentReplies({ replies }) {
                             </figure>
                         </div>
                     </div>
-                    <div className="col-span-10 pl-[0.6rem] sm:pl-[0.25rem]">
-                        <div className="flex flex-row h-[30px] justify-start pixel-text mb:[0.5rem]">
+                    <div className="col-span-10 pl-[0.95rem] sm:pl-[0.25rem]">
+                        <div className="flex flex-row h-[30px] justify-start pixel-text">
                             <Link href={`/profile/${reply.comment_by.id}`}>
                                 <div className='break-words'>{reply.comment_by.username}</div>
                             </Link>
@@ -30,7 +30,7 @@ export default function CommentReplies({ replies }) {
                         </div>
                         {
                             reply.gif_url ? (
-                                <div className="max-w-[200px]">
+                                <div className="max-w-[200px] mt-[0.5rem]">
                                     <figure>
                                         <img src={reply.gif_url}></img>
                                     </figure>
