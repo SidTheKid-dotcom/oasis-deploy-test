@@ -4,7 +4,7 @@ import axios from "axios";
 import Posts from "../../global-feed/Post";
 import Link from "next/link";
 
-export default function UserPosts({ posts, setConfirmDelete, editable }) {
+export default function UserPosts({ posts, editable }) {
   const [muted, setMuted] = useState(false);
 
   /* useEffect(() => {
@@ -38,13 +38,6 @@ export default function UserPosts({ posts, setConfirmDelete, editable }) {
             updateUserPosts();
         };
     }, []); */
-
-  const handleDeletePost = (postId) => {
-    // pass in a post ID to the function
-    // also take in a useState like post ID from the MainProfile and set it to this particular post's ID
-
-    setConfirmDelete({ delete: true, postId: parseInt(postId) });
-  };
 
   return (
     <div>

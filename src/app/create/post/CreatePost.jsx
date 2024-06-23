@@ -38,6 +38,16 @@ export default function CreatePost({ displayType, placeholders }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (!body && !title) {
+      alert('Post Body Cannot Be Empty');
+      return;
+    }
+
+    if (!selectedCommunity.community_id) {
+      alert('Please select a community');
+      return;
+    }
+
     // Sending data as form-data to encode our image over the network call
     const formData = new FormData();
     formData.append('title', title);
@@ -68,6 +78,10 @@ export default function CreatePost({ displayType, placeholders }) {
     } catch (error) {
       console.log("Error occured in creating post: ", error);
       setLoading(false);
+      toast('Couldn\'t create post', {
+        position: 'top-right',
+        className: 'bg-black text-white pixel-text border border-solid border-red-500'
+      })
     }
   };
 
@@ -105,7 +119,7 @@ export default function CreatePost({ displayType, placeholders }) {
           </div>
         )}
 
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+      <div className="flex flex-col gap-4">
         <TextFields
           setTitle={setTitle}
           body={body}
@@ -124,8 +138,9 @@ export default function CreatePost({ displayType, placeholders }) {
           communities={communities}
           selectedCommunity={selectedCommunity}
           setSelectedCommunity={setSelectedCommunity}
+          handleSubmit={handleSubmit}
         />
-      </form>
+      </div>
     </div>
   );
 }
