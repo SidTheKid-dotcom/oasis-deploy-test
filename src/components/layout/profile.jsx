@@ -2,6 +2,7 @@ import React, { useState, useContext, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/authContext";
 import { format } from "date-fns";
+import { RiTeamFill } from "react-icons/ri";
 const Profile = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
@@ -148,6 +149,15 @@ const Profile = () => {
                   <path d="M14.59 2.59c-.37-.37-.88-.59-1.41-.59H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8.82c0-.53-.21-1.04-.59-1.41L14.59 2.59zM13 9c0 .55-.45 1-1 1H8v2h4c.55 0 1 .45 1 1s-.45 1-1 1H8v2h4c.55 0 1 .45 1 1s-.45 1-1 1H8v2h8V8h-3V5h-2v4z" />
                 </svg>
                 <span>Docs</span>
+              </a>
+              <a
+                href="https://docs.oasissocial.in/team"
+                target="_blank"
+                className="flex items-center gap-3 rounded-md py-2 px-3 hover:bg-slate-800"
+              >
+                <RiTeamFill size={20} />
+
+                <span>Team</span>
               </a>
             </div>
             <button
