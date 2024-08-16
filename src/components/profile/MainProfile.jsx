@@ -14,6 +14,7 @@ import axios from "axios";
 
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import ReactMarkdown from 'react-markdown';
 
 import { Toaster } from "sonner";
 import { toast } from "sonner";
@@ -191,11 +192,13 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
         joined:{format(new Date(userInfo.created_at), "dd/MM/yy")}
       </div>
       <section>
-        <div className="break-words my-2 md:mx-4">
+        <div className="break-words open-sans text-xs my-2 md:mx-4">
           {userInfo.bio?.length > 100 ? (
             !showFullBio ? (
               <>
-                {userInfo.bio.slice(0, 100)}...
+                <ReactMarkdown>
+                  {userInfo.bio.slice(0, 100)}
+                </ReactMarkdown>...
                 <button
                   onClick={() => setShowFullBio(true)}
                   className="text-blue-500 underline"
@@ -205,7 +208,9 @@ export default function MainProfile({ userInfo, setUserInfo, loading }) {
               </>
             ) : (
               <>
-                {userInfo.bio}
+                <ReactMarkdown>
+                  {userInfo.bio}
+                </ReactMarkdown>
                 <button
                   onClick={() => setShowFullBio(false)}
                   className="text-blue-500 underline"
@@ -293,9 +298,8 @@ const ProfileButton = ({ tag, index, activeIndex, setActiveIndex }) => {
   return (
     <button
       onClick={() => focusButton(index)}
-      className={`px-3 py-2 text-sm flex justify-center border rounded-md ${
-        activeIndex == index ? "bg-blue-500" : "border-slate-500"
-      }`}
+      className={`px-3 py-2 text-sm flex justify-center border rounded-md ${activeIndex == index ? "bg-blue-500" : "border-slate-500"
+        }`}
     >
       {tag}
     </button>

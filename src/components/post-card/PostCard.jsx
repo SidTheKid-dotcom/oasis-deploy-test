@@ -10,6 +10,8 @@ import { useAuth } from "@/context/authContext";
 
 import { Toaster, toast } from "sonner";
 import debounce from "lodash/debounce";
+import ReactMarkdown from 'react-markdown';
+
 
 const PostCard = ({ post, setPost, totalComments }) => {
   const { token, navBarData } = useAuth();
@@ -18,6 +20,8 @@ const PostCard = ({ post, setPost, totalComments }) => {
 
   const [showFullTitle, setShowFullTitle] = useState(false);
   const [showFullBody, setShowFullBody] = useState(false);
+  
+  const [toastVisible, setToastVisible] = useState(false);
 
   const toggleFollowUser = debounce(async () => {
     try {
@@ -94,6 +98,16 @@ const PostCard = ({ post, setPost, totalComments }) => {
     }
   }, 300);
 
+  const copyPostLink = async () => {
+    console.log(post);
+    await navigator.clipboard.writeText(`https://oasissocial.in/post-card?postId=${post.id}`);
+    setToastVisible(true);
+    setTimeout(() => {
+      setToastVisible(false);
+    }, 1500); // Hide toast after 1.5 seconds
+  };
+
+
   return (
     <div>
       <Toaster />
@@ -146,14 +160,15 @@ const PostCard = ({ post, setPost, totalComments }) => {
             {post.title.length > 40 ? (
               !showFullTitle ? (
                 <>
-                  {post.title.slice(0, 40)}...
+                  <ReactMarkdown>{post.title.slice(0, 40)}</ReactMarkdown>
+                  ...
                   <button onClick={() => setShowFullTitle(true)} className="text-blue-500 underline">
                     Read More
                   </button>
                 </>
               ) : (
                 <>
-                  {post.title}
+                  <ReactMarkdown>{post.title}</ReactMarkdown>
                   <button onClick={() => setShowFullTitle(false)} className="text-blue-500 underline">
                     Show Less
                   </button>
@@ -161,21 +176,21 @@ const PostCard = ({ post, setPost, totalComments }) => {
 
               )
             ) : (
-              post.title
+              <ReactMarkdown>{post.title}</ReactMarkdown>
             )}
           </div>
           <div className="text-[0.75rem] post-card break-word">
             {post.body.length > 1000 ? (
               !showFullBody ? (
                 <>
-                  {post.body.slice(0, 1000)}...
+                  <ReactMarkdown>{post.body.slice(0, 1000)}</ReactMarkdown>...
                   <button onClick={() => setShowFullBody(true)} className="text-blue-500 underline">
                     Read More
                   </button>
                 </>
               ) : (
                 <>
-                  {post.body}
+                  <ReactMarkdown>{post.body}</ReactMarkdown>
                   <button onClick={() => setShowFullBody(false)} className="text-blue-500 underline">
                     Show Less
                   </button>
@@ -183,7 +198,7 @@ const PostCard = ({ post, setPost, totalComments }) => {
 
               )
             ) : (
-              post.body
+              <ReactMarkdown>{post.body}</ReactMarkdown>
             )}
           </div>
         </section>
@@ -220,7 +235,7 @@ const PostCard = ({ post, setPost, totalComments }) => {
             <div className="w-full h-full bg-gray-300 animate-pulse" />
           )}
         </section>
-        <section className="mt-[20px] mb-[10px] w-full">
+        <section className="mt-[20px] mb-[10px] w-full flex flex-row justify-between">
           <div className="flex flex-row gap-6">
             <button
               onClick={togglePostLike}
@@ -240,6 +255,26 @@ const PostCard = ({ post, setPost, totalComments }) => {
               </figure>
               <figcaption>{totalComments}</figcaption>
             </div>
+          </div>
+          <div className="relative">
+            <button
+              className="flex flex-col items-center"
+              onClick={copyPostLink}
+            >
+              <figure>
+                <img
+                  src="/share (1).svg"
+                  width="25px"
+                  alt="Share Icon"
+                />
+              </figure>
+              <figcaption>Share</figcaption>
+            </button>
+            {toastVisible && (
+              <div className="absolute text-xs top-[-3rem] right-0 p-2 bg-gray-800 text-white rounded-lg shadow-lg">
+                Link copied!
+              </div>
+            )}
           </div>
         </section>
       </div>

@@ -6,6 +6,7 @@ import { useAuth } from "@/context/authContext";
 import { Toaster, toast } from "sonner";
 import debounce from "lodash/debounce";
 import { formatDistanceToNow } from "date-fns";
+import ReactMarkdown from 'react-markdown';
 
 import ConfirmDelete from "../profile/prompts/ConfirmDelete";
 
@@ -27,12 +28,14 @@ export default function PostCardFeed({
   playerRef,
   amOnProfile,
 }) {
-  const { token, navBarData } = useAuth();
-  const [toastRendered, setToastRendered] = useState(false);
+  const { token } = useAuth();
   const [confirmDelete, setConfirmDelete] = useState({
     delete: false,
     postId: 0,
   });
+
+
+  const [toastVisible, setToastVisible] = useState(false);
 
   //const toggleMute = () => setMuted(prevMuted => !prevMuted);
 
@@ -104,17 +107,6 @@ export default function PostCardFeed({
     );
   };
 
-  const handleToast = (message, className) => {
-    if (!toastRendered) {
-      setToastRendered(true);
-      toast(message, {
-        position: "top-right",
-        className: className,
-      });
-      setTimeout(() => setToastRendered(false), 1000);
-    }
-  };
-
   /* const toggleFollowUser = debounce(async () => {
     try {
       await axios.post(
@@ -175,6 +167,14 @@ export default function PostCardFeed({
       delete: true,
       postId: post.id,
     });
+  };
+
+  const copyPostLink = async () => {
+    await navigator.clipboard.writeText(`https://oasissocial.in/post-card?postId=${post.id}`);
+    setToastVisible(true);
+    setTimeout(() => {
+      setToastVisible(false);
+    }, 1500); // Hide toast after 1.5 seconds
   };
 
   return (
@@ -245,26 +245,29 @@ export default function PostCardFeed({
         <section className="my-[10px] open-sans flex flex-col gap-2">
           <div className="text-[1rem] break-words">
             {post.title.length > 40 ? (
-              <>{post.title.slice(0, 40)}...</>
+              <>
+                <ReactMarkdown>{post.title.slice(0, 40)}</ReactMarkdown>
+                ...
+              </>
             ) : (
-              post.title
+              <ReactMarkdown>{post.title}</ReactMarkdown>
             )}
           </div>
           <div className="text-[0.75rem] break-words post-card">
             {post.body.length > 200 ? (
               <>
-                {post.body.slice(0, 200)}...
+                <ReactMarkdown>{post.body.slice(0, 200)}</ReactMarkdown>...
                 <Link href={`/post-card?postId=${post.id}`}>
                   <button className="text-blue-500 underline">Read More</button>
                 </Link>
               </>
             ) : (
-              post.body
+              <ReactMarkdown>{post.body}</ReactMarkdown>
             )}
           </div>
         </section>
         <section>{renderMedia()}</section>
-        <section className="mt-[20px] mb-[10px] w-full pixel-text">
+        <section className="mt-[20px] mb-[10px] w-full pixel-text flex flex-row justify-between">
           <div className="flex flex-row gap-6">
             <button
               onClick={togglePostLike}
@@ -296,8 +299,28 @@ export default function PostCardFeed({
               </Link>
             </div>
           </div>
+          <div className="relative">
+            <button
+              className="flex flex-col items-center"
+              onClick={copyPostLink}
+            >
+              <figure>
+                <img
+                  src="/share (1).svg"
+                  width="25px"
+                  alt="Share Icon"
+                />
+              </figure>
+              <figcaption>Share</figcaption>
+            </button>
+            {toastVisible && (
+              <div className="absolute text-xs top-[-3rem] right-0 p-2 bg-gray-800 text-white rounded-lg shadow-lg">
+                Link copied!
+              </div>
+            )}
+          </div>
         </section>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }

@@ -1,4 +1,6 @@
 import { formatDistanceToNow } from 'date-fns';
+import ReactMarkdown from 'react-markdown';
+
 import Link from 'next/link';
 
 export default function CommentReplies({ replies }) {
@@ -37,7 +39,9 @@ export default function CommentReplies({ replies }) {
                                 </div>
 
                             ) : (
-                                <div className="open-sans break-words">{reply.comment}</div>
+                                <div className="open-sans break-words">
+                                    <ReactMarkdown>{reply.comment}</ReactMarkdown>
+                                </div>
                             )
                         }
                     </div>

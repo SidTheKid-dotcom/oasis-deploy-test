@@ -44,7 +44,7 @@ const Profile = () => {
         {isOpen && (
           <div className="absolute right-0 mt-3 flex w-60 flex-col gap-3 rounded-xl bg-slate-900 p-4 text-slate-100 shadow-lg z-50">
             <div className="flex  items-center">
-              <div className=" mr-3">
+              <div className=" mr-3  cursor-pointer" onClick={handleProfileClick}>
                 <img
                   className=" rounded-full object-cover my-auto"
                   src={profilepic}
@@ -52,23 +52,23 @@ const Profile = () => {
                 />
               </div>
               <div>
-                <div className="flex gap-1 text-[14px] font-semibold pixel-text">
+                <div className="flex gap-1 text-[14px] font-semibold pixel-text  cursor-pointer" onClick={handleProfileClick}>
                   <span>{navBarData.username}</span>
                 </div>
-                <div className="text-[10px] text-slate-400 ">
+                <div className="text-[10px] text-slate-400  cursor-pointer" onClick={handleProfileClick}>
                   {navBarData.email}
                 </div>
               </div>
             </div>
             <div className="border-t border-slate-500/30"></div>
             <div className="flex justify-around">
-              <div className="flex flex-col items-center justify-center pixel-text">
+              <div className="flex flex-col items-center justify-center pixel-text  cursor-pointer" onClick={handleProfileClick}>
                 <span className="text-3xl font-semibold">
                   {navBarData.following}
                 </span>
                 <span className="text-sm text-slate-400">Following</span>
               </div>
-              <div className="flex flex-col items-center justify-center ">
+              <div className="flex flex-col items-center justify-center cursor-pointer" onClick={handleProfileClick}>
                 <span className="text-3xl font-semibold">
                   {navBarData.followers}
                 </span>

@@ -102,7 +102,12 @@ const PeopleYouMightKnow = () => {
                   </figure>
 
                   <div className="  text-xs my-auto break-words">
-                    {user.username}
+                    {user.username.slice(0, 10)}
+                    {
+                      user.username.length > 10 && (
+                        <span className="text-white">...</span>
+                      )
+                    }
                   </div>
                 </button>
                 <button

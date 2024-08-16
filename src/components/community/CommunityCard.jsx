@@ -161,9 +161,8 @@ export default function ComunityCard({
                   </p>
                 </div>
                 <p
-                  className={` ml-4 text-white rounded-md my-auto border-[#767676] border-[1.5px]  p-1 md:text-[10px]    md:px-2 text-[8px]  md:py-2  cursor-pointer pixel-text ${
-                    isfollowing ? "" : " bg-blue-500"
-                  }`}
+                  className={` ml-4 text-white rounded-md my-auto border-[#767676] border-[1.5px]  p-1 md:text-[10px]    md:px-2 text-[8px]  md:py-2  cursor-pointer pixel-text ${isfollowing ? "" : " bg-blue-500"
+                    }`}
                   onClick={handleFollowToggle}
                 >
                   {isfollowing ? "Unsubscribe" : "Subscribe"}
@@ -173,7 +172,7 @@ export default function ComunityCard({
             <p className="text-white open-sans text-xs  ml-1  mt-3 break-words">
               {description.length > 200 ? (
                 <>
-                  {description.slice(0, 200)}...
+                  <ReactMarkdown>{description.slice(0, 200)}</ReactMarkdown>...
                   <Link href={`/community/${id}`}>
                     <button className="text-blue-500 underline">
                       Read More
@@ -181,7 +180,7 @@ export default function ComunityCard({
                   </Link>
                 </>
               ) : (
-                <>{description}</>
+                <ReactMarkdown>{description}</ReactMarkdown>
               )}
             </p>
           </div>

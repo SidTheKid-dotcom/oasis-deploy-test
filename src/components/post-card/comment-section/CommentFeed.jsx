@@ -4,6 +4,8 @@ import { formatDistanceToNow } from 'date-fns';
 import { useState } from "react";
 import ReplyCommentBox from "./ReplyCommentBox";
 import Link from "next/link";
+import ReactMarkdown from 'react-markdown';
+
 
 export default function CommentFeed({ comments, setComments }) {
   const [viewReplies, setViewReplies] = useState(
@@ -62,7 +64,9 @@ export default function CommentFeed({ comments, setComments }) {
                 </figure>
               </div>
             ) : (
-              <div className="open-sans py-2 break-words">{comment.comment}</div>
+              <div className="open-sans py-2 break-words">
+                <ReactMarkdown>{comment.comment}</ReactMarkdown>
+              </div>
             )}
             <div className="flex flex-row gap-4 text-[0.75rem] mt-1">
               <button onClick={() => toggleReplyBox(index)}>Reply</button>
