@@ -29,9 +29,8 @@ export default function FollowersCard({ username, followers, following }) {
 
         <section className="grid grid-cols-2">
           <div
-            className={`flex flex-col text-center ${
-              activeTab == 0 ? "bg-[#2a313d]" : "bg-transparent"
-            }`}
+            className={`flex flex-col text-center ${activeTab == 0 ? "bg-[#2a313d]" : "bg-transparent"
+              }`}
           >
             <button onClick={() => setActiveTab(0)}>
               <h1>followers</h1>
@@ -39,9 +38,8 @@ export default function FollowersCard({ username, followers, following }) {
             </button>
           </div>
           <div
-            className={`flex flex-col    text-center ${
-              activeTab == 1 ? "bg-[#2a313d]" : "bg-transparent"
-            }`}
+            className={`flex flex-col    text-center ${activeTab == 1 ? "bg-[#2a313d]" : "bg-transparent"
+              }`}
           >
             <button onClick={() => setActiveTab(1)}>
               <h1>Following</h1>
@@ -56,11 +54,11 @@ export default function FollowersCard({ username, followers, following }) {
           <div className="overflow-y-auto min-h-14 max-h-80  scrollbar-hide">
             {activeTab == 0
               ? followers?.map((account, index) => (
-                  <Follower key={index} account={account} />
-                ))
+                <Follower key={index} account={account} />
+              ))
               : following?.map((account, index) => (
-                  <Following key={index} account={account} />
-                ))}
+                <Following key={index} account={account} />
+              ))}
           </div>
         </section>
       </div>
@@ -77,7 +75,7 @@ const Follower = ({ account }) => {
   return (
     <button
       onClick={() => navigateUserProfile(account.id)}
-      className="p-2 flex flex-row gap-4"
+      className="p-2 flex flex-row gap-4 "
     >
       <figure className="relative border border-white w-[40px] h-[40px] flex place-content-center rounded-full overflow-hidden">
         <img
@@ -86,10 +84,15 @@ const Follower = ({ account }) => {
         ></img>
       </figure>
       <div
-        className="flex flex-col justify-center text-lg"
-        style={{ marginTop: "4px" }}
+        className="flex flex-row justify-center h-full text-xs"
+        style={{ marginTop: "11px" }}
       >
-        {account.username}
+        {account.username.slice(0, 15)}
+        {
+          account.username.length > 15 && (
+            <span className="text-white">...</span>
+          )
+        }
       </div>
     </button>
   );
@@ -113,10 +116,15 @@ const Following = ({ account }) => {
         ></img>
       </figure>
       <div
-        className="flex flex-col justify-center text-lg"
-        style={{ marginTop: "4px" }}
+        className="flex flex-row justify-center h-full text-xs"
+        style={{ marginTop: "11px" }}
       >
-        {account.username}
+        {account.username.slice(0, 15)}
+        {
+          account.username.length > 15 && (
+            <span className="text-white">...</span>
+          )
+        }
       </div>
     </button>
   );

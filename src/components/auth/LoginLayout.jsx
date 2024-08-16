@@ -3,11 +3,12 @@ import Form from "./form";
 
 export default function LoginLayout() {
   return (
-    <div className="min-h-screen flex items-center justify-center ">
+    <div className="min-h-screen relative flex items-center justify-center ">
+      <marquee className="absolute top-0 z-10 p-[1.75rem] text-white text-lg font-bold">
+        👩‍🎓 Cummins 🔥 PICT 🎓 VIT 🏛 COEP 🚀 MIT 🏫 BVDUCOE 🛡 AIT 🌄 SCOE 🌐 MIT-WPU 🩺 DYPIET 🏅 AISSMS 🏆 PCCOE 🎯 RSCOE 🌟 ICEM 🔧 ZCOER 🎒 JSCOE
+      </marquee>
       <div className="glassmorphism relative md:p-8 flex flex-col md:flex-row w-full h-auto md:h-[700px]">
-        {/* <marquee className="absolute z-10 p-[1.75rem] text-white text-lg font-bold">
-          👩‍🎓 Cummins 🔥 PICT 🎓 VIT 🏛 COEP 🚀 MIT 🏫 BVDUCOE 🛡 AIT 🌄 SCOE 🌐 MIT-WPU 🩺 DYPIET 🏅 AISSMS 🏆 PCCOE 🎯 RSCOE 🌟 ICEM 🔧 ZCOER 🎒 JSCOE
-        </marquee> */}
+
         <div className="flex flex-col mt-[3rem] justify-center items-center md:items-start  w-full md:w-1/2">
           <figure className="m-4 flex flex-row justify-center w-full mx-[-0.3rem]">
             <img src="/primary-logo.png" width="130px" height="130px" alt="Logo" />
