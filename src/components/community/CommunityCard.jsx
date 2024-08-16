@@ -7,6 +7,8 @@ import { HiDotsVertical } from "react-icons/hi";
 import { HiUsers } from "react-icons/hi";
 import { useAuth } from "@/context/authContext";
 import { Toaster, toast } from "sonner";
+import ReactMarkdown from 'react-markdown';
+
 export default function ComunityCard({
   key,
   name,
