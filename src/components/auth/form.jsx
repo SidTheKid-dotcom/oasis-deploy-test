@@ -9,7 +9,7 @@ import Link from "next/link";
 const BASE_URL = "https://oasis-api.xyz";
 
 export default function Form() {
-  const [mode, setMode] = useState("Sign In");
+  const [mode, setMode] = useState("Sign Up");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -68,7 +68,7 @@ export default function Form() {
   return (
     <div className="bg-black p-8 w-full max-w-md mx-auto rounded-2xl text-white">
       <div className="text-2xl text-center mb-6 text-white pixel-text">
-        {mode}
+        {mode === "Sign Up" ? "Register" : "Login"}
       </div>
       <div className="grid grid-cols-2 gap-4 mb-6">
         <button
@@ -79,7 +79,7 @@ export default function Form() {
           }`}
           onClick={() => setMode("Sign In")}
         >
-          Sign In
+          Login
         </button>
         <button
           className={`py-2 rounded pixel-text ${
@@ -89,7 +89,7 @@ export default function Form() {
           }`}
           onClick={() => setMode("Sign Up")}
         >
-          Sign Up
+          Register
         </button>
       </div>
       {mode === "Sign In" && (
@@ -125,7 +125,7 @@ export default function Form() {
               className="w-full py-2 rounded pixel-text bg-pink-500 hover:bg-pink-600 transition duration-300"
               onClick={signIn}
             >
-              {loading ? <BeatLoader color="white" size={10} /> : "Sign In"}
+              {loading ? <BeatLoader color="white" size={10} /> : "Login"}
             </button>
           </div>
           <div className="mt-4 text-center">{message}</div>
@@ -195,7 +195,7 @@ export default function Form() {
               className="w-full py-2 pixel-text rounded bg-pink-500 hover:bg-pink-600 transition duration-300"
               onClick={signUp}
             >
-              {loading ? <BeatLoader color="white" size={10} /> : "Sign Up"}
+              {loading ? <BeatLoader color="white" size={10} /> : "Register"}
             </button>
           </div>
           <div className="mt-4 text-center">{message}</div>
