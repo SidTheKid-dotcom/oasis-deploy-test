@@ -1,10 +1,10 @@
-# Frontend Development repo of oasissocial.in, 
+# Frontend Development Repo Of oasissocial.in, 
 
 Oasis is a social media platform of PICT students, for PICT students, by PICT students. It was created with the intention of being a vault which stores the history of PICT in the form of events, memes, random funny momnets across the years. Any freshers joining the college can simply look at a PICT based community and see what the college is all about. This will help them make better decisions about what to do and explore in their 4 years of engineering life at PICT.
 
 Checkout the official website: [oasissocial.in](https://oasissocial.in)
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+[Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
