@@ -4,6 +4,8 @@ Oasis is a social media platform of PICT students, for PICT students, by PICT st
 
 Checkout the official website: [oasissocial.in](https://oasissocial.in)
 
+
+
 [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
