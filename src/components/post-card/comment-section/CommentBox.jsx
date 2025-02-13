@@ -5,6 +5,7 @@ import GifPicker from "gif-picker-react";
 import { toast } from "sonner";
 import { useAuth } from "@/context/authContext";
 
+
 export default function CommentBox({ postId, setComments }) {
     const [comment, setComment] = useState('');
     const [displayEmojiPicker, setDisplayEmojiPicker] = useState(false);
@@ -103,7 +104,7 @@ export default function CommentBox({ postId, setComments }) {
             {displayGifPicker && (
                 <div ref={gifPickerRef} className={`fixed z-50 ${window.innerWidth < 640 ? 'bottom-[-100px] left-1/2 transform -translate-x-1/2' : 'top-1/3 left-1/4'}`}>
                     <GifPicker
-                        tenorApiKey={"AIzaSyB8irh6rYLNBmiOzVOiBkd8OPOpgdXVd_s"}
+                        tenorApiKey={process.env.NEXT_PUBLIC_TENOR_API_KEY}
                         onGifClick={handleGifClick}
                         onBlur={() => setDisplayGifPicker(false)}
                     />
